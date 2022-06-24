@@ -1,3 +1,95 @@
 @charset "utf-8";
 /* 이 앞에는 아무것도 쓰지 마
    외부 css 파일은 상단에 반드시 인코딩 형식 utf-8 지정을 꼭!!! 해줘야 함. 필수 필수!!~!! */
+
+   
+/* 공통 클래스 */
+    /* box center의 의미로 이름을 bxc로 하겠어 */
+.bxc {
+    /* 가로크기 */
+    width: 750px; /* w750 alt shift a 하면 부분주석 */ 
+    /* 컨텐츠 영역의 크기임 +패딩+보더값도 계산해야하는 거지
+    이게 되게 귀찮잖아 그래서 만든게 박스크기유지 속성!!!! 아래 설명해놓음 */
+    /* 세로크기 */
+    /* height: 200px; */ /* h200 (h200p하면 펄센트) */
+    /* 패딩 */
+    padding: 10px;
+    /* border : 두께 선종류 색상(두종색) */
+    border: 1px solid rgb(68 94 233); /* bd */
+    /* margin */
+    margin: 20px auto; /* m20 */ /* 0 auto 위아래 중앙정렬 양쪽 중앙정렬@! */
+    /* 
+    [블록박스 중앙정렬]
+    margin: 0 auto; -> 마영오! 양쪽 마진 auto의 의미는? 똑같이 분할
+    [마진 값 주기]
+    margin: 하나; -> 4방향 마진
+    margin: 하나 둘; -> 위아래 양쪽
+    margin: 하나 둘 셋; -> 위 양쪽 아래
+    margin: 하나 둘 셋 넷; -> 위부터 시계방향
+        */
+    /* 박스크기유지 속성 : 패딩과 보더 크기 포함 */
+    box-sizing: border-box; /* bxb */
+    /* 배경색 */
+    /* background-color: rgb(176, 200, 253); */ /* bgc */
+    /* 블록박스 인라인 내용 중앙정렬 */
+    text-align: center; /* tac */
+    /* text-align 텍스트 정렬
+    left, right, center, justify(양쪽정렬) */
+
+}
+/* 상단영역 제목 */
+h1 {
+    font-size: 40px; /* 글자크기 fz30 */
+    font-weight: normal;/* 글자두께 fwl */
+    font-family: 'Do Hyeon', sans-serif;/* 글자체 ff */
+    color: rgb(29 43 120);/* 글자색 c */
+    letter-spacing: 0.5px;/* 글자자간 ls*/
+    line-height: normal;/* 글자줄간격 lh   lh5이러면 글자크기의 5배임 */
+    word-spacing: 5px;/* 글자단어간격 */
+    /* 글자스타일 */
+    /*  font: 스두크/줄체;
+    font: 스타일 두께 크기/ 줄간격 글씨체; */
+}
+/* 상단 영역 중 메뉴 */
+/* .nav a라고 해도 완전 가능이지 */
+.nav>a {
+    /* a링크는 2가지 기본설정이 있음.
+        글자색, 글자밑줄ㅇㅇ 그래서 여기서 설정 필요 */
+        color: rgb(29, 43, 120);
+        text-decoration: none;
+        /* font-weight: bold; */
+        font-family: 'Do Hyeon', sans-serif;
+        margin: 0 3px; /* 인라인 요소 margin은 양쪽 조절 가능 상하 불가능 */
+        padding: 1px;
+}
+/* 마우스 오버시 -- :hover 가상클래스 */
+.nav > a+a:hover{/* a+a:hover 앞에 a요소가 있는 a만 모두 선택 여기선 결과적으로 첫번째 a만 제외됨!!! */
+    color: #fff;
+    background-color: rgba(29, 43, 120, 0.2);
+    padding: 1px;
+    /* text-decoration: overline; */
+}
+.nav a img {
+    vertical-align: -4px;
+    /* 세로 정렬 : 인라인요소 간 세로정렬 top, bottom, baseline, middle, 수치
+    인라인 요소 진행방향인 오른쪽에 영향을 줌. 보통 이미지와 글자의 세로위치를 조정할 때 사용 */
+}
+
+/* 메인 영역 */
+#cont img {
+    width: 100%; /* w100p */
+    /* 이미지는 가로크기를 주면 세로크기는 비율 유지함 */
+}
+/* 그룹 선택 - 상단&하단 */
+#top, #info {
+    background-color: rgb(197 209 250);
+}
+/* 하단 */
+#info address {
+    /* font-style: normal; normal 이탤릭 해제 */
+    /* font-family: 'Do Hyeon', sans-serif; */
+    /* font: 스두크/줄체 */
+    font: normal normal 20px/25px 'Do Hyeon', sans-serif;
+    color: #333;
+    padding: 5px 0;
+}
