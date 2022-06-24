@@ -5,6 +5,7 @@
     <!-- meta 태그 초기정보 셋업 : charset 문자인코딩형식 지정 -->
     <title>네이버 요약 뉴스</title>
     <!-- title : 브라우저 tab 메뉴 타이틀 -->
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Do+Hyeon&family=Nanum+Gothic&family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <!-- style sheet 코딩 구역 : 인터널 방식 (여기에 쓰는 방식) -->
     <style>
         /* style sheet 사용 영역
@@ -28,6 +29,12 @@
         5. 직계자식선택자: > (예: div>a div 바로 아래있는 a)
         6. group 선택자: , (예: p,div 여러개 선택)
         7. 종속선택자: 태그명+아이디/클래스명 (예: div#top // a.my)
+        8. 형제선택자: + 이거 쓰면 형제 (예: a+a a가 형제로 있는 a만 선택해 a뒤에 오는 a만 선택)
+           해석: 앞에 지정요소가 있는 형제요소
+        9. 다중형제선택자: ~ (틸드선택자)
+           해석: 선택된 형제요소 뒤의 모든 형제요소들 (예: li:nth-child(2)~li)
+        10. 속성선택자: [] (예: a[href=#] a 요소중에 href #인 애만 선택하라)
+            해석: 특정속성을 가진 요소를 선택
 
         [css 요소 박스모델 필수 속성]
         1. width - 가로 크기 (기본값은 auto (block box는 끝까지 차지, inline box는 내용만큼))
@@ -43,6 +50,63 @@
 
         참고)https://www.w3schools.com/css/css_boxmodel.asp
         */
+        
+        /* 
+        [글자 관련 속성]
+        1. 글자 크기 font-size
+           값 : 절대단위 - px, pt (요즘 pt잘 안 써)
+                상대단위: em, rem, %, vw, vh
+        2. 글자 두께 font-weight
+           값 : lighter, bold, bolder, 100~900(9단계) 수치로도 가능 *보통 글자체에 따라 지원 여부 달림
+        3. 글자체 font-family
+           값 : 글자체 이름 * 기본적으로 로컬체를 적용
+                순서대로 콤마로 구분함 (예: font-family: 궁서체, 굴림체, Verdana 궁서 없으면 굴림 없으면 verdana 이런식으로)
+                최근엔 web font가 대세 브라우저에서 다운로드 지원하는 글씨체가 대세
+        4. 글자색 color
+           값 : 색상명, 해시코드, rgb, hsl 등 <<002-3.css 기초에 있어>>
+            [ 웹 색상표기법 ]
+            1. 해시코드 : #6자리숫자
+                (두자리가 같을 경우 3자리로 축약표현가능)
+                - 16진수로 표기함(0~f) (0~9+a~f)
+                - 해시코드로 투명도를 주려면 뒤에 2자리 추가하여
+                8자리 숫자로 투명도를 표현함
+
+            2. RGB 코드 : rgba(red,green,blue,알파값)
+            - 0~255 까지 숫자중 사용
+            - red, green, blue
+            - 마지막 a는 alpha값 즉, 투명도 -> 없으면 생략!
+            (0~1사이의 소숫점값들 사용)
+
+            [ rgba 2가지 표기법 ]
+            1. rgba(red색,green색,blue색,alpha값)
+            - alpha값은 투명도 (0~1)
+            2. rgb(red색 green색 blue색 / alpha값%)
+            - alpha값은 투명도 (0%~100%)
+
+            3. HSL 코드 : hsla(hue,saturation,lightness,알파값)
+            - hue(색상), saturation(채도), lightness(명도)
+            - hue는 색상번호, 채도와 명도는 0~100%값 범위로 사용
+            - 마지막은 alpha값 -> 역시 없으면 생략!
+
+            4. 웹색상명: 지정된 컬러명으로 색생을 셋팅
+            예) red, green, blue, pink, navy, 등
+            - 모든 색상은 w3schools.com의 색상참조로 가서확인!
+            https://www.w3schools.com/cssref/css_colors.asp
+        5. 글자 자간 letter-spacing
+           일반단위사용 기본은 0
+        6. 글자 줄간격 line-height
+           단위없이 숫자만 쓰면 글자크기의 배수
+        7. 글자 단어간격 word-spacing
+           일단단위사용
+        8. 글자 스타일 font-style
+           이탤릭일 때 사용 : italic
+           이탤릭 해제 시 : normal
+        9. 글자 데코레이션 text-decoration
+           글자에 줄긋기
+           underline / overline 윗줄 / linethrough 중간 / none 없애기
+
+        참고: https://www.w3schools.com/css/css_font.asp
+         */
 
         /* 공통 클래스 */
         /* box center의 의미로 이름을 bxc로 하겠어 */
@@ -56,7 +120,7 @@
             /* 패딩 */
             padding: 10px;
             /* border : 두께 선종류 색상(두종색) */
-            border: 1px solid rgb(34, 51, 87); /* bd */
+            border: 1px solid rgb(68 94 233); /* bd */
             /* margin */
             margin: 20px auto; /* m20 */ /* 0 auto 위아래 중앙정렬 양쪽 중앙정렬@! */
             /* 
@@ -78,6 +142,37 @@
             left, right, center, justify(양쪽정렬) */
 
         }
+        /* 상단영역 제목 */
+        h1 {
+            font-size: 40px; /* 글자크기 fz30 */
+            font-weight: normal;/* 글자두께 fwl */
+            font-family: 'Do Hyeon', sans-serif;/* 글자체 ff */
+            color: rgb(29 43 120);/* 글자색 c */
+            letter-spacing: 0.5px;/* 글자자간 ls*/
+            line-height: normal;/* 글자줄간격 lh   lh5이러면 글자크기의 5배임 */
+            word-spacing: 5px;/* 글자단어간격 */
+            /* 글자스타일 */
+            /*  font: 스두크/줄체;
+            font: 스타일 두께 크기/ 줄간격 글씨체; */
+        }
+        /* 상단 영역 중 메뉴 */
+        /* .nav a라고 해도 완전 가능이지 */
+        .nav>a {
+            /* a링크는 2가지 기본설정이 있음.
+               글자색, 글자밑줄ㅇㅇ 그래서 여기서 설정 필요 */
+               color: rgb(29, 43, 120);
+               text-decoration: none;
+               font-weight: bold;
+        }
+        /* 마우스 오버시 -- :hover 가상클래스 */
+        .nav > a:hover{
+            color: rgb(11, 62, 138);
+            text-decoration: overline;
+        }
+        .nav a img {
+            vertical-align: -4px;
+        }
+        
         /* 메인 영역 */
         #cont img {
             width: 100%; /* w100p */
@@ -85,7 +180,7 @@
         }
         /* 그룹 선택 - 상단&하단 */
         #top, #info {
-            background-color: rgb(176, 200, 253);
+            background-color: rgb(197 209 250);
         }
     </style>
 </head>
