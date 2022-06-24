@@ -162,15 +162,21 @@
                글자색, 글자밑줄ㅇㅇ 그래서 여기서 설정 필요 */
                color: rgb(29, 43, 120);
                text-decoration: none;
-               font-weight: bold;
+               /* font-weight: bold; */
+               font-family: 'Do Hyeon', sans-serif;
+               margin: 0 3px; /* 인라인 요소 margin은 양쪽 조절 가능 상하 불가능 */
         }
         /* 마우스 오버시 -- :hover 가상클래스 */
-        .nav > a:hover{
-            color: rgb(11, 62, 138);
-            text-decoration: overline;
+        .nav > a+a:hover{/* a+a:hover 앞에 a요소가 있는 a만 모두 선택 여기선 결과적으로 첫번째 a만 제외됨!!! */
+            color: #fff;
+            background-color: rgba(29, 43, 120, 0.2);
+            padding: 1px;
+            /* text-decoration: overline; */
         }
         .nav a img {
             vertical-align: -4px;
+            /* 세로 정렬 : 인라인요소 간 세로정렬 top, bottom, baseline, middle, 수치
+            인라인 요소 진행방향인 오른쪽에 영향을 줌. 보통 이미지와 글자의 세로위치를 조정할 때 사용 */
         }
         
         /* 메인 영역 */
