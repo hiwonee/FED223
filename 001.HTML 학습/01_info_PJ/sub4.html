@@ -9,6 +9,7 @@
     <!-- style sheet 코딩 구역 : 인터널 방식 (여기에 쓰는 방식) -->
     <!-- 외부스타일시트 불러오기 : 익스터널 방식 -->
     <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/sub.css">
 </head>
 <body>
     <!-- 영역부분 먼저! 나누어 보자! 영역을 나눈다? div태그~ -->
@@ -39,20 +40,47 @@
     <!-- 2. 메인영역 -->
     <main id="cont" class="bxc">
         <!-- 2-1. 언론사 로고 -->
-        <div class="prlogo"></div><!-- 그냥 .찍으면 div.class로 나와 기본설정임 -->
+        <div class="prlogo">
+            <a href="" target="_blank"><!-- _blank 새페이지 -->
+                <img src="./images/arlogo.png" alt="서울신문사 로고">
+            </a><!-- 신문사로고 누르면 신문사로 가잖아 그래서 a태그 -->
+        </div><!-- 그냥 .찍으면 div.class로 나와 기본설정임 -->
         <!-- 2-2. 기사제목 -->
-        <h2 class="atit"></h2>
+        <h2 class="atit">
+            [우주를 보다] 태양계 ‘8개 행성’ 모두 담긴 희귀 사진 공개
+        </h2>
         <!-- 2-3. 기사사진(+사진설명) -->
-        <figure class="afig"></figure>
+        <figure class="afig">
+            <img src="./images/arti4.jpg" alt="IT/과학 기사 이미지">
+            <figcaption>
+                <small>한 이미지에 담겨 있는 태양계 8개 행성. / APOD NASA</small>
+            </figcaption><!-- 이미지 설명 // 이미지 설명 하단에 다른 태그 못 씀 -->
+        </figure>
         <!-- 
             figure 요소 : 이미지나 표, 그림 등을 넣는 요소
             - figcaption 요소 : 하위 요소로 있음. 이미지 설명 박스 (꼭 필요치는 않아 옵션임)
             * 주의사항: 하단에 다른 태그 사용 불가!!! figure 안에!!! 웹표준검사에 에러로 떠
          -->
         <!-- 2-4. 기사내용 -->
-        <section class="arti"></section>
+        <section class="arti"> 
+            <p><b>태양계 행성 8개</b>가 모두 담긴 사진이 공개돼 관심을 모으고 있다. <strong>‘오늘의 천체사진’(APOD)</strong> 25일자에 따르면, 낭만적인 분위기의 새벽 하늘 풍경을 담은 이 사진은 <i>카메라 4대가 동시 촬영한 이미지</i>를 합쳐 만들었다.</p>
+
+            <p>이 아름다운 천체 파노라마 사진은 지난 24일 해돋이 직전, <em>태양계의 모든 행성</em>을 담고 있다.</p>
+
+            <p>안개가 자욱한 아침, 가장 안쪽에 있는 행성인 수성은 지평선에 바짝 붙어 있는데 아침놀을 배경으로 <mark>찬연하게 빛나는 금성</mark>의 왼쪽 아래에서 볼 수 있다. <del>하지만 나는 볼 수 없었다.</del> </p>
+
+            <p>맨눈으로 볼 수 있는 행성들인 화성, 목성, 토성은 이울어가는 초승달의 오른쪽으로 큰 호를 그리며 황도 근처에서 빛나고 있다.</p>
+
+            <p>이들보다 훨씬 희미한 행성인 천왕성과 해왕성은 발견하는 데 쌍안경이 필요했을 것이다. 비록 두 행성은 하늘의 황도를 따라 있지만 말이다.</p>
+
+            <p>태양계 행성 8개는 이 사진에 100% 출석했다. 앞서 나온 일곱 행성 외의 지구는 바로 사진작가의 발 아래 있기 때문이다. 사진을 촬영한 위치는 이탈리아의 마리나 디 산 니콜라 근처에 있는 고대 로마 빌라의 유적지인 것으로 알려졌다.</p>
+        </section> 
+        <!-- p태그 안에 block 태그를 넣을 수 없다 
+        p 요소: paragraph 문단요소 - 문단을 나눌 때 사용하는 요소-->
         <!-- 2-5. 기자정보 -->
-        <div class="rinfo"></div>
+        <div class="rinfo">
+            이광식 과학 칼럼니스트 joand999@naver.com
+        </div>
     </main>
     <!-- 3. 하단영역 -->
     <footer id="info" class="bxc">
@@ -64,17 +92,33 @@
         </address>
     </footer>
     <!--
-        [div 요소들]
-        div에 어떤 내용영역인지 알 수 있도록 의미를 부여한 새로운 레이아웃용 태그들
-        시맨틱 태그 - 태그에 의미를 부여함! 시멘틱 semantic tag
+        [html 서식 요소들]
+        1. 두꺼운 글자
+        <b>- 굵은 텍스트 (bold 텍스트) 단순히 두꺼워
+        <strong>- 중요한 텍스트 (중요하다는 의미가 있음. important text)
+        -> 태그자체에 의미가 있어 그래서 시맨틱 요소 (의미있는 요소)
         
-        1. header - 상단 영역
-        2. footer - 하단 영역
-        3. main - 메인 영역 (한 페이지에 한! 번! 만!)
-        4. nav - 네비게이션 영역
-        5. aside - 부수적인 내용 영역
-        6. section - 내용구분을 위한 영역
-        7. article - 독립적인 내용을 구분하는 영역 (보통 article이나 section은 w3c에서 heading 태그(h1~h6)를 내용에 사용할 것을 권고함 - 안써도 무관)
+        2. 이탤릭 스타일 글자
+        <i>- 기울임꼴 텍스트 (italic text)
+        <em>- 강조된 텍스트 (emphasized text)
+
+        3. 눈에 띄게 색상표시
+        <mark>- 표시된 텍스트 (노랑색 배경 - marked text)
+        
+        4. 작은글자표시
+        <small>- 더 작은 텍스트 (smaller text -> h5태그 글자 크기)
+        
+        5. 지움표시
+        <del>- 삭제된 텍스트 (deleted text)
+             -> text-decoration: line-through;
+        
+        6. 삽입표시
+        <ins>- 삽입된 텍스트 (inserted text)
+             -> text-decoration: underline;
+        <sub>- 아래 첨자 텍스트
+        <sup>- 위 첨자 텍스트
+
+        시맨틱요소(의미있는 요소) : strong, em
      -->
 </body>
 </html>
