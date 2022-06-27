@@ -10,7 +10,7 @@
 1. 와이어프레임
 - 대체적인 요구사항에 따라 디자인을
 배치하여 정보설계를 한다.
-: 와이어프레임툴 - 발사믹 https://balsamiq.com/
+: 와이어프레임툴 - 발사믹 https://balsamiq.com/   https://minwoohi.tistory.com/53
 
 2. 프로토타입
 - 일정 수준의 디자인을 반영한
