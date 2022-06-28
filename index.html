@@ -29,9 +29,81 @@
             color: #222;
             text-decoration: none;
         }
+        /* Whole Box */
+        .wrap {
+            width: 1200px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.445);
+            border-radius: 10px;
+            padding: 15px;
+            white-space: nowrap; /* 줄바꿈 방지 */
+        }
+        .tit {
+           text-align: center;
+        }
+        /* Sub Title */
+        .pbx h2 {
+            font-family: 'Gugi', sans-serif;
+            color: #333;
+            font-weight: normal;
+            font-size: 40px;
+            text-align: center;
+            text-shadow: 2px 2px 1px #000;
+        }
+        /* PJ A Link */
+        .pbx a {
+            font-family: 'Gugi', sans-serif;
+            font-size: 30px;
+            line-height: 2;
+        }
+        /* pjbox common */
+        .pj {
+            /* 가로크기: 부모크기의 절반 */
+            width: 50%;
+            /* 마영오 */
+            margin: 0 auto;
+            border: 1px dashed fuchsia;
+        }
     </style>
 </head>
 <body>
-    
+    <!-- Whole Box -->
+    <div class="wrap">
+        <!-- 1. TITLE -->
+        <h1 class="tit">
+            <img src="./imgs/mylogo_14.png" alt="마이 아카이브 로고">
+        </h1>
+        <!-- Project Box -->
+        <div class="pbx">
+            <!-- Common Project -->
+            <section class="pj cpj">
+                <h2>COMMON PROJECT</h2>
+                <ul>
+                    <li>
+                        <a href="./001.HTML 학습/001.기본전달사항.htm" target="_blank">
+                            BASIC MESSAGES
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./001.HTML 학습/01_info_PJ/" target="_blank">
+                            NAVER NEWS
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- Personal Project -->
+            <section class="pj ppj">
+                <h2>PERSONAL PROJECT</h2>
+                <ul>
+                    <li>
+                        <a href="./001.HTML 학습/001.기본전달사항.htm" target="_blank">
+                            BASIC MESSAGES
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+    </div>
 </body>
 </html>
