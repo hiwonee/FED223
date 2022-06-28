@@ -153,3 +153,17 @@
     :nth-of-type(n) 같은 종류 중 n번째 요소 (n)에 순서 숫자 넣기
     :last-of-type 같은 종류 중 마지막 요소
 */
+
+/* 붙여서 쓰는 것 : 종속선택자 */
+article.work {
+    text-align: center;
+    background-color: lightcyan;
+}
+.work figcaption {
+    padding-top: 12px;
+    font-size: 14px;
+}
+.work cite {
+    font-style: normal;
+
+}
