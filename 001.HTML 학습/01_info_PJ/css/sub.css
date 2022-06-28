@@ -35,7 +35,7 @@
     word-spacing: -0.5px;
     /* 줄바꿈방지 - 보통 박스는 자동으로 줄바꿈 처리하여 글자가 떨어지는데 nowrap으로 설정하면
     글자가 줄바꿈 안되고 밖으로 나감 */
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 /* 제목 중 특정 글자만 변경 */
 .atit span {
@@ -166,4 +166,44 @@ article.work {
 .work cite {
     font-style: normal;
 
+}
+/* 사진뉴스박스 */
+/* 테이블 설정 */
+.pnews table {
+    /* 선생님 하신거
+    기본사이간극 collapse 주면 보더 간극 없애줌
+    border-collapse: separate; seperate 는  기본값
+    사이간격 설정
+    border-spacing: 7px;
+    주의!@ separate 상태에서만 설정됨*/
+    margin: 0 auto;
+    border-spacing: 10px;
+}
+/* 첫번째 td */
+.pnews td:first-child {
+    color: orangered;
+    width: 50px;
+    text-align: center;
+    height: 90px;
+    background-color: rgba(66, 156, 126, 0.308);
+}
+/* 두번째 td - 링크 */
+.pnews td:nth-child(2) {
+    width: 450px;
+    background-color: #445de96c;
+    /* 선생님 하신거
+    padding-right: 116px; padding-left: 20px; */
+}
+/* 
+    :first-child 형제 요소 중 첫번째 요소
+    :nth-child(n) 형제 요소 중 n번째 요소 (n)에 순서 숫자 넣기
+    :last-child 형제 요소 중 마지막 요소
+*/
+.pnews img {
+    height: 90px;
+    vertical-align: middle;
+}
+
+.rinfo, h5>a {
+    padding-left: 10px;
 }
