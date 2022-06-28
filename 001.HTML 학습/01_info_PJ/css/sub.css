@@ -12,7 +12,10 @@
 /* @import url(파일주소); */
 @import url(common.css);
 
-
+/* 메인 영역 박스 */
+#cont {
+    padding: 15px;
+}
 /* 2-1. 언론사 로고 */
 .prlogo img {
     height: 32px; /* 이미지는 가로나 세로 중 하나만 변경하면 나머지는 자동으로 비율유지 */
@@ -70,8 +73,83 @@
     font-size: 17px;
     /* 줄간격: 숫자만 쓰면 배수 */
     line-height: 1.6;
+    padding: 0 10px;
 }
 /* 기타 타이틀 h3 */
 #cont h3 {
-    font-family: 'Do Hyeon', sans-serif;;
+    font-family: 'Do Hyeon', sans-serif;
+    /* 글자두께 */
+    font-weight: lighter;
+    /* 글자크기 */
+    font-size: 25px;
+    /* 패딩 왼쪽 */
+    /* padding-left: 20px; */
 }
+/*공통박스*/
+#cont article {
+    border-top: 2px dashed #445ee9;
+    margin-top: 40px;
+    padding-top: 10px;
+}
+/* 블록 인용구 박스 */
+.bquote blockquote {
+    margin: 0;
+    padding: 2px;
+    text-align: justify;
+    font-family: gulim;
+    font-size: 14px;
+    line-height: 23px;
+}
+.desc small {
+    font-size: 14px;
+    font-family: gulim;
+}
+
+/* 메인 컨텐츠 아래 a 요소 */
+/* 주의 사항 - 글자색, 밑줄은 반드시 a 요소에서 할 것!! */
+#cont a {
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "돋움";
+    line-height: 2.5;
+    letter-spacing: -1px;
+}
+/* a 요소 마우스 오버시 :hover 가상클래스 마치 클래스를 준 것 같다 이런 의미*/
+#cont a:hover {
+    text-decoration: underline;
+    color: rgb(44, 90, 18);
+}
+/* ul 블릿타입 변경 */
+#cont ul {
+    list-style: square;
+}
+#cont ol {
+    list-style: upper-roman;
+}
+.secnews dt {
+    margin-left: 14px;
+    color: deeppink;
+    font-weight: bold;
+}
+.secnews a {
+    margin-left: -10px;
+}
+/* dt 순서별 글자색 변경  */
+/*첫번째 dt  */
+/* .secnews dt:first-of-type {
+    color: fuchsia;
+} */
+/* dt 중 두번째 */
+/* .secnews dt:nth-of-type(2) {
+    color: turquoise;
+} */
+/* 마지막 dt */
+/* .secnews dt:last-of-type {
+    color: yellowgreen;
+} */
+/* 
+    :first-of-type 같은 종류 중 첫번째 요소
+    :nth-of-type(n) 같은 종류 중 n번째 요소 (n)에 순서 숫자 넣기
+    :last-of-type 같은 종류 중 마지막 요소
+*/
