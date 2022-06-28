@@ -2,6 +2,9 @@
 /* 이 앞에는 아무것도 쓰지 마
    외부 css 파일은 상단에 반드시 인코딩 형식 utf-8 지정을 꼭!!! 해줘야 함. 필수 필수!!~!! */
 
+/* 구글웹폰트 */
+  @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+/* font-family: 'Do Hyeon', sans-serif; 사용예시 */
    
 /* 공통 클래스 */
     /* box center의 의미로 이름을 bxc로 하겠어 */
@@ -36,6 +39,9 @@
     /* text-align 텍스트 정렬
     left, right, center, justify(양쪽정렬) */
 
+}
+#top, #info {
+    text-align: center;
 }
 /* 상단영역 제목 */
 h1 {
