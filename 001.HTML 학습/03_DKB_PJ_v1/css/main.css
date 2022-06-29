@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* 도깨비 PJ 메인 페이지 CSS - main.css */
+/* 메인 페이지에만 적용되는 CSS */
+
+/* 기본적으로 외부 CSS 합치기(merging)를 해야 해 */
+@import url(./common.css);
+@import url(./core.css);
+@import url(./reset.css);
