@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>001.배경연습</title>
+    <style>
+        html,body {
+            margin: 0; padding: 0;
+            height: 100%; /* 보이는 화면 */ 
+            /* 하위 요소의 높이값 %의 기준 */
+            /* 배경이미지 넣을 때 html body 같이 넣지 마 겹칠 때 있음 */
+        }
+
+        h1 {
+            margin: 0;
+            padding: 25px 0; 
+            /* 마진이 부모 바깥으로 나갈 경우 패딩으로 세팅,, overflow hidden,,, */
+            text-align: center;
+        }
+        .wrap {
+            height: 100%;
+            /* 높이값 100%의 기준은? */
+            
+            /* 배경을 여러 개 세팅하려면?? - 한 번에 배경세팅 콤마로 연결*/
+            /* background: 색이반고윙/크; 
+               background: 색상 이미지 반복 고정 위치/크기 */
+            /* 콤마로 연결할 때 그 순서대로 첫번째야 여기선 공유-고은-동욱-인나 이 순서임 */
+            /* 위치값에서 세로값을 생략하면 center가 기본 */
+            /* 위치 안 쓰고 싶어도 0은 써야 함.. */
+            background: url(./imgs/dc1.png) no-repeat center/400px, url(./imgs/dc2.png) no-repeat right top/auto 150px,
+            url(./imgs/dc3.png) no-repeat left bottom/ 300px, url(./imgs/dc4.png) no-repeat left top/350px,
+            url(./imgs/bg_mainvisual.jpg) no-repeat 0/50%;
+
+        }
+        body {
+            /* 전체 배경 이미지는 body에 코딩함. */
+            
+            /* 1. 배경색 */
+            background-color: rgb(210, 227, 243);
+            /* 2. 배경 이미지 : URL 경로 */
+            background-image: url(./imgs/bg_logo_a_01.png);
+            /* 3. 배경 반복 여부
+            반복 안 함 : no-repeat
+            x축 반복 : repeat-x    y축 반복 : repeat-y
+            기본값(반복) : repeat*/
+            background-repeat: no-repeat;
+            /* 4. 배경 고정 - fixed
+             스크롤이 있으면 확인 돼 고정의 기준은 보이는 화면 임*/
+            background-attachment: fixed;
+            /* 5. 배경 위치 : 가로 세로 / 값 - px, % 수치단위
+            가로 - left, centr, right / 세로 - top, center, bottom*/
+            /* center는 한 번만 써도 중간으로 감 */
+            background-position: right bottom;
+            /* 6. 배경크기: 가로 세로  // 가로 세로 중 한 쪽에 auto 주면 이미지 비율에 맞춰서 변화됨
+            auto 값: 세로값만 변경 가로는 자동, 값 auto : 가로값만 변경 세로는 자동 
+            만약 값 하나만 쓰면 값 auto와 같음. 뒤에 것은 생략 가능한 것
+            만약 % 사용하면 이미지가 속한 박스의 %임
+            
+            특정 값: 
+            1) contain : 모두 보이게 박스에 채움 (비율 유지를 함)
+            2) cover : 박스를 모두 채우고 비율도 유지 빈칸이 없음,, 일정 부분이 비율에 따라 이미지 잘림*/ 
+            background-size: 150px;
+        }
+
+        /* html과 body는 기본적으로 block 요소임.
+           html의 부모는? WINDOW 객체임
+           body의 부모는? HTML
+
+           [block 요소의 일반적인 특징]
+           1. width: auto -> 셋팅 없는 경우 기본 값 -> 
+              싸고 있는 페이지 부모요소 끝까지 차지함. (단, 마진과 패딩 고려)
+              width 크기를 설정하여 작아져도 옆에 다른 요소 못 옴!
+           2. height: auto -> 내용만큼 늘어남. - 내용이 없으면 높이 값: 0
+           3. 자식요소에서 블록 요소 마진인
+              margin-top, margin-bottom (inline에서는 위 아래 마진이 안돼)
+              값을 주면 부모요소 바깥으로 마진 설정이 나가.
+              내부로 포함 시키려면 overflow: hidden을 사용하면 됨.
+              * 내부 공간을 확보하려면 패딩으로 설정해야 함
+
+           블록요소는 어떤 속성인가? DISPLAY 속성
+           -> 브라우저 화면에 요소를 어떻게 보이게 할지를 결정해주는 속성
+        */
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>001.배경넣기 연습</h1>
+    </div>
+</body>
+</html>
