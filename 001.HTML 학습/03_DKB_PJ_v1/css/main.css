@@ -16,16 +16,40 @@ body {
     url(../images/bg_mainvisual.jpg) no-repeat fixed center/cover;
 }
 
+/* 메인영역 */
+.cont {
+        /* 상단 패딩: 첫번째 요소 위치밀기의 기본!!
+    첫번째 요소의 margin-top으로 위치를 이동할 경우 부모요소 바깥으로 마진이 나감..
+    원래 디자인된 속성임,, 마진을 포함하려면 overflow: hidden;을 주면 포함되지만,
+    첫번째 요소의 위치는 부모의 패딩으로 밀어주는 것이 정석!!!! */
+    padding-top: 500px;
+    box-sizing: border-box;
+    /* 일반적인 박스는 content-box이며 가로, 세로 크기를 설정할 경우 그 크기는 컨텐트 영영의 크기
+    박스의 보더와 패딩을 제외한 내용 영역을 컨텐트 영역이라고 한다.
+    패딩과 보더를 포함하여 크기를 정하려면 box-sizing: border-box라고 셋팅하면 됨~~~~
+    여기에서는 min-height: 800px 크기에 패딩 500px이 포함됨 */
+
+}
+
 /* 캐릭터박스 설정 */
 .cbx {
     width: 90%;
     margin: 0 auto;
 }
 
+/* float 자식의 부모에 가상요소로 clear 설젇ㅇ */
+.cbx::after {
+    content: '';
+    display: block;
+    clear: both;
+} /* 이걸 만약 안하면 cbx의 높이가 0이야 0!!  */
+
 /* 캐릭터 개별 박스 공통 */
 .cat {
     /* 가로 크기 : 4등분(25%) */
     width: 25%;
+    /* 블록 요소 옆으로 흐르게! */
+    float: left;/* 나는 왼쪽! 너는 오른쪽에 와~~ */
 }
 
 /* 하위 캐릭터 이미지 */
