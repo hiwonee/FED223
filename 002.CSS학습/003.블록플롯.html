@@ -121,7 +121,11 @@
         }
 
         /* float해제용 가상요소 */
-        
+        .flclb::after {
+            content: '';/* 이것만 쓰면 span태그 같음.. */
+            display: block; /* 이것을 쓰면 div 태그 같다! */
+            clear: both; /* 이렇게 해서 클리어 both 효과 넣어줄 수 있음~~ */
+        }
 
         /* 
             가상요소란?
@@ -147,10 +151,20 @@
         */
 
         /* 경우4 */
-        
+        .case4 { overflow: hidden; /* float 해제 효과가 있다 */}
+        .case4 .bx {
+            float: left;
+        }
 
         /* 경우5 */
-        
+        .case5::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .case5 .bx {
+            float: right;
+        }
        
 
     </style>
@@ -164,9 +178,9 @@
         세번째 clear:right
     </h3>
     <div class="wrap">
-        <div class="bx bx1"></div>
-        <div class="bx bx2"></div>
-        <div class="bx bx3"></div>
+        <div class="bx bx1 fll"></div>
+        <div class="bx bx2 flr"></div>
+        <div class="bx bx3 clr"></div>
         <div class="bx bx4"></div>
     </div>
 
@@ -177,13 +191,13 @@
         clear:both를 위한 div를 마지막에 사용함!
     </h3>
     <div class="wrap">
-        <div class="bx bx1"></div>
-        <div class="bx bx2"></div>
-        <div class="bx bx3"></div>
-        <div class="bx bx4"></div>
+        <div class="bx bx1 fll"></div>
+        <div class="bx bx2 flr"></div>
+        <div class="bx bx3 clb fll"></div>
+        <div class="bx bx4 flr"></div>
 
-        <!-- clear를 위한 block박스 -->
-        <!-- <div class="clb"></div> -->
+        <!-- clear를 위한 block박스 --> <!-- clear는 블록 요소에만!!  -->
+        <div class="clb"></div>
     </div>
 
     <h2>경우3</h2>
@@ -193,10 +207,10 @@
         부모요소에 가상요소 after를 사용하여 clear:both구현
     </h3>
     <div class="wrap flclb">
-        <div class="bx bx1"></div>
-        <div class="bx bx2"></div>
-        <div class="bx bx3"></div>
-        <div class="bx bx4"></div>
+        <div class="bx bx1 fll"></div>
+        <div class="bx bx2 flr"></div>
+        <div class="bx bx3 clb fll"></div>
+        <div class="bx bx4 flr"></div>
     </div>
 
     <h2>경우4</h2>
