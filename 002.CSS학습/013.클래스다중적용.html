@@ -57,7 +57,10 @@
             /* 상위요소로 기존에 셋팅되어서 하위요소 class적용이 되지않는다
             따라서 상위요소를 위에 써주면 적용된다(우선순위) */
             .bx .bd1{
-                border-style: dotted;
+                border-style: dotted /* !important */;
+                /* !important는 인라인도 못 이겨 안 쓰는게 좋음,,
+                인라인코드는 <li class="fcls1" style="border-style: double">이거..
+                95번 줄로 가!! */
                 border-color: purple;
             }
             .bx .bd2{
@@ -83,10 +86,17 @@
                 상위 레벨의 디자인이 있을경우 우선순위를 높이기
                 위한 코딩이 필요하다
                 - 상위레벨 요소 선택자를 같이 쓰는 경우 순위가 올라감
+                  하나만 쓰는 것보다,, 그래서 뒤에 있는 애만 작성하고 앞에있는 애를 
+                  상위 선택자를 같이 쓰면 더 세짐
 
                 -> 프로젝트나 프레임워크 또는 css솔루션 소스에서
                 다중 클래스 적용은 굉장히 흔한 코딩법이다!
                 -> 분리된 CSS 소스코딩이 깔끔한 코딩법의 비결이된다!
+
+                [일반적인 CSS 우선순위]
+                !important > inline > id > class > type(태그명들)
+                
+                같은 레벨에서 부모요소를 쓴 것이 우선됨!
              */
 
         </style>
@@ -98,9 +108,10 @@
             <li class="fcls2">클래스적용2</li>
             <li class="fcls3">클래스적용3</li>
             <li class="fcls1 fcls2">클래스적용4</li>
-            <!-- 여기에 작성하는 순서가 아니라 css코딩 위치가 더 뒤에 있는 애로 덮여쓰여짐 -->
-            <li class="">클래스적용5</li>
-            <li class="">클래스적용6</li>
+            <!-- 여기에 작성하는 순서가 아니라 css코딩 위치가 더 뒤에 있는 애로 덮여쓰여짐
+            겹치지 않는 애들은 다 적용되겠지 -->
+            <li class="fcls2 bd1 bd2">클래스적용5</li>
+            <li class="fcls3 bd1 bd3">클래스적용6</li>
             <li class="">클래스적용7</li>
             <li class="">클래스적용8</li>
             <li>클래스적용9</li>
