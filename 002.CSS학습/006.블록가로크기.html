@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>블록요소 가로크기 설정</title>
+        <style>
+            .bx{
+                border: 5px dashed blue;
+                padding: 15px;
+                margin: 15px;
+                /* 글자:스두크/줄체 */
+                font: bold 24px "맑은 고딕","굴림";
+                text-align: center;
+            }
+            /* 가로600px */
+            .bx1{
+                width: 600px;
+            }
+            /* 최대가로크기 1000px 1000 이상 안 크고 그 이전은 그냥 auto*/
+            .bx2{
+                max-width: 1000px;
+            }
+            /* 최소가로크기 700px 700 이상은 auto 700이하 안 움직임*/
+            .bx3{
+                min-width: 700px;
+            }
+            /* 최대가로크기 1200px,
+            최소가로크기 800px */
+            .bx4{
+                max-width: 1200px;
+                min-width: 800px;
+            }
+            /* 가로크기 800px, 최대가로크기 80% */
+            .bx5{
+                width: 800px;
+                max-width: 80%;
+            }
+
+            /* 최대 가로 크기 / 최소 가로 크기 설정 정리
+               1. max-width: 최대 가로 크기 제한
+                  최대 크기보다 작아지면 AUTO 전환
+                  값을 퍼센트로 줄 경우 화면 크기를 기준하여 박스 크기보다 작아질 경우 %가 적용됨
+                  이 때 보통 width 크기가 설정되어 있음 (bx5 예시를 확인)
+               2. min-width: 최소 가로 크기 제한
+                  최소 크기보다 커지면 AUTO 전환
+            */
+            
+        </style>
+    </head>
+    <body>
+        <h1>블록요소 가로크기 설정</h1>
+
+        <div class="bx bx1">
+            가로크기 600px <br>
+            (width:600px)
+        </div>
+        <div class="bx bx2">
+            최대가로크기 1000px <br>
+            (max-width:1000px)
+        </div>
+        <div class="bx bx3">
+            최소가로크기 700px <br>
+            (min-width:700px)
+        </div>
+        <div class="bx bx4">
+            최대가로크기 1200px <br>
+            (max-width:1200px) <br>
+            최소가로크기 800px <br>
+            (min-width: 800px)
+        </div>
+        <div class="bx bx5">
+            가로크기 800px <br>
+            (width:800px) <br>
+            최대가로크기 80% <br>
+            (max-width:80%)
+        </div>
+
+
+    </body>
+</html>

@@ -1,3 +1,13 @@
 @charset "utf-8";
 /* 도깨비 PJ 핵심 공통 모듈 CSS - core.css */
 /* 공통 class / 웹폰트 */
+
+/* 속박스 클래스 */
+.ibx {
+    /* width: 1200px; */
+    max-width: 1200px;
+    /* 최대 가로 크기 1200px이면 이것보다 작아질 경우 auto로 자동전환 됨~
+    즉, 가로 스크롤 안 생김! */
+    margin: 0 auto;
+
+}
