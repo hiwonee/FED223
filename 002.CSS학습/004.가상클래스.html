@@ -288,7 +288,12 @@
        
 
         /* 3번째 div 이후 div형제요소 모두 */
-        
+        /* .part2 div:nth-of-type(3)~div { */ /* 3번째 div 이후 모든 div 형제요소 */
+        /* .part2 div:nth-of-type(3)~i { */ /* 3번째 div 이후 i 형제 요소 모두 */
+        .part2 div:nth-of-type(3)~* { /* 3번째 div 이후 모든 형제요소 */
+            font-family: "궁서";
+            color: lightseagreen;
+        }
 
 
         /* 
