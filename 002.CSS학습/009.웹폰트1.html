@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>웹폰트란 무엇인가?</title>
-        <style>
-            /* 
+
+<head>
+    <meta charset="utf-8">
+    <title>웹폰트란 무엇인가?</title>
+    <style>
+        /* 
             [ 웹폰트란? ]
             - 브라우저에서 사용할 수 있도록 서버에
             폰트를 올려놓고 브라우저가 이를 다운로드
@@ -90,68 +91,113 @@
             https://fonts.google.com/
              */
 
-            /* 웹폰트 설정 */
+        /* 웹폰트 설정 */
 
-            /* Black Han Sans체 */
-            
-           
-            /* Cute Font */
-           
-            
-            /* Gugi */
-           
-
-            /* BhuTuka */
-            
-
-            /* Shizuru */
-            
-            /* SyneMono */
-           
-           
-
-            
-            
-            
-            /* 적용하기 */
-            .wf1{/* Black Han Sans체 */
-                color: purple;
-                font-weight: normal;
-            }
-            .wf2{/* Cute Font */
-                color: hotpink;
-                font-weight: normal;
-            }
-            .wf3{/* Gugi */
-                color: rgb(15, 197, 61);
-                font-weight: normal;
-            }
-            .wf4{/* BhuTuka */
-                color: rgb(184, 3, 144);
-                font-weight: normal;
-            }
-            .wf5{/* Shizuru */
-                color: rgb(0, 197, 231);
-                font-weight: normal;
-            }
-            .wf6{/* SyneMono */
-                color: rgb(247, 99, 0);
-                font-weight: normal;
+        /* Black Han Sans체 */
+            @font-face {
+                font-family: bh;
+                src: url(./fonts/BlackHanSans-Regular.woff) format("woff");
+                /* 한줄에 format 해주면 속도 줄어든대,,, */
             }
 
+        /* Cute Font */
+            @font-face {
+                font-family: cf;
+                src: url(./fonts/CuteFont-Regular.woff) format("woff");
+            }
 
-        </style>
-    </head>
-    <body>
+        /* Gugi */
+            @font-face {
+                font-family: gg;
+                src: url(./fonts/Gugi-Regular.woff2) format("woff2");
+            }
 
-        <h1 class="wf1">저 멀리 있는 별을 바라보는 일은 신성한 음악이나 고귀한 그림 또는 위대한 시인의 글귀와 같이 우리의 생각을 자극하고 정화하는 힘을 갖고 있어. 언제나 효과가 좋지.</h1>
-        <h1 class="wf2">저 멀리 있는 별을 바라보는 일은 신성한 음악이나 고귀한 그림 또는 위대한 시인의 글귀와 같이 우리의 생각을 자극하고 정화하는 힘을 갖고 있어. 언제나 효과가 좋지.</h1>
-        <h1 class="wf3">저 멀리 있는 별을 바라보는 일은 신성한 음악이나 고귀한 그림 또는 위대한 시인의 글귀와 같이 우리의 생각을 자극하고 정화하는 힘을 갖고 있어. 언제나 효과가 좋지.</h1>
-        <h1 class="wf4">A peep at some distant orb has power to raise and purify our thoughts like a strain of sacred music, or a noble picture, or a passage from the grander poets. It always does one good.</h1>
-        <h1 class="wf5">A peep at some distant orb has power to raise and purify our thoughts like a strain of sacred music, or a noble picture, or a passage from the grander poets. It always does one good.</h1>
-        <h1 class="wf6">A peep at some distant orb has power to raise and purify our thoughts like a strain of sacred music, or a noble picture, or a passage from the grander poets. It always does one good.</h1>
+        /* BhuTuka */
+            @font-face {
+                font-family: bt;
+                src: url(./fonts/BhuTukaExpandedOne-Regular.woff) format("woff");
+            }
 
-
+        /* Shizuru */
+        /* <link href='https://fonts.googleapis.com/css?family=Shizuru'rel='stylesheet'>font-family: 'Shizuru'; */
         
-    </body>
+        /* SyneMono */
+            @font-face {
+                font-family: sm;
+                src: url(./fonts/SyneMono-Regular.woff2) format("woff2");
+            }
+        /* MooLahLah */
+            @font-face {
+                font-family: ml;
+                src: url(./fonts/MooLahLah-Regular.woff) format("woff");
+                /* url 따옴표로 싸도 되구 안 해도 되구 */
+            }
+
+
+
+
+
+        /* 적용하기 */
+        .wf1 {
+            /* Black Han Sans체 */
+            font-family: bh;
+            color: purple;
+            font-weight: normal;
+        }
+
+        .wf2 {
+            /* Cute Font */
+            font-family: cf;
+            color: hotpink;
+            font-weight: normal;
+        }
+
+        .wf3 {
+            /* Gugi */
+            font-family: gg;
+            color: rgb(15, 197, 61);
+            font-weight: normal;
+        }
+
+        .wf4 {
+            /* BhuTuka */
+            font-family: bt;
+            color: rgb(184, 3, 144);
+            font-weight: normal;
+        }
+
+        .wf5 {
+            /* Shizuru */
+            /* MooLahLah */
+            font-family: ml;
+            color: rgb(0, 197, 231);
+            font-weight: normal;
+            font-size: 50px;
+        }
+
+        .wf6 {
+            /* SyneMono */
+            font-family: sm;
+            color: rgb(247, 99, 0);
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="wf1">저 멀리 있는 별을 바라보는 일은 신성한 음악이나 고귀한 그림 또는 위대한 시인의 글귀와 같이 우리의 생각을 자극하고 정화하는 힘을 갖고 있어. 언제나 효과가 좋지.</h1>
+    <h1 class="wf2">저 멀리 있는 별을 바라보는 일은 신성한 음악이나 고귀한 그림 또는 위대한 시인의 글귀와 같이 우리의 생각을 자극하고 정화하는 힘을 갖고 있어. 언제나 효과가 좋지.</h1>
+    <h1 class="wf3">저 멀리 있는 별을 바라보는 일은 신성한 음악이나 고귀한 그림 또는 위대한 시인의 글귀와 같이 우리의 생각을 자극하고 정화하는 힘을 갖고 있어. 언제나 효과가 좋지.</h1>
+    <h1 class="wf4">A peep at some distant orb has power to raise and purify our thoughts like a strain of sacred music,
+        or a noble picture, or a passage from the grander poets. It always does one good.</h1>
+    <h1 class="wf5">A peep at some distant orb has power to raise and purify our thoughts like a strain of sacred music,
+        or a noble picture, or a passage from the grander poets. It always does one good.</h1>
+    <h1 class="wf6">A peep at some distant orb has power to raise and purify our thoughts like a strain of sacred music,
+        or a noble picture, or a passage from the grander poets. It always does one good.</h1>
+
+
+
+</body>
+
 </html>
