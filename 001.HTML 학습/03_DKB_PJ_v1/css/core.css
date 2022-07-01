@@ -1,6 +1,13 @@
 @charset "utf-8";
 /* 도깨비 PJ 핵심 공통 모듈 CSS - core.css */
 /* 공통 class / 웹폰트 */
+/* font */
+/* font-family: 'Yomogi', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
+/* font-family: 'Gowun Dodum', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+/* font-family: 'Hahmlet', serif; */
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&display=swap');
 
 /* 속박스 클래스 */
 .ibx {

@@ -98,16 +98,61 @@ body {
 /* 캐릭터 설명 박스 */
 .cd {
     /* 배경: 색이반고윙/크 */
+    /* 높이값 설정 : 0 -> 250px 오버시 변경
+    높이 값이 0이면 모두 숨겨짐~~ */
+    height: 0px;
+    overflow: auto; /* 넘치는 내용 자동 스크롤! 높이 값에 따라 스크롤이 자동변경 */
     background: url(../images/eachBG.jpg) no-repeat center/cover;
+
+    /* 트랜지션: 속성 시간 이징 지연 이징은 가속도 */
+    /* transition: height time;  */
+    /* 하이트가 변할 시간,,,? */
+    transition: height 0.4s ease-in;
 }
+
+
+/********************************************************************* 
+[트랜지션(TRANSITION) 애니메이션 효과 주기]
+-> 속성값의 변화과정을 보여주면서 애니메이션하는 속성
+(기본 설정)
+transition: 속성 시간 이징 지연 - 속시이지
+
+1. 속성 - 변경 애니메이션 대상 속성 [transition-property]
+   (안 쓰거나 all을 쓰면 모든 속성이 애니메이션 적용됨!!)
+   -> 속성을 따로 쓰는 이유는 개별적으로 속성별로 애니메이션을 따로 설정할 수 있기 때문.
+      예) transition: all .4s;  모두 적용임..
+          transition: .4s;  모두 적용임..
+          transition: margin-top .3s ease-in, height 2s linear 1s; 
+                      속시이지 순으로 콤마를 사용하면 다양하게 설정 가능!!
+2. 시간 - 애니메이션 시간 : 초단위(S)  [transition-duration]
+3. 이징(easing) - 가속도   [transition-timing-function]
+   1) ease : 앞 뒤로 약간씩 느림 (기본값)
+   2) ease-in : 처음에 천천히 나중에 빨라짐
+   3) ease-out : 나중에 천천히 처음에 빠름
+   4) ease-in-out : 처음과 끝에 천천히
+   5) linear : 등속도
+               베지어 곡선으로도 매우 다채로운 가속도 생성가능!!
+    https://www.w3schools.com/css/tryit.asp?filename=trycss3_transition_speed
+    
+4. 지연 - 지연시간 즉, 처음에 대기시간 (초단위:s)  [transition-delay]
+5. 적용법: 오버시 또는 클래스로 중간에 값을 변경하는 경우
+           시작과 다시 복귀할 때 애니메이션이 같다면 오버시가 아닌 원본에 트랜지션을 주면 된다!! 만약에 다르다면 오버시(또는 클래스)에 따로 트랜지션을 설정하면 다르게 애니메이션 된다~~
+*********************************************************************/
+
+
+/* .cat 개별 박스에 오버시 */
+.cat:hover .cd {
+    height: 250px;
+}
+
 
 /* 캐릭터 설명 타이틀 */
 .cd h3 {
-    font-family: "궁서";
-    font-size: 24px;
-    font-weight: normal;
+    font-family: 'Hahmlet';
+    font-size: 25px;
+    font-weight: bold;
     padding: 15px 10px 5px;
-    white-space: nowrap; /* 줄바꿈 방지 */
+    /* white-space: nowrap; 줄바꿈 방지 */
     letter-spacing: -1px;
 }
 /* 가상요소로 설명타이틀 앞에 도깨비 아이콘 넣기 */
@@ -126,8 +171,8 @@ body {
 
 /* 캐릭터 설명 문단 */
 .cd p {
-    font-family: "궁서";
-    font-size: 16px;
+    font-family: 'Gowun Dodum','Yomogi';
+    font-size: 20px;
     line-height: 1.7;
     padding: 10px;
     text-align: justify;
@@ -136,9 +181,9 @@ body {
 /* 캐릭터 설명 첫번째 P요소의 첫번째 글자 가상 요소로 변경하기! */
 .cd p:first-of-type::first-letter {
     font-size: 30px;
-    color: #fff;
-    text-shadow: 1px 0 rgb(55, 81, 139), -1px 0 rgb(55, 81, 139),
-    0 1px rgb(55, 81, 139), 0 1px rgb(55, 81, 139);
+    color: rgb(55, 81, 139);
+    text-shadow: 1px 0 #eee, -1px 0 rgb(26, 26, 27),
+    0 1px #eee, 0 1px #eee;
 }
 
 /* 가상요소로 설명타이틀 앞에 도깨비 아이콘 넣기 */
