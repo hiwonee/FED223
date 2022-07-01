@@ -58,6 +58,18 @@ body {
 /* .cat img {
     width: 100%;
 } */
+
+/* 캐릭터 이미지 박스 */
+.ci{
+    /* transition: 속시이지 */
+    transition: .4s ease-out;
+}
+/* .cat에 오버시 .ci변경 */
+.cat:hover .ci{
+    margin-top: -53%; 
+    /* px로 해봐 완전 달라 %로 하면 김고은이 안 따라오는데 px는 따라와;;; */
+}
+
 /* 캐릭터 이미지 - .ci의 직계 자식 img만 선택 직계자식 선택의미의 부등호는 띄어도 괜츈*/
 .ci>img {
     width: 100%;
@@ -133,7 +145,7 @@ transition: 속성 시간 이징 지연 - 속시이지
    5) linear : 등속도
                베지어 곡선으로도 매우 다채로운 가속도 생성가능!!
     https://www.w3schools.com/css/tryit.asp?filename=trycss3_transition_speed
-    
+
 4. 지연 - 지연시간 즉, 처음에 대기시간 (초단위:s)  [transition-delay]
 5. 적용법: 오버시 또는 클래스로 중간에 값을 변경하는 경우
            시작과 다시 복귀할 때 애니메이션이 같다면 오버시가 아닌 원본에 트랜지션을 주면 된다!! 만약에 다르다면 오버시(또는 클래스)에 따로 트랜지션을 설정하면 다르게 애니메이션 된다~~
