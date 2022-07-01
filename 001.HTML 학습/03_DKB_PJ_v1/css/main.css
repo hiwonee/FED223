@@ -46,8 +46,10 @@ body {
 
 /* 캐릭터 개별 박스 공통 */
 .cat {
-    /* 가로 크기 : 4등분(25%) */
-    width: 25%;
+    /* 가로 크기 : 4등분(25%) -양쪽마진 1%.. 그래서 24프로,, */
+    width: 24%; /* 0.5% 양옆에 마진을 줘서 총 1%,, 그래서 25에서 24로 바꿔줘야해.. */
+    margin: 0 .5%; /* 보통 0.5%와 같이 0.소수점은 앞에 0 생략가능,, */
+    /* 가로, 세로 크기나 마진 값으로 %를 쓰면 기준은 싸고 있는 부모 박스 */
     /* 블록 요소 옆으로 흐르게! */
     float: left;/* 나는 왼쪽! 너는 오른쪽에 와~~ */
 }
@@ -92,3 +94,51 @@ body {
 .cat:hover .ci span img:last-child{
     display: none;
 }
+
+/* 캐릭터 설명 박스 */
+.cd {
+    /* 배경: 색이반고윙/크 */
+    background: url(../images/eachBG.jpg) no-repeat center/cover;
+}
+
+/* 캐릭터 설명 타이틀 */
+.cd h3 {
+    font-family: "궁서";
+    font-size: 24px;
+    font-weight: normal;
+    padding: 15px 10px 5px;
+    white-space: nowrap; /* 줄바꿈 방지 */
+    letter-spacing: -1px;
+}
+/* 가상요소로 설명타이틀 앞에 도깨비 아이콘 넣기 */
+.cd h3::before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 30px;
+    /* outline: 1px solid red; */
+    /* background: url(../images/bg_logo_a_01.png) no-repeat right  0px/100%; */
+    /* 위에처럼 하면 작은 상자에 도깨비로고 딱 차는데, 한번 크기 키워보면 오른쪽에서부터 커지는 걸 볼 수 있음 그래서 -183해서 만든거야,, */
+    background: url(../images/bg_logo_a_01.png) no-repeat right  -183px;
+    vertical-align: 0px;
+
+}
+
+/* 캐릭터 설명 문단 */
+.cd p {
+    font-family: "궁서";
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 10px;
+    text-align: justify;
+}
+
+/* 캐릭터 설명 첫번째 P요소의 첫번째 글자 가상 요소로 변경하기! */
+.cd p:first-of-type::first-letter {
+    font-size: 30px;
+    color: #fff;
+    text-shadow: 1px 0 rgb(55, 81, 139), -1px 0 rgb(55, 81, 139),
+    0 1px rgb(55, 81, 139), 0 1px rgb(55, 81, 139);
+}
+
+/* 가상요소로 설명타이틀 앞에 도깨비 아이콘 넣기 */
