@@ -23,7 +23,7 @@
         /* 박스공통 */
         .bx {
             width: 800px;
-            max-width: 100%;
+            /* max-width: 100%; 이러면 깔끔하게 줄어들지만 없으면 가로 스크롤 생겨*/
             /* 박스크기 보다 화면이 작아지면 100%로 전환 */
             margin: 0 auto;
             /* 마영오 - 박스중앙 */
@@ -101,6 +101,30 @@
             클래스 bx인 요소의 첫번째 같은타입요소를 선택하여
             첫번째줄 가상요소를 디자인 변경하시오!
          */
+
+         /* 가상요소 ::first-line 을 사용하여 첫 라인 타이틀 만들기 */
+         .bx::first-line {
+            font-size: 30px;
+            font-weight: bold;
+            font-family: "궁서";
+            letter-spacing: -1px;
+            line-height: 100px;
+            text-shadow: 2px 2px 2px navy;
+         }
+
+         /* 가상요소::first-line .bx별 글자색 변경 */
+         .bx:first-of-type::first-line {
+            color: indianred
+         }
+         .bx:nth-of-type(2)::first-line {
+            color: skyblue;
+         }
+         .bx:nth-of-type(3)::first-line {
+            color: burlywood;
+         }
+         .bx:nth-of-type(4)::first-line {
+            color: green;
+         }
 
         
     </style>
