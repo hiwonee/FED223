@@ -39,7 +39,14 @@
                       스크롤이 생겨도 스크롤 위쪽에 보이는 화면만을 지칭한다!! (((영상 다시보고 이해해야할 것 같다ㅜㅜ)))
                    ->>>>또한!!!
                    >>>>>>>>>>>width나 height 값을 %로 줄 경우 부모자격이 있는 요소를 기준하여 크기를 잡는다!!
-                      ③
+                   
+                   2) 앱솔루트 가로, 세로 크기를 주지 않은 경우, 
+                   일반적으로 block 요소이므로 width: auto로써 부모 끝까지 차지하지만, 앱솔루트는 내용만큼
+                   그 크기가 자동으로 설정됨 [-> 앱솔루트 판타롱 스타킹]
+                   
+                   3) 인라인 요소에 앱솔루트를 준 경우
+                   자동으로 display: block으로 설정됨.
+                   이유는 자동크기를 설정할 경우 블록이 아니면 크기설정 안되므로
             ※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※
             */
             background: url(./ab_img/ab1.jpg) no-repeat center/cover;
@@ -48,6 +55,7 @@
         }
         #s1 {
             background-color: aquamarine;
+            z-index: 999;
             /* position: relative; static은 z-index 적용이 안돼..*/ 
         }
         #r1 {
@@ -60,7 +68,7 @@
             background: url(./ab_img/ab4.jpg) no-repeat center/cover;
             color: #fff;
             bottom: 75px;
-            right: -75px;
+            right: -86px;
         }
         /* 부모를 찾는 앱솔루트 */
         .bx2 {
@@ -70,19 +78,19 @@
             text-align: center;
         }
         .s5 {
-            position: relative;
+            /* position: relative; */
             background: skyblue;
         }
         .s6 {
-            position: relative;
+            /* position: relative; */
             background: lightblue;
         }
         .s7 {
-            position: relative;
+            /* position: relative; */
             background: lemonchiffon;
         }
         .s8 {
-            position: relative;
+            /* position: relative; */
             background: lightgrey;
         }
         .abs {
@@ -102,6 +110,18 @@
             width: 20%;
             height: 40%;
             /* 앱솔루트인데 %로 가로, 세로 크기를 설정할 경우 부모자격요소를 기준함!!! */
+        }
+        /* 앱솔루트 : 판타롱 스타킹 */
+        .a5 {
+            position: absolute;
+            /* 크기를 안 주면, 내용만큼 늘어나 */
+            top: 50%;
+            right: 10%;
+            /* 부모는? 보이는 화면!! */
+            
+        }
+        .a5 img {
+            vertical-align: top; /* 하단 간극 없앰 */
         }
     </style>
 </head>
