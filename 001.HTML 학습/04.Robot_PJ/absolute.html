@@ -90,7 +90,7 @@
             background: lemonchiffon;
         }
         .s8 {
-            /* position: relative; */
+            position: relative;
             background: lightgrey;
         }
         .abs {
@@ -123,6 +123,36 @@
         .a5 img {
             vertical-align: top; /* 하단 간극 없앰 */
         }
+        /* span을 앱솔루트로! */
+        .spabs {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 4px dotted plum;
+        }
+        /* 앱솔루트끼리는 서로 겹친다~~ */
+        .absimg {
+            width: 92px;
+            height: 115px;
+            border: 4px ridge orchid; /* ridge : 액자틀 모양 */
+        }
+        /* 이미지가 앱솔루트!! */
+        .absimg img {
+            position: absolute;
+            /* 위치값을 안 잡으면 그 박스에 그대로 있는 젠틀 앱솔루트 상태를 유지한다!!! */
+            /* 앱솔루트끼리의 형제요소는 서로 겹친다!! 나중에 그려진 요소가 위에 온다~~ (z-index로 조절 가능~~) */
+        }
+        /* 두번째 (위에 있는 것) 닥스를 투명하게 변경 */
+        .absimg img:last-child {
+            opacity: 0;
+            /* opacity는 투명도 0투명 1불투명 반투명은 0.~~ 소수점값 */
+            transition: 1s;
+        }
+        /* 박스에 오버시 닥스 보이기 */
+        .absimg:hover img:last-child {
+            opacity: 1;
+            /* 트랜지션은 먼저 먹은애가 알아서 먹게 하지~~ */
+        }
     </style>
 </head>
 <body>
@@ -136,7 +166,11 @@
     <div class="a5">
         <img src="./ab_img/ab2.jpg" alt="타노스">
     </div>
-
+    <!-- 앱솔루트끼리는 서로 겹침! -->
+    <div class="absimg">
+        <img src="./ab_img/ab3.jpg" alt="토르">
+        <img src="./ab_img/ab4.jpg" alt="닥스">
+    </div>
     <!-- 부모를 찾는 앱솔루트 -->
     <!-- .bx2.s5{s5}>.bx2.s6{s6}>.bx2.s7{s7}>.bx2.s8{s8} -->
     <div class="bx2 s5">s5
@@ -145,6 +179,9 @@
                 <div class="bx2 s8">s8
                     <div class="abs a3">a3</div>
                     <div class="abs a4">a4</div>
+                    <span class="spabs">
+                        나는 스팬 앱솔루트다!
+                    </span>
                 </div>
             </div>
         </div>
