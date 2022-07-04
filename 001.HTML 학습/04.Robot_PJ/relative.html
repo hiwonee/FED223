@@ -16,6 +16,53 @@
             /* 글자가 세로 중앙 */
             line-height: 100px;
         }
+        #r1 {
+            position: relative;
+            top: 50px;
+            left: 50px;
+            /* 
+            ※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※
+            [2. RELATIVE 포지션]
+            - 렐러티브! 라고 읽기~~ 상대적인,,
+
+            1) 위치 이동 속성 적용됨.
+            
+            2) 위치 이동의 기준: 원래 있던 위치(그래서 상대적이라는 단어 relative를 사용)
+            
+            3) 이동시 다른 요소에 영향이 없이 겹쳐질 수 있다.
+
+            4) 원래 있던 위치 보존됨.. 그대로!!
+               (의미: 기존 위치가 보존되기 때문에 본래의 디자인이 망가져 보이지 않음.)
+            
+            5) 위치값 설정시 2가지 기준으로만 셋팅한다.
+               - 위, 아래 중 하나
+               - 좌, 우 중 하나
+               top, left / top, right
+               bottom, left / bottom, right 
+            
+            6) 마진은 그대로 적용된다!
+               (다른 static 요소에 영향을 미친다!!) -> 마진으로 이동된 위치에서 위치 이동 값을 적용한 것임!!
+
+            7) relative는 위치 이동값을 사용하지 않으면 static과 똑같은 특성을 가짐!!
+
+            8) relative는 겹쳐질 수 있으므로 위아래 관계가 성립한다~ 
+               기본적인 위, 아래 관계는 아래와 같다
+               ① static 보다 항상 위!
+               ② static 포지션이 아닌 경우 나중에 그려진 요소가 위!! (손 놓고 손등 때리기,,)
+               ③ z-index 속성으로 숫자가 크면 위~~
+
+            ※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※
+            */
+            background: url(./ab_img/ab5.jpg) no-repeat center/cover;
+            color: #fff;
+        }
+        #r2 {
+            position: relative;
+            bottom: 75px;
+            right: -86px;
+            background: url(./ab_img/ab4.jpg) no-repeat center/cover;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
