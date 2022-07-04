@@ -17,7 +17,7 @@
             /* 속박스 */
             /* width: 1200px; */
             /* max-width: 100%; */
-            min-width: 1200px;
+            max-width: 1200px;
             /* 1200px보다 작아지면 auto */
             /* 최대가로크기 100%의 의미는? width크기보다 작아지면
             최대 100%를 유지하여 가로 스크롤이 안생김!! */
@@ -114,7 +114,7 @@
             /* 메인영역 변경 - 3개(33.3%) + 1개(100%) */
             .cont>.pbx {
                 width: 33.3%;
-                height: 300px;
+                /* height: 300px; */
             }
             .cont>.pbx:last-child {
                 width: 100%;
@@ -135,17 +135,25 @@
             /* 메인영역 변경 - 3개(33.3%) + 1개(100%) */
             .cont>.pbx {
                 width: 50%;
+                /* height: 300px; */
+            }
+            .cont>.pbx:last-child {
+                width: 50%;
                 height: 300px;
             }
-            /* .cont>.pbx:last-child {
-                width: 100%;
-                height: 600px;
-            } */
 
         }
 
         /**************** 500px 이하 ****************/  
-        /* 500px 이하 */
+        /* 500px 이하 이 이후는 없지? 허락받고 임폴턴트 사용 */
+        /* 마지막엔 모두 width: 100%, height: 400px */
+        /* 이를 강제 적용하기 위해(더 이하는 없으므로) !important 사용~~*/
+        @media screen and (max-width: 500px) {
+            .pbx {
+            width: 100% !important;
+            height: 400px !important;
+            }
+        }
         
     </style>
 </head>
