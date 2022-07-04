@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position - STATIC</title> <!-- 그냥 놓인 것,, 스태틱 -->
+    <style>
+        .bx {
+            width: 100px;
+            height: 100px;
+            border: 2px solid blue;
+            /* 글자가 가로 중앙 */
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            /* 글자가 세로 중앙 */
+            line-height: 100px;
+        }
+        #s1 {
+            position: static; 
+            top: 100px; /* 안먹혀ㅋㅋ 스태틱이니깜 */
+            left: 100px;
+            /* 
+            [CSS의 포지션이 뭐지?]
+            - 위치를 효과적으로 배치하기 위한 코딩법을 제공하는 속성
+
+            [1. STATIC 포지션]
+            1) 설정하지 않아도 기본 값
+            2) 위치이동값(top,left,bottom,right) 속성이 적용되지 않음
+             */
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- .bx#s$*3 -->
+    <!-- 에밋 코딩의 여러개 만드는 경우!! *(곱하기 사용) -->
+    <!-- 자동증가 부분은 $로 표시(1,2,3,,,) -->
+    <!-- 중활호{}는 데이터부분!! -->
+    <!-- <div class="bx" id="s1"></div> -->
+    <!-- <div class="bx" id="s2"></div> -->
+    <!-- <div class="bx" id="s3"></div> -->
+    <!-- .bx#s$*3{s$} -->
+    <div class="bx" id="s1">s1</div>
+    <div class="bx" id="s2">s2</div>
+    <div class="bx" id="s3">s3</div>
+</body>
+</html>
