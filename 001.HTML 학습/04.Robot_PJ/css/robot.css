@@ -182,7 +182,8 @@ body {
     bottom: -25px;
     /* left: -15px; 이거 따로 줘야 해,,,  */
     border-radius: 50%;
-    /* css3 그라데이션 - 선형/원형 */
+    border: 1px solid #444;
+    /* css3 그라데이션 - 선형/원형 background-image에서 가능~!!!!! */
     /* [선형 그라데이션]
        background-image: linear-gradient(방향/각도, 색1 비율%, 색2 비율%, 색3 비율%,,,);
        방향값은 to top, to bottom, to left, to right
@@ -196,8 +197,8 @@ body {
     /* [원형 그라데이션] 
        background-image: radial-gradient(옵션, 색1 비율, 색 2 비율...); (띄어쓰기 중요)
        옵션 : circle - 원형, 안쓰면 박스에 맞춤
-       세밀한 옵션 주기@!
-          ->>> 옵션 안에 세부 옵션 at 가로위치 세로위치 (띄어쓰기 중요)
+       세밀한 옵션 주기@! (특정위치를 중심으로 빛 반사효과)
+          ->>> 옵션 안에 세부 옵션 at 가로위치 세로위치 (띄어쓰기 중요) - px, % 단위 사용 가능
                세부옵션 종류 4가지: 
                1) closest-side / 2) farthest-side
                3) closest-corner / 4) farthest-corner
@@ -210,17 +211,48 @@ body {
        background-image: radial-gradient(closest-corner at 30px 15px, white, gray);
     
      */
-     background-image: radial-gradient(closest-side at 35px 35px, white, gray);
+     background-image: radial-gradient(closest-side at 30px 20px, white, gray);
+
 }
 
-/* 왼팔 가상요소 */
+/* 왼손 가상요소 */
 .arm.a1::before {
     left: -15px;
 }
-/* 오른팔 가상요소 */
+/* 왼손 그림자 가상요소 */
+.arm.a1::after {
+    left: 11px;
+}
+
+/* 오른손 가상요소 */
 .arm.a2::before {
     right:-15px;
 }
+/* 오른손 그림자 가상요소 */
+.arm.a2::after {
+    right: 11px;
+}
+
+/* 가상요소로 손 그림자 넣기 */
+.arm::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background-color: #222;
+    bottom: -25px;
+    border-radius: 0 0 35px 35px;
+    /* 클리핑 기법을 사용하여 그림자를 삼각형으로 만들자~~ 
+       다각형 클리핑
+       clip-path: ploygon(x1 y1, x2 y2, ,,,,)
+       삼각형,, 0% 100%, 50% 0%, 100% 100%
+       소괄호 안은 비울 수 없다.
+       각 좌표값은 px, %로 대상 내부 영역임,,
+       삼각형 점을 세개 찍어준다~*/
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%); /* 삼각형 영역만 보여준다!! */
+}
+
 /* left arm */
 .l1 {
     left: 0px;
