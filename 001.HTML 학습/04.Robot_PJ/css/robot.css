@@ -30,6 +30,12 @@ body {
     background: url(../images/metal02.jpg) no-repeat center/cover;
 }
 
+/* 빛이나는 로봇 */
+.brRo, .brRo::before {
+    box-shadow: 0 0 7px 5px white;
+}
+
+
 /************************************** 1. 상단영역 */
 /************************************** 1-1.LOGO */
 /************************************** 1-2.내용LINK */
@@ -136,6 +142,15 @@ body {
     width: 250px;
     height: 310px;
     margin-top: 50px;
+    border-bottom: 12px black;
+}
+.body::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top:100%;
+    width: 70px;
+    height: 300px;
 }
 /* neck */
 .neck {
