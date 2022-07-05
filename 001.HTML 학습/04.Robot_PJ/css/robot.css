@@ -155,12 +155,12 @@ body {
 
 /* left arm */
 .a1 {
-    left: -50px;
+    left: -60px;
 }
 
 /* right arm */
 .a2 {
-    right: -50px;
+    right: -60px;
 }
 
 /* leg common */
@@ -172,6 +172,55 @@ body {
     background-repeat: repeat-y;
 }
 
+/* 가상요소로 손 만들기 */
+.arm::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    bottom: -25px;
+    /* left: -15px; 이거 따로 줘야 해,,,  */
+    border-radius: 50%;
+    /* css3 그라데이션 - 선형/원형 */
+    /* [선형 그라데이션]
+       background-image: linear-gradient(방향/각도, 색1 비율%, 색2 비율%, 색3 비율%,,,);
+       방향값은 to top, to bottom, to left, to right
+       각도값은 숫자deg
+       방향 또는 각도를 쓰고, 안쓰면 to bottom이 기본값!
+       색상을 쓰고 뒤에 필요한 경우 비율을 사용
+       색상 뒤 비율을 안쓰면 등분할 됨 */
+    /* background-image: linear-gradient(to right, gray, lightgray); */
+    /* background-image: linear-gradient(45deg, gray, lightgray); */
+    /* background-image: linear-gradient(45deg, gray 50%, lightgray 50%); */
+    /* [원형 그라데이션] 
+       background-image: radial-gradient(옵션, 색1 비율, 색 2 비율...); (띄어쓰기 중요)
+       옵션 : circle - 원형, 안쓰면 박스에 맞춤
+       세밀한 옵션 주기@!
+          ->>> 옵션 안에 세부 옵션 at 가로위치 세로위치 (띄어쓰기 중요)
+               세부옵션 종류 4가지: 
+               1) closest-side / 2) farthest-side
+               3) closest-corner / 4) farthest-corner
+
+       색상을 쓰고 뒤에 필요한 경우 비율을 사용
+       색상 뒤 비율을 안쓰면 등분할 됨
+
+       background-image: radial-gradient(circle, white 10%, lightgray 60%,gray);
+       세부옵션,,
+       background-image: radial-gradient(closest-corner at 30px 15px, white, gray);
+    
+     */
+     background-image: radial-gradient(closest-side at 35px 35px, white, gray);
+}
+
+/* 왼팔 가상요소 */
+.arm.a1::before {
+    left: -15px;
+}
+/* 오른팔 가상요소 */
+.arm.a2::before {
+    right:-15px;
+}
 /* left arm */
 .l1 {
     left: 0px;
@@ -180,6 +229,25 @@ body {
 /* right arm */
 .l2 {
     right: 0px;
+}
+
+/* shoulder common */
+.shd {
+    top: -30px;
+    width: 80px;
+    height: 80px;
+}
+
+/* left shoulder */
+.s1 {
+    left: -80px;
+    border-radius: 50% 5px 5px 50%;
+}
+
+/* right shoulder */
+.s2 {
+    right: -80px;
+    border-radius: 5px 50% 50% 5px   ;
 }
 /************************************** 2-2.ROBOT DESCRIPTION BOX */
 /************************************** 3. 하단영역 */
