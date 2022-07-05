@@ -253,14 +253,51 @@ body {
     clip-path: polygon(0% 100%, 50% 0%, 100% 100%); /* 삼각형 영역만 보여준다!! */
 }
 
-/* left arm */
+/* left leg */
 .l1 {
     left: 0px;
 }
 
-/* right arm */
+/* right leg */
 .l2 {
     right: 0px;
+}
+
+.leg::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    bottom: -25px;
+    border-radius: 50% 50% 0 0;
+    border: 1px solid #444;
+    background-image: radial-gradient(closest-side at 30px 20px, white, gray);
+}
+
+/* 왼 발 */
+.l1::before {
+    left: -7px;
+}
+.l1::after {
+    left: -6.5px;
+}
+/* 오른 발 */
+.l2::before {
+    right: -7px;
+}
+.l2::after {
+    right: -6px;
+}
+/* leg after */
+.leg::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: #222;
+    bottom: -25px;
+    width: 80px;
+    height: 20px;
 }
 
 /* shoulder common */
@@ -280,6 +317,40 @@ body {
 .s2 {
     right: -80px;
     border-radius: 5px 50% 50% 5px   ;
+}
+
+/* TV */
+.tv {
+    width: 220px;
+    height: 166px;
+    top: 66px;
+    left: 15px;
+    border-radius: 5px;
+    background-image: url(../images/tv.jpg);
+}
+/* screen */
+.screen {
+    /* 부모는 tv */
+    position: absolute;
+    top: 18px;
+    left: 12px;
+    width: 154px;
+    height: 118px;
+    background-color: black;
+    border-radius: 10px;
+    /* 넘치는 요소 숨기기 */
+    overflow: hidden;
+}
+
+/* 아이프레임 */
+.screen iframe {
+    position: absolute;
+    top: -13px;
+    left: -62px;
+    width: 186%;
+    height: 134%;
+    /* 부모는 .screen */
+    border: none;/* frame 보더 없앰 */
 }
 /************************************** 2-2.ROBOT DESCRIPTION BOX */
 /************************************** 3. 하단영역 */
