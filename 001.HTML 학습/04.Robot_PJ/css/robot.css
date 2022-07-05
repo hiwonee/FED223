@@ -4,7 +4,7 @@
 
 /* 공사중 표시 */
 body * {
-    outline: 2px dashed limegreen;
+    /* outline: 2px dashed limegreen; */
 }
 /* 초기화 */
 html,body,h1,h2,h3,ul,ol {
@@ -43,6 +43,8 @@ body {
 /************************************** 2. 메인영역 */
 /************************************** 2-1.ROBOT BOX */
 .robx {
+    display: none; 
+    /* 계속 다시 위로 가니까 화나서,, 일단 display none  */
     padding-top: 200px;
     padding-bottom: 400px;
 }
@@ -368,4 +370,44 @@ body {
     border: none;/* frame 보더 없앰 */
 }
 /************************************** 2-2.ROBOT DESCRIPTION BOX */
+.dcbx {
+    max-width: 800px;
+    margin: 0 auto;
+    /* 아래 공간 */
+    margin-bottom: 200px;
+    padding: 15px 30px;
+    border: 3px solid #fff;
+    color: #fff;
+    border-radius: 20px;
+    text-shadow: 1px 1px 1px #000; /* 글자 그림자 넣어서 글씨 좀 더 선명히.. */
+    background-color: rgba(0, 0, 0, 0.54);
+    box-shadow: inset 0 0 20px fuchsia, inset 0 0 50px 10px pink; /* inset은 내부그림자 */
+}
+
+/* 2-2-1. robot description title */
+.dcbx h2 {
+    text-align: center;
+    font-size: 35px;
+    color: lime;
+    text-shadow: 1px 1px 3px black;
+    background-color: rgba(255,255,255,0.45);
+    border-radius: 10px;
+}
+
+/* 2-2-2. source from */
+.dcbx small {
+    display: block;
+    text-align: center;
+    color: #ff0;
+    font-size: 12px;
+    padding: 10px;
+}
+
+/* 2-2-3. paragraph */
+.dcbx p {
+    font-size: 15px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+}
 /************************************** 3. 하단영역 */
