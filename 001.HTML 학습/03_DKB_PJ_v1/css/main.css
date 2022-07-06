@@ -204,6 +204,3 @@ transition: 속성 시간 이징 지연 - 속시이지
 }
 
 /* 가상요소로 설명타이틀 앞에 도깨비 아이콘 넣기 */
-.cd:nth-child(3) {
-    /* white-space: nowrap; */
-}
