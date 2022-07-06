@@ -117,7 +117,7 @@ body {
     /* 높이값 설정 : 0 -> 250px 오버시 변경
     높이 값이 0이면 모두 숨겨짐~~ */
     height: 0px;
-    overflow: auto; /* 넘치는 내용 자동 스크롤! 높이 값에 따라 스크롤이 자동변경 */
+    overflow-y: auto; /* 넘치는 내용 자동 스크롤! 높이 값에 따라 스크롤이 자동변경 */
     background: url(../images/eachBG.jpg) no-repeat center/cover;
 
     /* 트랜지션: 속성 시간 이징 지연 이징은 가속도 */
@@ -165,11 +165,11 @@ transition: 속성 시간 이징 지연 - 속시이지
 /* 캐릭터 설명 타이틀 */
 .cd h3 {
     font-family: 'Hahmlet';
-    font-size: min(1.8vw, 24px);
+    font-size: min(1.5vw, 24px);
     /* 최대 글자 크기 24px,  */
     font-weight: bold;
     padding: 15px 10px 5px;
-    white-space: nowrap; 줄바꿈 방지
+    white-space: nowrap;/*  줄바꿈 방지 */
     letter-spacing: -1px;
 }
 /* 가상요소로 설명타이틀 앞에 도깨비 아이콘 넣기 */
@@ -204,3 +204,6 @@ transition: 속성 시간 이징 지연 - 속시이지
 }
 
 /* 가상요소로 설명타이틀 앞에 도깨비 아이콘 넣기 */
+.cd:nth-child(3) {
+    /* white-space: nowrap; */
+}
