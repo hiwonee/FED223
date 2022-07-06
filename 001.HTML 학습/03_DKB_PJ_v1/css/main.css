@@ -46,6 +46,7 @@ body {
 
 /* 캐릭터 개별 박스 공통 */
 .cat {
+    position: relative;
     /* 가로 크기 : 4등분(25%) -양쪽마진 1%.. 그래서 24프로,, */
     width: 24%; /* 0.5% 양옆에 마진을 줘서 총 1%,, 그래서 25에서 24로 바꿔줘야해.. */
     margin: 0 .5%; /* 보통 0.5%와 같이 0.소수점은 앞에 0 생략가능,, */
@@ -67,6 +68,8 @@ body {
 /* .cat에 오버시 .ci변경 */
 .cat:hover .ci{
     margin-top: -53%; 
+    /* position 주고 주석 했음 그 자리에서 안 움직이지 원래는 올라갔는데..
+    그냥 냅두기로 했음 */
     /* px로 해봐 완전 달라 %로 하면 김고은이 안 따라오는데 px는 따라와;;; */
 }
 
@@ -109,6 +112,7 @@ body {
 
 /* 캐릭터 설명 박스 */
 .cd {
+    position: absolute;
     /* 배경: 색이반고윙/크 */
     /* 높이값 설정 : 0 -> 250px 오버시 변경
     높이 값이 0이면 모두 숨겨짐~~ */
@@ -161,10 +165,11 @@ transition: 속성 시간 이징 지연 - 속시이지
 /* 캐릭터 설명 타이틀 */
 .cd h3 {
     font-family: 'Hahmlet';
-    font-size: 25px;
+    font-size: min(1.8vw, 24px);
+    /* 최대 글자 크기 24px,  */
     font-weight: bold;
     padding: 15px 10px 5px;
-    /* white-space: nowrap; 줄바꿈 방지 */
+    white-space: nowrap; 줄바꿈 방지
     letter-spacing: -1px;
 }
 /* 가상요소로 설명타이틀 앞에 도깨비 아이콘 넣기 */
@@ -184,7 +189,7 @@ transition: 속성 시간 이징 지연 - 속시이지
 /* 캐릭터 설명 문단 */
 .cd p {
     font-family: 'Gowun Dodum','Yomogi';
-    font-size: 20px;
+    font-size: min(1.1vw, 16px);
     line-height: 1.7;
     padding: 10px;
     text-align: justify;

@@ -18,3 +18,15 @@
     margin: 0 auto;
 
 }
+
+/* float 설정 class */
+.fll>li {
+    float: left;
+}
+
+/* clear 설정 class */
+.fll::after {
+    content: '';
+    display: block;
+    clear: both;
+}
