@@ -38,12 +38,22 @@ body {
 
 /************************************** 1. 상단영역 */
 /************************************** 1-1.LOGO */
+.logo {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    width: 200px;
+    height: 200px;
+    /* 글자변경 */
+    color: aquamarine;
+    font: 45px sans-serif;
+}
 /************************************** 1-2.내용LINK */
 /************************************** 1-3.위로가기버튼 */
 /************************************** 2. 메인영역 */
 /************************************** 2-1.ROBOT BOX */
 .robx {
-    display: none; 
+    /* display: none;  */
     /* 계속 다시 위로 가니까 화나서,, 일단 display none  */
     padding-top: 200px;
     padding-bottom: 400px;
@@ -67,7 +77,7 @@ body {
     /* 마영오! - 블록 가로 중앙 */
     margin: 0 auto;
     /* 둥근 모서리 : 왼위 오른위 오른아래 왼아래*/
-    border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 20px 20px;
 }
 
 /* 눈 공통 */
@@ -415,5 +425,38 @@ body {
 
     /* 가독성을 위한 다단설정 */
     /* 다단 표시 (다중열 속성) */
+
+    /* 다중열 개수 설정 */
+    column-count: 3;
+    /* 다중열 구분선  보더 설정과 비슷,,, 두께 종류 색상(두종색)*/
+    column-rule: 3.5px dotted lightpink;
+    /* 다중열 사이 간격 */
+    column-gap: 50px;
+
+    text-align: justify;/* 양쪽 정렬 */
+    /* 단어 깨기! 왜냐면 양쪽 정렬하면 빈공간이 너무 많아져ㅜㅜ 
+    break-all 모든 단어 깨기~~~ 다 깨라!!!*/
+    word-break: break-all;
+}
+.dcbx p::first-letter {
+    font-size: 22px;
+    font-weight: bold;
+    color: pink;
 }
 /************************************** 3. 하단영역 */
+
+
+
+
+
+/* 미디어쿼리 글 다중열 바꿔주기 */
+@media screen and (max-width:770px) {
+    .dcbx p {
+        column-count: 2;
+    }    
+}
+@media screen and (max-width: 550px) {
+    .dcbx p {
+        column-count: 1;
+    }    
+}
