@@ -72,7 +72,7 @@ body {
 
 /* 눈 공통 */
 .eye {
-    position: absolute;
+    /* position: absolute; */
     width: 50px;
     height: 50px;
     background-color: #fff;
@@ -144,15 +144,18 @@ body {
     width: 250px;
     height: 310px;
     margin-top: 50px;
-    border-bottom: 12px black;
+    /* border-bottom: 12px black; */
 }
 .body::after {
     content: '';
+    display: block;
     position: absolute;
     bottom: 0;
+    left:0;
     top:100%;
-    width: 70px;
-    height: 300px;
+    width: 100%;
+    height: 20px;
+    background-color: #000;
 }
 /* neck */
 .neck {
@@ -409,5 +412,8 @@ body {
     line-height: 1.8;
     letter-spacing: 1px;
     word-spacing: 2px;
+
+    /* 가독성을 위한 다단설정 */
+    /* 다단 표시 (다중열 속성) */
 }
 /************************************** 3. 하단영역 */
