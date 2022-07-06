@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* user agent가 만들어 놓은 태그의 기본 설정 없애기 */
+/* 초기화 CSS */
+/* 기본셋팅된 요소디자인 초기화 */
+
+/* 마진, 패딩 초기화 */
+html,body,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd {
+    margin: 0; padding: 0;
+}
+
+/* ul,ol 블릿없앰 */
+ul, ol {
+    list-style: none;
+}
+
+/* a - 글자색과 밑줄 설정*/
+a {
+    color: #222;
+    text-decoration: none;
+}
+
+/* 이미지 관련 */
+img {
+    border: none; /* image 링크시 기본 보더 없앰 - 서버에 배포시 나올 수 있어서 예방 */
+    vertical-align: top;
+    /* inline 요소 간에 세로 정렬 속성을 셋팅한 이유
+    블록 박스 안의 이미지가 단독으로 들어간 경우 하단 간극이 생긴다.(약 4px.. 좀 다를 순 있지만)
+    이것을 없애려면 세로정렬옵선을(vertical-align) top/middle/bottom 이 셋 중 어떤 값이라도
+    효과가 있다. baseline은 안됨 (단, 블록 박스의 높이 값은 auto이며 이미지에 의하여 높이 값이
+    결정되는 경우임~~ */
+}
