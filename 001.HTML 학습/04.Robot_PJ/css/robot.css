@@ -532,10 +532,10 @@ body {
     /* outline: 1px solid lime; */
     margin-right: 10px;
     vertical-align: -5px;
-    background: pink url(../images/robot_03_.png) no-repeat;
+    background: pink url(../images/logo.png) no-repeat;
     /* 배경 세부 설정은 한번에 설정하는 코드 아래에 있어야 덮어쓴다!!!! */
-    background-position: -12px 0;
-    background-size: 60px;
+    background-position: -12px -2px;
+    background-size: 45px;
     border-radius: 50%;
     border: 2px solid #fff;
     box-shadow: 0 0 5px pink;

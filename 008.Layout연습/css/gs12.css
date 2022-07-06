@@ -22,4 +22,5 @@
     padding: 15px;
     box-sizing: border-box;
     border: 1px solid red;
+    /* 패딩과 보더를 포함하는 박스.. */
   }

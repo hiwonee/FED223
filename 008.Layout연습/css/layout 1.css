@@ -3,3 +3,58 @@
 
 /* 외부파일 합치기 */
 @import url(reset.css);
+@import url(gs12.css);
+
+/* [클래스 이름 정의]
+   1. .ibx : 속박스 (겉박스 안의 속박스) - 특정 가로크기를 가지고 중앙에 위치하는 컨텐츠 최대 영역박스 
+             max-width, margin: 0 auto로 세팅, 만약 max-width: 1920px로 설정
+   2. .cbx : 내용 파티션 박스 (contents box) - 옆으로 흐르는 설정을 주는 박스임. 자기 자신이 float 설정을 가질 수 있고, grid system의 클래스로 줄 수도 있음.
+   3.
+
+*/
+
+/* 중앙속박스 */
+.ibx {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* .ibx의 파티션 float을 위한 해제설정 - float된 자식 요소의 높이값 인식 위해 */
+.ibx::after{
+    content: '';
+    display: block;
+    clear: both; /* display: block이어야 clear:both설정 가능하지 */
+}
+
+/* 3중박스일 때 높이값은 최상위부모, 부모, 자식 중 어디에 줘야할까? 자식에게!!! 그래야 컨트롤이 편해! 왜냐면 부모박스는 자식만큼 커지니까!! height: auto;!!!! */
+
+/* 영역별 개별 높이 */
+/* 1. 상단영역 */
+.top .cbx {
+    height: 100px;
+}
+
+/* 2. 배녀영역 */
+.ban .cbx {
+    height: 344px;
+}
+
+/* 3. 추천영역 */
+.chu .cbx {
+    height: 362px;
+}
+
+/* 4. 대표서비스 */
+.dae .cbx {
+    height: 120px;
+}
+
+/* 5. 무역지원 사업일정 */
+.moo .cbx+.cbx { /* 이러면 .cbx가 앞에있는 애들만 고른거기 때문에 맨 앞애는 선택이 안됨
+    형제 요소 선택,,, 띄어쓰지 않는다!! */
+    height: 219px;
+}
+
+/* 6. 무역지원 서비스 */
+.moo2 .cbx:first-child~.cbx { /* 첫번째 뒤의 모든 형제 .cbx 선택*/
+    height: 287px;
+}
