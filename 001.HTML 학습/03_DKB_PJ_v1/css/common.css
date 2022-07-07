@@ -23,7 +23,9 @@
 /* 속박스 */
 .top {
     /* height: 125px; */ /* 220707자 영상 확인 왜 height를 없애는지... */
-    position: relative; /* 부모자격, 탑메뉴 앱솔루트를 주기위해,, */
+    /* position: relative; */ /* 부모자격, 탑메뉴 앱솔루트를 주기위해,, */
+
+    /* 103번째 줄 내용.. 부모자격 없앰.. 이유는 서브메뉴 배경 li 가상요소가 끝까지 가야하기 때문.. */
 }
 /* 1-1. main logo */
 .logo {
@@ -36,11 +38,24 @@
 
 /* 1-2. top menu */
 .tmenu {
-    position: absolute; /* 부모는 .top */
-    top: 30px;
-    right: 0px;
+    position: relative;
+    /* position: absolute; */ /* 부모는 .top */
     
+    /* top: 30px;
+    right: 0px; */
+    /* 위의3가지 지우고 ()103번째 줄 내용 연결,, ul에 주면 되겠네~~ */
+
+    /* 부모자격!!
+    상태는 로고 박스와 GNB박스 사이에 있고, 자식 ul이 앱솔루트라서 높이값이 0..
+    가로는 자동으로 .inbox의 크기인 1200px을 채움!!! */
 }
+/* 탑메뉴 ul */
+.tmenu>ul {
+    position: absolute;
+    top:-50px;
+    right: 0;
+}
+
 /* 탑메뉴 상위 li */
 .tmenu>ul>li {
     padding: 0 5px;
@@ -59,7 +74,7 @@
 }
 /* gnb upper li */
 .gnb>ul>li {
-    height: 44px; /* 63-64번째줄 처럼 쓰던거 이렇게 쓰던가 */
+    /* height: 44px; 63-64번째줄 처럼 쓰던거 이렇게 쓰던가/// 안돼 이상하다,, */
     padding: 0 15px;
 }
 /* gnb upper a */
@@ -69,6 +84,53 @@
     /* line height (44px) */
     line-height: 4.4rem;
 }
+/*submenu */
+.smenu {
+    position: absolute;
+    background-color: #fff;
+    /* hiding submenu */
+    height: 0;
+    overflow: hidden;
+    /* transition: 속시이지 */
+    transition: height .4s ease-out;
+    z-index: 1; /* 하위 메뉴 위로 올라오게.. */
+}
+/* upper menu li hover-showing submenu */
+.gnb>ul>li:nth-child(1):hover .smenu {
+    height: 120px;
+}
+.gnb>ul>li:nth-child(3):hover .smenu {
+    height: 150px;
+}
+.gnb>ul>li:nth-child(4):hover .smenu {
+    height: 90px;
+}
+
+
+/* submenu  a  */
+.smenu a {
+    display: block; /* padding 넣어주려고.. */
+    font-size: 1.4rem;
+    padding: 10px 0;
+}
+/* 서브메뉴 끝까지 차는 배경박스 가상요소로 만들기!! -> .sm인 li에만@*/
+.gnb>ul>li.sm::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%; /* 가로크기를 %로 주면 부모자격에 기준을 준다
+    화면을 채워야 하므로 싸고 있는 요소중에는 부모가 없어야한다!! 그래야 화면이 부모가 됨.. top에 relative 해놨음... 그거 없애!!!!*/
+    height: 200px;
+    left: 0; /* left를 줬으므로 보이는 화면 기준.. top은 안 줘서 젠틀함.. a요소 아래에.. 위치.. */
+    height: 0; /* 200px 오버시 각 수치로.. */
+    background-color: aquamarine;
+}
+/* upper menu li hover - submenu 가상요소 배경 보이기 */
+.gnb>ul>li:hover::after {
+    height:200px;
+}
+
+/* gentle absolute할거라서 after야,, 뭐 a요소에 넣어야하고... 잘 이해안가ㅜㅠㅜ */
 
 /* sns */
 .sns {
