@@ -20,7 +20,7 @@ body * {
 }
 /* 속박스 */
 .top {
-    height: 125px;
+    /* height: 125px; */ /* 220707자 영상 확인 왜 height를 없애는지... */
     position: relative; /* 부모자격, 탑메뉴 앱솔루트를 주기위해,, */
 }
 /* 1-1. main logo */
@@ -35,11 +35,35 @@ body * {
     right: 0px;
     
 }
+/* 탑메뉴 상위 li */
+.tmenu>ul>li {
+    padding: 0 5px;
+}
+/* top menu 상위 a 요소 */
+.tmenu>ul>li>a {
+    /* font size 15px */
+    font-size: 1.5rem;
+    
+}
+
 /* 1-3.gnb menu */
 .gnb {
-    width: 400px;
+    width: 574px;
     margin: 0 auto;
 }
+/* gnb upper li */
+.gnb>ul>li {
+    height: 44px; /* 63-64번째줄 처럼 쓰던거 이렇게 쓰던가 */
+    padding: 0 15px;
+}
+/* gnb upper a */
+.gnb>ul>li>a{
+    /* font size 17px */
+    font-size: 1.7rem;
+    /* line height (44px) */
+    line-height: 4.4rem;
+}
+
 
 /* ***********************메인영역*********************** */
 .cont {
