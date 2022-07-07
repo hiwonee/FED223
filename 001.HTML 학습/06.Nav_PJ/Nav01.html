@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>유형1. 가로네비 서브별 드롭다운 세로형</title>
+    <style>
+      /* 초기화 */
+      html,
+      body,
+      ul,
+      ol {
+        margin: 0;
+        padding: 0;
+      }
+      /* ul,ol초기화 */
+      ul,
+      ol {
+        /* 리스트박스 기본3無
+            - 마진0, 패딩0, 리스트스타일없음 */
+        list-style: none;
+      }
+      
+      h1{
+        text-align: center;
+      }
+
+      /* GNB메뉴박스 */
+      .gnb {
+        /* outline: 1px solid red; */
+        background-color: lightblue;
+      }
+      /* ul 초기화 */
+      .gnb ul {
+        width: 800px;
+        margin: 0 auto;
+      }
+      /* 가상요소로 clear설정하기 */
+      .gnb ul::after  {
+        content: '';
+        display: block;
+        clear: both;
+      }
+     
+      /* li 리스트요소 */
+      .gnb>ul>li {
+        text-align: center;
+        width: 200px;
+        float: left;
+        /* outline: 1px dotted blue */
+
+      }
+      /* li 사ㅑ이에 구분선 넣기 */
+      .gnb>ul>li+li::before {
+        content: '';
+        display: block;
+        position: absolute;
+        /* gentle absolute: 부모박스안에 그대로 있음!! */
+        margin-top: 10px;
+        width: 1px;
+        height: 20px;
+        background-color: #fff;
+        /* border-left: 1px solid #000; */
+      }
+      /* li 상위메뉴 요소 */
+      .gnb>ul>li>a {
+        /* a요소 확장 */
+        display: block;
+        color: black;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        font-size: 17px;
+        line-height: 40px;
+        transition: .3s;
+      }
+      /* 부모li에 마우스 오버시 상위메뉴 a요소 변경 */
+      /* .gnb>ul>li:hover {
+        background-color: rgba(255,255,255,0.4);
+      } */
+      .gnb>ul>li>a:hover {
+        color: darkslategrey;
+        background-color: rgba(255, 255, 255, 0.479);
+        
+      }
+      /* li 하위 a요소 */
+
+
+/* 부모요소로부터 상속되는 속성은 무엇??
+글자체, 글자크기, 글자색, 글자정렬 등 글자관련 속성들 */
+
+
+      /* 서브메뉴 */
+      .smenu {
+        /* 여기에 패딩 넣으면 안 접어진다,, */
+        position: absolute;
+        width: 200px;
+        /* 서브메뉴 숨기기 */
+        height: 0; /* 1 */
+        overflow: hidden; /* 2 */
+        /* 서브메뉴 숨기기 */
+        background-color: lightblue;
+        border-radius: 0 0 5px 5px;
+        transition: .4s;
+      }
+      .gnb>ul>li:hover .smenu {
+        height: 180px;
+      }
+
+      /* sub ol */
+      .smenu ol {
+        /* outline: 1px dashed green; */
+        padding: 15px;
+
+      }
+      /* sub li */
+      /* .smenu li {
+        
+      } */
+      .smenu a {
+        /* extension */
+        display: block;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        color: rgb(37, 65, 107);
+        text-decoration: none;
+        line-height: 35px;
+        /* transition */
+        transition: .2s;
+        border-radius: 5px;
+      }
+      /* submenu hover */
+      .smenu a:hover {
+        background-color: rgb(37, 65, 107);
+        color: #fff;
+      }
+
+      /* 본문내용 */
+      .cont {
+        background-color: #fdfccf;
+        text-align: center;
+        line-height: 50;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>유형1. 가로네비 서브별 드롭다운 세로형</h1>
+    <!-- GNB 네비게이션 -->
+    <nav class="gnb">
+      <ul>
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">웹개발</a>
+          <!-- 서브메뉴 -->
+          <div class="smenu">
+            <ol>
+              <li>
+                <a href="#">웹디자인</a>
+              </li>
+              <li>
+                <a href="#">HTML5+CSS3</a>
+              </li>
+              <li>
+                <a href="#">jQuery</a>
+              </li>
+              <li>
+                <a href="#">웹+모바일</a>
+              </li>
+            </ol>
+          </div>
+        </li>
+        <li>
+          <a href="#">게시판</a>
+          <!-- 서브메뉴 -->
+          <!-- <div class="smenu">
+            <ol>
+              <li>
+                <a href="#">Q&amp;A</a>
+              </li>
+              <li>
+                <a href="#">방명록</a>
+              </li>
+            </ol>
+          </div> -->
+        </li>
+        <li>
+          <a href="#">프로필</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- 내용박스 -->
+    <div class="cont">본문내용</div>
+  </body>
+</html>
