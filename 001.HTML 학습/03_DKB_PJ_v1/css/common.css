@@ -3,9 +3,9 @@
 /* 상.하단 영역 반복 디자인 */
 
 /* 공사중표시 */
-/* body * {
+body * {
     outline: 2px dashed gray;
-} */
+}
 /* 바디 아래 전체 라는 의미 (*)이 표시는 모든 요소 선택의 의미*/
 /* outline: 외곽선 - 박스요소의 외곽선만 표현
    박스 바깥쪽에 생겨
@@ -15,11 +15,16 @@
 
 
 /* 속박스에 높이값을 설정한 이유는 겉박스는 속박스 크기만큼 자동으로 늘어나게 하여 편리한 셋팅을 유도함 */
+
 /* ***********************상단영역*********************** */
+
 /* 겉박스 */
 #top {
     background-color: #fff;
+    /* 하단 구분선 */
+    border-bottom: 1px solid rgb(182, 182, 182);
 }
+
 /* 속박스 */
 .top {
     /* height: 125px; */ /* 220707자 영상 확인 왜 height를 없애는지... */
@@ -83,26 +88,41 @@
     font-size: 1.7rem;
     /* line height (44px) */
     line-height: 4.4rem;
+    display: inline-block; /* 이걸 주면, a선택했을 때 상위 요소를 같이 먹어..
+    a가 높이 20에서 inline-block 주니까 40으로 상위 애들의 높이와 같아짐 */
+    
+    border-bottom: 3px solid transparent; /* 아래 97번줄 보더때문에 크기변화로 인해 뚝뚝 위치 변경이 일어나지 않게 애초에 자리차지 하게 만들어준거임~~~ */
 }
+
+/* 상위 메뉴 마우스 오버시 상위 a에 하단 보더 */
+.gnb>ul>li:hover>a {
+    /* 오버시엔 보더 색만 변경함!! 94번 줄과 이어지는 내용임!*/
+    border-bottom-color: red;
+}
+
+
 /*submenu */
 .smenu {
     position: absolute;
-    background-color: #fff;
+    /* background-color: #fff; */
     /* hiding submenu */
     height: 0;
     overflow: hidden;
-    /* transition: 속시이지 */
-    transition: height .4s ease-out;
+
     z-index: 1; /* 하위 메뉴 위로 올라오게.. */
+    transition: height .4s ease-out;
 }
-/* upper menu li hover-showing submenu */
-.gnb>ul>li:nth-child(1):hover .smenu {
+/* upper menu li hover-showing submenu  + upper menu li hover - submenu 가상요소 배경 보이기 */
+.gnb>ul>li:nth-child(1):hover .smenu,
+.gnb>ul>li:nth-child(1):hover::after {
     height: 120px;
 }
-.gnb>ul>li:nth-child(3):hover .smenu {
+.gnb>ul>li:nth-child(3):hover .smenu,
+.gnb>ul>li:nth-child(3):hover::after {
     height: 150px;
 }
-.gnb>ul>li:nth-child(4):hover .smenu {
+.gnb>ul>li:nth-child(4):hover .smenu,
+.gnb>ul>li:nth-child(4):hover::after {
     height: 90px;
 }
 
@@ -123,12 +143,18 @@
     height: 200px;
     left: 0; /* left를 줬으므로 보이는 화면 기준.. top은 안 줘서 젠틀함.. a요소 아래에.. 위치.. */
     height: 0; /* 200px 오버시 각 수치로.. */
-    background-color: aquamarine;
+    background-color: white;
+    
+    /* #top 박스 */
+    margin-top: 1px;
+
+    /* transition: 속시이지 */
+    transition: height .4s ease-out;
 }
 /* upper menu li hover - submenu 가상요소 배경 보이기 */
-.gnb>ul>li:hover::after {
+/* .gnb>ul>li:hover::after {
     height:200px;
-}
+} */
 
 /* gentle absolute할거라서 after야,, 뭐 a요소에 넣어야하고... 잘 이해안가ㅜㅠㅜ */
 
@@ -177,6 +203,11 @@
 /* hover */
 .sns li:nth-child(3):hover{
     background-position: -60px -30px;
+}
+
+/* 상위 li에 오버시 가상요소 하단 보더 공통생성*/
+.gnb>ul>li:hover::after {
+    border-bottom: 2px solid red;
 }
 
 /* ***********************메인영역*********************** */
