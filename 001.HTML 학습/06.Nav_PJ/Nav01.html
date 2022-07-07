@@ -49,13 +49,14 @@
         /* outline: 1px dotted blue */
 
       }
-      /* li 사ㅑ이에 구분선 넣기 */
+      /* li 사이에 구분선 넣기 */
       .gnb>ul>li+li::before {
         content: '';
         display: block;
         position: absolute;
         /* gentle absolute: 부모박스안에 그대로 있음!! */
         margin-top: 10px;
+        
         width: 1px;
         height: 20px;
         background-color: #fff;
@@ -77,12 +78,38 @@
       /* .gnb>ul>li:hover {
         background-color: rgba(255,255,255,0.4);
       } */
-      .gnb>ul>li>a:hover {
+      .gnb>ul>li:hover>a { /* 호버를 a에 두면 a에서 벗어나면 바로 색이 바뀌거든
+        그래서 li에 넣었더니 그 색감 그대로 있네!!! */
         color: darkslategrey;
         background-color: rgba(255, 255, 255, 0.479);
         
       }
       /* li 하위 a요소 */
+
+      /* 상단 메뉴 글자에 밑줄 애내ㅣ */
+      .gnb>ul>li>a>span {
+        position: relative;
+        /* 부모자격 */
+      }
+      .gnb>ul>li>a>span::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -4px; 
+        left: 0;
+        width:0%; /* hover시 100% */
+        height: 1px;
+        background-color: rgba(54, 70, 124, 0.753);
+        /* transition: width .2s ease-out .4s; 0.2초, 이즈아웃, .1초 지연 */
+        transition: width .2s ease-out;
+
+      }
+      /* 상위메뉴 hover시 가상요소 밑줄애니 */
+      .gnb>ul>li:hover>a>span::after {
+        width:100%;
+        /* transition: width .2s ease-out .4s;  */
+        transition-delay: .4s; /* 호버시 지연시간 */
+      }
 
 
 /* 부모요소로부터 상속되는 속성은 무엇??
@@ -98,13 +125,25 @@
         height: 0; /* 1 */
         overflow: hidden; /* 2 */
         /* 서브메뉴 숨기기 */
+
+        /* 높이값 0으로 숨기는 박스는 위아래 패딩,보더는
+        숨겨지지 않는다 그러므로 쓰지 않는다..
+        양옆은 가능하대
+        디자인은 하위요소에서 할 것!!!!!! */
+
         background-color: lightblue;
         border-radius: 0 0 5px 5px;
         transition: .4s;
       }
-      .gnb>ul>li:hover .smenu {
-        height: 180px;
+      /* 상위 메뉴 li 오버시 서브메뉴 보이기(2) */
+      .gnb>ul>li:nth-child(2):hover .smenu {
+        height: 170px;
       }
+      /* 상위 메뉴 li 오버시 서브메뉴 보이기 (3) */
+      .gnb>ul>li:nth-child(3):hover .smenu {
+        height: 100px;
+      }
+      
 
       /* sub ol */
       .smenu ol {
@@ -152,7 +191,7 @@
           <a href="#">Home</a>
         </li>
         <li>
-          <a href="#">웹개발</a>
+          <a href="#"><span>웹개발</span></a>
           <!-- 서브메뉴 -->
           <div class="smenu">
             <ol>
@@ -172,21 +211,22 @@
           </div>
         </li>
         <li>
-          <a href="#">게시판</a>
+          <a href="#"><span>게시판</span></a>
           <!-- 서브메뉴 -->
-          <!-- <div class="smenu">
+          <div class="smenu">
             <ol>
               <li>
-                <a href="#">Q&amp;A</a>
+                <a href="#">Q&amp;A
+                </a>
               </li>
               <li>
                 <a href="#">방명록</a>
               </li>
             </ol>
-          </div> -->
+          </div>
         </li>
         <li>
-          <a href="#">프로필</a>
+          <a href="#"><span>프로필</span></a>
         </li>
       </ul>
     </nav>
