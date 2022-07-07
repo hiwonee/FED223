@@ -8,6 +8,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 /* font-family: 'Hahmlet', serif; */
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&display=swap');
+/* font-family: 'Nanum Gothic', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* 폰트 상대단위를 위한 html 폰트 크기 설정 */
+html {
+    font-size: 10px;
+}
+
+/* 전체 웹폰트 일반 적용! */
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+}
 
 /* 속박스 클래스 */
 .ibx {
