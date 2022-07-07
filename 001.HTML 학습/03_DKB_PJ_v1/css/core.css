@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* 도깨비 PJ 핵심 공통 모듈 CSS - core.css */
 /* 공통 class / 웹폰트 */
+/* 누구나 바꾸고 싶으면 바꾸는 클래스 코어 클래스,,, */
 /* font */
 /* font-family: 'Yomogi', cursive; */
 @import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
@@ -41,4 +42,30 @@ body {
     content: '';
     display: block;
     clear: both;
+}
+
+/* IR(Image Replacement) class */
+.ir {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* scroll bar design class */
+/* -webkit- 밴더사면 (크롬,사파리) 접두어 */
+/* (참고: -ms- (ie), _o- (opera), -moz-(firefox) */
+.scbar::-webkit-scrollbar {
+    /* whole scroll bar size change */
+    width: 7px;
+}
+.scbar::-webkit-scrollbar-thumb {
+    /* scroll bar */
+    background-color: #666;
+    border-radius: 5px;
+}
+.scbar::-webkit-scrollbar-track {
+    /* scroll bar track*/
+    background-color: #ddd;
+    border-radius: 5px;
 }
