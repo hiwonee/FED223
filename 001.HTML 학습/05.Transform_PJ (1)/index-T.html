@@ -92,8 +92,8 @@
          */
         #trans1:hover img {
             transform: rotateY(180deg);
-            /* filter graysclae(값%) */
-            filter: grayscale(80%);
+            /* 필터 grayscale(값%) - 흑백효과 */
+            filter: grayscale(100%);
         }
 
         /* 
@@ -101,11 +101,12 @@
          */
         #trans2 img {
             transform: rotateX(180deg);
-            filter: blur(1px);
+            /* 흐림효과 */
+            filter: blur(2px);
         }
         #trans2:hover img {
             transform: rotateX(0deg);
-            filter: blur(0);
+            filter: blur(0px);
         }
 
         /* 
@@ -126,7 +127,7 @@
             - 이동방향: + 는 오른쪽, - 는 왼쪽
           */
         #trans3:hover img {
-           transform: translateX(-50%);
+            transform: translateX(-50%);
         }
 
         /* 
@@ -138,7 +139,7 @@
             - 이동방향: + 는 아랫쪽, - 는 윗쪽
           */
         #trans4:hover img {
-           transform: translateY(-40%);
+           transform: translateY(-100%);
         }
 
         /* 
@@ -164,21 +165,19 @@
            */
         #trans6:hover img {
             transform: rotate(5478deg);
-            /* 트랜스폼 시간늘림 */
+            /* 트랜지션 시간늘림 */
             transition-duration: 10s;
         }
 
         /* 회전축 변경하기 */
         #trans6 img {
-            
-            /* transform-origin: right bottom; */
             transform-origin: 70% 70%;
-            
-            /* [트랜스폼 축변경 속성]
+
+            /* [ 트랜스폼 축변경 속성 ]
             transform-origin: 가로 세로;
-            - 가로값: left, right, center, 몇px, 몇%
-            - 세로값: top, bottom, center, 몇px, 몇%
-            기본값은 가로 세로 센터임! */
+            - 가로값: left,right,center,몇px,몇%
+            - 세로값: top,bottom,center,몇px,몇%
+            - 기본값은 가로,세로 center임! */
         }
 
         /* 
@@ -192,20 +191,17 @@
         }
 
         /* 
-               8. scale(x축배수,y축배수)
-               - 값을 하나만 쓰면 양방향 같은값
-               - 배수가 1보다 크면 확대, 작으면 축소
-               - scaleX(배수), scaleY(배수) - x,y축별
-               - 값이 0이면 사라짐
-             */
+            8. scale(x축배수,y축배수)
+            - 값을 하나만 쓰면 양방향 같은값
+            - 배수가 1보다 크면 확대, 작으면 축소
+            - scaleX(배수), scaleY(배수) - x,y축별
+            - 값이 0이면 사라짐
+        */
         #trans8 img {
-            /* transform: scale(.5, 2); */
-            /* tf:s */
-            transform: scale(0);
+            transform: scale(.5);
         }
-
-        #trans8:hover img {
-          transform: scale(2);
+        #trans8:hover img{
+            transform: scale(2);
         }
 
         /* 
@@ -213,7 +209,7 @@
             transform: 속성1 속성2 속성3 .....;
         */
         #trans9:hover img {
-            transform: scale(2) translate(-200%, -100%) rotateX(1200deg) skewX(50deg) rotate(5300deg);
+            transform: scale(5) translate(-200%,-100%) rotateX(1200deg) skewX(50deg) rotate(5300deg);
             transition-duration: 20s;
         }
 
@@ -226,19 +222,21 @@
         */
         /* 2개의 이미지를 겹치게한다 */
         #trans10 img{
-            position: absolute;/* img 기본 설정을 지금 width 100%로 해놔서 엄청 커졌엉,, percent로 할 때도 부모 박스,,
-            젠틀 앱솔루트 - 앱솔끼리 서로 겹치고 부모박스에 그대로 있고, width: 100%면 부모를 찾으므로 특정 px로 셋팅한다! */
+            position: absolute;
             width: 200px;
-
+            /* 젠틀앱솔루트
+            - 앱솔끼리 서로 겹치고
+            부모박스에 그대로 있고
+            width:100%면 부모를 찾으므로
+            특정px로 셋팅한다! */
         }
 
 
         /* 1. 보거미 처음상태(돌아옴) */
         /* Y축 0도로 돌아옴 - 0.4초 기다림 */
         #trans10 img:last-child {
-           transform: rotateY(0deg);
+            transform: rotateY(0deg);
            transition: transform .4s ease-out .4s;
-           
         }
 
 
@@ -252,7 +250,7 @@
         /* 3. 유정이 처음상태(돌아옴) */
         /* 처음에 이미 Y축 90도 회전상태 - 안보임 */
         #trans10 img:first-child {
-           transform: rotateY(90deg);
+           transform: rotateY(90deg);           
            transition: transform .4s ease-in;
         }
 
@@ -263,7 +261,6 @@
         #trans10:hover img:first-child {
            transform: rotateY(0deg);
            transition: transform .4s ease-out .4s;
-
         }
 
 
@@ -295,34 +292,6 @@
             (6번 예시)
             https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_transition-timing-function3
         */
-        #upbtn {
-            outline: 1px solid green;
-            width: 110px;
-            height: 140px;
-            position: fixed;
-            bottom: 85px;
-            left: 15px;
-        }
-        .upbtn_02 {
-            width: 60px;
-            height: 60px;
-            position: absolute;
-            top: 126px;
-            left: 30px;
-            animation: rotate01 1.0s ease-in-out 0.0s infinite alternate;
-            transform-origin: 18px 0;
-        }
-        @keyframes upbtn_02 {
-            0%
-            {
-                transform: rotateZ(-5deg);
-            }
-            100%
-            {
-                transform: rotateZ(15deg);
-            }
-
-        }
     </style>
 </head>
 
@@ -343,12 +312,7 @@
             <img src="images/cast03.jpg" alt="보거미">
         </div>
     </div>
-    <div id="upbtn">
-        <a href="#">
-            <img src="./images/upbtn01.png" alt="위로" class="upbtn_01">
-            <img src="./images/upbtn01_chara01.png" alt="흰둥이" class="upbtn_02">
-        </a>
-    </div>
+
 </body>
 
 </html>
