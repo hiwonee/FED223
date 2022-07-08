@@ -91,17 +91,21 @@
             - deg는 각도의 단위(도:degree)
          */
         #trans1:hover img {
-            
+            transform: rotateY(180deg);
+            /* filter graysclae(값%) */
+            filter: grayscale(80%);
         }
 
         /* 
             2. rotateX(각도deg) - X축회전
          */
         #trans2 img {
-            
+            transform: rotateX(180deg);
+            filter: blur(1px);
         }
         #trans2:hover img {
-            
+            transform: rotateX(0deg);
+            filter: blur(0);
         }
 
         /* 
@@ -122,7 +126,7 @@
             - 이동방향: + 는 오른쪽, - 는 왼쪽
           */
         #trans3:hover img {
-           
+           transform: translateX(-50%);
         }
 
         /* 
@@ -134,7 +138,7 @@
             - 이동방향: + 는 아랫쪽, - 는 윗쪽
           */
         #trans4:hover img {
-           
+           transform: translateY(-40%);
         }
 
         /* 
