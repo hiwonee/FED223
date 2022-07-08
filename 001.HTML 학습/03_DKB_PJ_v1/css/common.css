@@ -4,7 +4,7 @@
 
 /* 공사중표시 */
 body * {
-    outline: 2px dashed gray;
+    /* outline: 2px dashed gray; */
 }
 /* 바디 아래 전체 라는 의미 (*)이 표시는 모든 요소 선택의 의미*/
 /* outline: 외곽선 - 박스요소의 외곽선만 표현
@@ -217,18 +217,83 @@ body * {
 }
 
 /* ***********************하단영역*********************** */
+#info {
+    background-color: rgba(255,255,255,0.6);
+}
+/* 속박스 */
 .info {
-    height: 240px;
+    /* height: 240px; */
+    min-height: 240px;
+    /* 최소높이 - 내용이 늘면 auto로 전환해줘 */
+    position: relative;/* 부모자격 - 브랜드 바로가기...해주기 위해 */
+    /* outline: 2px dashed green; */
 }
 
 
 /* <!-- 3-1. 하단링크 --> */
+.blink{
+    padding-top: 5px;
+}
+.blink ul {
+    /* outline: 1px dashed blue; */
+    max-width: 804px;
+    margin: 0 auto;
+    /* widht가 있는 블록 요소에 적용 가능@@
+    마영오를 ul에서? 줄 때 width를 주면 가능하고, 안 주면 못해 */
+}
+.blink li {
+    padding: 0 15px;
+}
 
+.blink a {
+    /* 글자셋팅 */
+    color: #222;
+    font-weight: bold;
+    font-size: 1.4rem;
+    line-height: 2.8;
+}
+.blink a:hover {
+    color: darkred;
+    text-decoration: underline;
+}
 
 /* <!-- 3-2. 회사정보 --> */
+.addr {
+    padding: 1rem;
+}
 
+.addr address {
+    /* 글자 셋팅 */
+    font-size: 1.4rem;
+    font-style: normal;
+    text-align: center;
+    line-height: 2;
+    max-width: 804px;
+    margin: 0 auto;
+    border: 4px double #222;
+    padding: 1rem;
+
+    /* 보더 패딩 포함 크기유지 bxb */
+    box-sizing: border-box;
+}
 
 /* <!-- 3-3. 하단로고 --> */
-
+.blogo {
+    text-align: center;
+}
 
 /* <!-- 3-4. 바로가기 --> */
+.brand {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    /* 부모는? info */
+}
+
+.brand select {
+    color: #222;
+    font-weight: bold;
+    font-size: 1.4rem;
+    line-height: 2.8;
+    padding: 0.5rem;
+}
