@@ -227,14 +227,70 @@
         [flex-wrap 속성]
         - 박스 가로 크기보다 아이템(자식요소)이 많을 경우 아랫줄로 줄바꿈 하려면??
         wrap으로 설정함!!
+        -기본 값은 nowrap , shirink도 되어있어서 사이즈가 자동줄어들거야
+        이 설정을 하지 않으면, 자동적으로 가로 크기가 줄어져서 한 줄에 모두 나와@!!
+        이유는 자식요소의 flex 속성값으로 flex-shirink가 1로 기본설정 되어 있기 때문!!!
         */
 
+        /* 진행방향의 수평정렬 */
+        justify-content: center; 
+
+        align-content: space-around;
+        /* 
+        align-content 속성:
+        - 진행방향의 수직으로 정렬
+        - 진행방향의 수직으로 여러줄이므로 content! 하나만 걸릴 때는 items~~
+
+        1) flex-start : 처음 위치(기본값)
+        2) flex-end : 끝 위치
+        3) center : 중앙(진행방향의)
+        4) space-between : 아이템 요소 양쪽 끝에 붙고 사이간격 일정
+        5) space-around : 아이템 요소 양쪽 간격 일정
+        6) space-evenly : 아이템 요소 양쪽과 사이 간격 모두 일정
+        7) stretch : height 값이 auto인 경우 등분할 늘려주기!@!!!
+        */
       }
 
       /* 글자 수 조정을 위해 li에 마진설정하기 */
       .t6 li {
         margin: 0 14px; /* 14인 이유는 브라우저에서 체크해본 결과 단어 딱 떨어지게 되는 margin */
 
+      }
+
+      /* 타이틀 박스 7 */
+      .t7 {
+        top: 50px;
+        right: 50px;
+        left: auto;/* 기존 left 값 셋팅 해제!!!! */
+        width: 450px;
+        height: 200px;
+        /* flex box */
+        display: flex;
+        
+        /* wrapping box */
+        flex-wrap: wrap; /* fxww */
+        /* 수평정렬 */
+        justify-content: space-evenly;
+        /* 수직정렬(여러줄) */
+        align-content: content;
+        
+      }
+      /* .brk뒤의 li 마진탑 */
+      .t7 li.brk~li {
+        margin-top: 20px;
+      }
+      /* 줄 바꿈을 위한 li .. 자체응용 줄바꿈을 위한 li */
+      /* 원리
+         줄바꿈을 할 부분에서 가로크기 100%를 차지하게 해서 줄바꿈 효과 줌
+      */
+      .t7 li.brk {
+        /* width: 100%; 이거나 아래거나 같지 뭐 flex에서는
+        flex-basis는 width와 같당. */
+        flex-basis: 100%;
+        /* 기존 디자인 없애고 안보이게 */
+        height: 0;
+        border: none;
+        
       }
 
     </style>
@@ -303,6 +359,23 @@
         <li>R</li>
         <li>L</li>
         <li>D</li>
+
+        <li>W</li>
+        <li>O</li>
+        <li>R</li>
+        <li>L</li>
+        <li>D</li>
+      </ol> 
+      <!-- 타이틀 박스 7-->
+      <ol class="tit t7">
+        <li>L</li>
+        <li>O</li>
+        <li>T</li>
+        <li>T</li>
+        <li>E</li>
+
+        <!-- 줄바꿈 요소 -->
+        <li class="brk"></li>
 
         <li>W</li>
         <li>O</li>
