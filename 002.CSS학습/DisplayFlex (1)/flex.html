@@ -34,7 +34,7 @@
         */
 
 
-        flex-direction: row;
+        flex-direction: row-reverse;
         /* 
         flex-direction 속성: 진행방향과 순서를 정함!
         1) row: 좌 -> 우(기본값)
@@ -104,7 +104,7 @@
         height: 50px;
         border: 3px solid #fff;
         border-radius: 50%;
-        font: bold 14px/50px '돋움';
+        font: bold 14px/50px Verdana;
         color: white;
         text-align: center;
         background-color: red;
@@ -112,6 +112,7 @@
       }
       /* 타이틀1 */
       .t1 {
+        top: 50px;
         display: flex;
         justify-content: space-evenly;
         /* 
@@ -125,8 +126,117 @@
         5) space-around : 아이템 요소 양쪽 간격 일정
         6) space-evenly : 아이템 요소 양쪽과 사이 간격 모두 일정
          */
+
+        align-items: center;
+        /* 
+        align-items 속성: 
+        - 진행방향의 수직 정렬 속성
+        - 수직방향의 아이템(요소)이 하나씩일 때 사용
+
+        1) flex-start : 처음 위치(기본값)
+        2) flex-end : 끝 위치
+        3) center : 중앙(진행방향의)
+        4) stretch : 수직방향 부모박스에 꽉채워 늘림!! (단, height 값이 auto여야 함~~)
+        5) baseline : 각 요소에 글자가 있다면 글자 기준선(baseline)을 기준으로 정렬함!!
+           (글자의 line-height를 변경해서 적용해봄!)
+
+        */
+
+      }
+      /* 타이틀 박스 2 */
+      .t2 {
+        top: 200px;
+        /* flex box */
+        display: flex;
+        justify-content: space-between;
+        /* 수직방향 정렬 글자 아랫선! */
+        align-items: baseline;
+      }
+      /* t2의 두번째 네번째 li line-height 변경 */
+      .t2 li:nth-child(2) {
+        line-height: 80px;
+      }
+      .t2 li:nth-child(4) {
+        line-height: 30px;
+      }
+
+      /* 타이틀 박스 3 */
+      .t3 {
+        top: 350px;
+        /* flex box */
+        display: flex;
+        align-items: center;
+      }
+      /* 3번째 li부터 끝으로 보내기 */
+      .t3 li:nth-child(3){
+        margin-left: auto;        
+        /* 선택요소의 떨어뜨리려는 방향의 마진을 auto로 설정하면 flex에서 끝으로 이동시켜 줌! */
+      }
+
+      /* 타이틀 박스 4 */
+      .t4 {
+        top: 200px;
+        left: 50px;
+        width: 100px;
+        height: 500px;
+        /* flex box */
+        display: flex;
+        flex-direction: column;
+        /* 진행방향의 수직정렬 중앙 */
+        align-items: center;
+      }
+      /* 4번째 li부터 맨아래 끝으로 보내기 */
+      .t4 li:nth-child(4) {
+        margin-top: auto;
+        /* 보내고자 하는 요소의 마진탑을 auto로 설정하면 flex에서 아래쪽 끝으로 배치함 */
+      }
+
+      /* 타이틀 박스 5 */
+      .t5 {
+        top: 50px;
+        left: 50px;
+        width: 150px;
+        /* flex box */
+        display: flex;
+
+      }
+      /* 자식요소에 flex-shrink 설정으로 크기유지하기 shrink 쪼그라드는거,, */
+      .t5 li {
+        /* 부모박스가 줄어들 때 같이 자동으로 줄어들래?? 0(아니) 1(응) */
+        flex-shrink: 0; /* world가 부모박스 밖으로 넘침.. */
+        /* flex 속성을 자식 요소에 세팅하지 않으면 기본 값은 아래와 같다
+          flex: initial
+          즉, 아래와 동일함
+          flex: 0 1 auto
+          -> 두번째 값이 flex-shrink:1로 세팅되어있음
+          그래서 부모 박스 크기가 작아지면 자식요소도 가로크기를 줄이게 됨!!
+          이 값을 0으로 하면 자기 원래 크기를 유지하며 부모박스 바깥으로 나가게 됨!
+        */
       }
       
+      /* 타이틀 박스 6 */
+      .t6 {
+        top: 500px;
+        height: 250px;
+        /* flex box */
+        display: flex;
+
+        /* flex wrap 줄 바꿈 설정 */
+        flex-wrap: wrap;
+        /* 
+        [flex-wrap 속성]
+        - 박스 가로 크기보다 아이템(자식요소)이 많을 경우 아랫줄로 줄바꿈 하려면??
+        wrap으로 설정함!!
+        */
+
+      }
+
+      /* 글자 수 조정을 위해 li에 마진설정하기 */
+      .t6 li {
+        margin: 0 14px; /* 14인 이유는 브라우저에서 체크해본 결과 단어 딱 떨어지게 되는 margin */
+
+      }
+
     </style>
   </head>
 
@@ -140,7 +250,7 @@
         <li></li>
         <li></li>
       </ul>
-      <!-- 타이틀 박스 -->
+      <!-- 타이틀 박스 1-->
       <ol class="tit t1">
         <li>L</li>
         <li>O</li>
@@ -148,16 +258,60 @@
         <li>T</li>
         <li>E</li>
       </ol>
+      <!-- 타이틀 박스 2-->
+      <ol class="tit t2">
+        <li>W</li>
+        <li>O</li>
+        <li>R</li>
+        <li>L</li>
+        <li>D</li>
+      </ol> 
+      <!-- 타이틀 박스 3-->
+      <ol class="tit t3">
+        <li>L</li>
+        <li>O</li>
+        <li>T</li>
+        <li>T</li>
+        <li>E</li>
+      </ol>
+      <!-- 타이틀 박스 4-->
+      <ol class="tit t4">
+        <li>W</li>
+        <li>O</li>
+        <li>R</li>
+        <li>L</li>
+        <li>D</li>
+      </ol> 
+      <!-- 타이틀 박스 5-->
+      <ol class="tit t5">
+        <li>W</li>
+        <li>O</li>
+        <li>R</li>
+        <li>L</li>
+        <li>D</li>
+      </ol> 
+      <!-- 타이틀 박스 6-->
+      <ol class="tit t6">
+        <li>L</li>
+        <li>O</li>
+        <li>T</li>
+        <li>T</li>
+        <li>E</li>
+
+        <li>W</li>
+        <li>O</li>
+        <li>R</li>
+        <li>L</li>
+        <li>D</li>
+
+        <li>W</li>
+        <li>O</li>
+        <li>R</li>
+        <li>L</li>
+        <li>D</li>
+      </ol> 
     </div>
     
-    <!--
-    <ol class="tit t2">
-      <li>W</li>
-      <li>O</li>
-      <li>R</li>
-      <li>L</li>
-      <li>D</li>
-    </ol> -->
-
+     
   </body>
 </html>
