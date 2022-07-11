@@ -59,6 +59,31 @@
         /* 트랜지션: 속시이지 */
         transition: flex .4s ease-in-out;
       }
+
+      /* 가상요소로 오버레이 효과 주기 */
+      /* 참고: 밝게 처리 : 트랜스 페런트(transparent) 효과,
+      어둡게 처리하는 것이 overlay 효과라고 함!! */
+
+      #wrap>ul>li::before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        /* 부모요소 싹다 땡겨서 설정할 때,, 앱솔루트로 부모박스 채우기*/
+        background-color: rgba(0,0,0,0.5);
+        /* 트랜지션 */
+        transition: opacity .4s;
+      }
+
+      /* 마우스 오버시 가상요소 투명도 0 */
+      #wrap>ul>li:hover::before {
+        opacity: 0;
+      }
+
+
       /* 등분할 li에 마우스 오버시 flex속성으로 비율 조정하기 */
       #wrap>ul>li:hover {
         flex: 1.4;
@@ -92,9 +117,17 @@
         transform: translate(-50%, -50%);
         /* top, left 50%, transform translate -50% 위치 이동
         박스 정중앙 이동 */
-        width: 60%
+        width: min(14vw, 190px);
       }
 
+      /* 각 파트 로고 */
+      #wrap>ul>li>img:last-child {
+        position: absolute;
+        bottom: 25vh;
+        left: 50%;
+        /* 부모는 싸고있는 li */
+        transform: translateX(-50%);
+      }
 
       /* 타이틀 공통 */ 
       .tit {
@@ -105,7 +138,7 @@
         /* 가로중앙계산 (가로 500px의 절반을 뺌!) */
         width: 500px;
         height: 100px;
-        border: 5px double #fff;
+        /* border: 5px double #fff; */
       }
       /* 타이틀 하위 li 공통 */
       .tit > li {
@@ -116,7 +149,7 @@
         font: bold 14px/50px Verdana;
         color: white;
         text-align: center;
-        background-color: red;
+        background-color: #da041c;
       }
       /* 타이틀 박스 7 */
       .t7 {
@@ -148,6 +181,18 @@
         height: 0;
         border: none;
         
+      }
+      
+
+      .info {
+        position: fixed;
+        bottom:0;
+        left: 0;
+        width: 100vw;
+        background-color: #da041c;
+        /* height: 40px; 이미지 높이가 있을거라 패딩만 주자 */
+        padding: 10px;
+        text-align: center;
       }
 
     </style>
@@ -197,6 +242,9 @@
       </ol> 
     </div>
     
+    <footer class="info">
+      <img src="images/lotte_logo.gif" alt="롯데월드로고">
+    </footer>
      
   </body>
 </html>
