@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOTTE WORLD</title>
+    <style>
+      html,body,ul,ol{
+        margin: 0;
+        padding: 0;
+      }
+      ul,ol {
+        list-style: none;
+      }
+
+      #wrap {
+        height: 100vh; /* vh로 보이는 화면 채움! */
+      }
+
+      #wrap  ul {
+        /* 플렉스 박스 */
+        display: flex;
+        /* [플렉스 박스]
+          flex란? - flexible(유연한-에서 나온 말)
+          - 가변적인 자식 요소를 컨트롤 하기 위해 CSS3에서 새롭게 선보인 display 기술
+          - 자식 요소를 같은 비율 혹은 다른 비율로 분할이 쉽다!
+          - 자식 요소의 순서를 일괄적으로 변경할 수 있다.
+          - 무엇보다도 블록요소를 옆으로 흐르게 하는데 탁월하다.
+
+          [셋팅법]
+          - 옆으로 흐르게 할 요소들의 부모요소에 display: flex로 설정!!
+          - 자식요소를 flex:1로 설정하면 등분할 됨~~
+          - 자식요소의 높이값은 자동으로 부모의 높이값을 채운다!!!
+        */
+
+
+        flex-direction: row-reverse;
+        /* 
+        flex-direction 속성: 진행방향과 순서를 정함!
+        1) row: 좌 -> 우(기본값)
+        2) row-reverse: 우 -> 좌
+        3) column: 위 -> 아래
+        4) column-reverse: 아래 -> 위
+        */
+
+
+        height: 100%;
+      }
+      #wrap>ul>li {
+        position: relative; /* 부모자격 로고와 타이틀박스 앱솔루트 넣어주기 위해 */
+        /* flex 자식요소 등분할 속성 세팅*/
+        flex: 1;
+
+        /* 배경공통 */
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: auto 100%;
+
+        /* 트랜지션: 속시이지 */
+        transition: flex .4s ease-in-out;
+      }
+      /* 등분할 li에 마우스 오버시 flex속성으로 비율 조정하기 */
+      #wrap>ul>li:hover {
+        flex: 1.4;
+      }
+      /* flex 속성에 쓴 숫자 하나 : 이것은 flex-grow에 대한 값이다~~~
+      1값에 대응하여 2라고 하면 2배, 0.5라고 하면 절반 크기의 비를 가진다.
+      소수점으로 세밀한 비율을 설정할 수 있다. */
+
+
+      #wrap>ul>li:nth-child(1) {
+        background-image: url(./images/m01_bg.jpg);
+      }
+      #wrap>ul>li:nth-child(2) {
+        background-image: url(./images/m02_bg.jpg);
+      }
+      #wrap>ul>li:nth-child(3) {
+        background-image: url(./images/m03_bg.jpg);
+      }
+      #wrap>ul>li:nth-child(4) {
+        background-image: url(./images/m04_bg.jpg);
+      }
+      #wrap>ul>li:nth-child(5) {
+        background-image: url(./images/m05_bg.jpg);
+      }
+      
+      /* 타이틀 공통 */ 
+      .tit {
+        position: absolute;
+        top: 100px;
+        left: calc(50% - 250px); /* 띄어쓰기 잘하기.. */
+        /* calc(화면 절반 % - 자기크기 절반) */
+        /* 가로중앙계산 (가로 500px의 절반을 뺌!) */
+        width: 500px;
+        height: 100px;
+        border: 5px double #fff;
+      }
+      /* 타이틀 하위 li 공통 */
+      .tit > li {
+        width: 50px;
+        height: 50px;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        font: bold 14px/50px Verdana;
+        color: white;
+        text-align: center;
+        background-color: red;
+      }
+      /* 타이틀 박스 7 */
+      .t7 {
+        height: 200px;
+        /* flex box */
+        display: flex;
+        
+        /* wrapping box */
+        flex-wrap: wrap; /* fxww */
+        /* 수평정렬 */
+        justify-content: space-evenly;
+        /* 수직정렬(여러줄) */
+        align-content: center;
+        
+      }
+      /* .brk뒤의 li 마진탑 */
+      .t7 li.brk~li {
+        margin-top: 20px;
+      }
+      /* 줄 바꿈을 위한 li .. 자체응용 줄바꿈을 위한 li */
+      /* 원리
+         줄바꿈을 할 부분에서 가로크기 100%를 차지하게 해서 줄바꿈 효과 줌
+      */
+      .t7 li.brk {
+        /* width: 100%; 이거나 아래거나 같지 뭐 flex에서는
+        flex-basis는 width와 같당. */
+        flex-basis: 100%;
+        /* 기존 디자인 없애고 안보이게 */
+        height: 0;
+        border: none;
+        
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- 파티션박스 -->
+      <ul>
+        <li>
+          <img src="./images/m01_txtbox.png" alt="title">
+          <img src="./images/m01_logo1.png" alt="logo">
+        </li>
+        <li>
+          <img src="images/m02_txtbox.png" alt="title">
+          <img src="images/m02_logo.png" alt="logo">
+        </li>
+        <li>
+          <img src="images/m03_txtbox.png" alt="title">
+          <img src="images/m03_logo.png" alt="logo">
+        </li>
+        <li>
+          <img src="images/m04_txtbox.png" alt="title">
+          <img src="images/m04_logo.png" alt="logo">
+        </li>
+        <li>
+          <img src="images/m05_txtbox.png" alt="title">
+          <img src="images/m05_logo.png" alt="logo">
+        </li>
+      </ul>
+      <!-- 타이틀 박스 7-->
+      <ol class="tit t7">
+        <li>L</li>
+        <li>O</li>
+        <li>T</li>
+        <li>T</li>
+        <li>E</li>
+
+        <!-- 줄바꿈 요소 -->
+        <li class="brk"></li>
+
+        <li>W</li>
+        <li>O</li>
+        <li>R</li>
+        <li>L</li>
+        <li>D</li>
+      </ol> 
+    </div>
+    
+     
+  </body>
+</html>
