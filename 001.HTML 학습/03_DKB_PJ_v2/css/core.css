@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* 도깨비 PJ 핵심 공통 모듈 CSS - core.css */
+/* 공통 class / 웹폰트 */
+/* 누구나 바꾸고 싶으면 바꾸는 클래스 코어 클래스,,, */
+/* font */
+/* font-family: 'Yomogi', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
+/* font-family: 'Gowun Dodum', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+/* font-family: 'Hahmlet', serif; */
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&display=swap');
+/* font-family: 'Nanum Gothic', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* 폰트 상대단위를 위한 html 폰트 크기 설정 */
+html {
+    font-size: 10px;
+}
+
+/* 전체 웹폰트 일반 적용! */
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* 속박스 클래스 */
+.ibx {
+    /* width: 1200px; */
+    max-width: 1200px;
+    /* 최대 가로 크기 1200px이면 이것보다 작아질 경우 auto로 자동전환 됨~
+    즉, 가로 스크롤 안 생김! */
+    margin: 0 auto;
+
+}
+
+/* 플렉스 박스 클래스 */
+.fbx {
+    display: flex;
+}
+
+/* 랩핑박스 */
+.fxw {
+    flex-wrap: wrap;
+}
+
+/* 수평방향 중앙정렬 */
+.jcc {
+    justify-content: center;
+}
+
+/* IR(Image Replacement) class */
+.ir {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* scroll bar design class */
+/* -webkit- 밴더사면 (크롬,사파리) 접두어 */
+/* (참고: -ms- (ie), _o- (opera), -moz-(firefox) */
+.scbar::-webkit-scrollbar {
+    /* whole scroll bar size change */
+    width: 7px;
+}
+.scbar::-webkit-scrollbar-thumb {
+    /* scroll bar */
+    background-color: #666;
+    border-radius: 5px;
+}
+.scbar::-webkit-scrollbar-track {
+    /* scroll bar track*/
+    background-color: #ddd;
+    border-radius: 5px;
+}

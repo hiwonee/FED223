@@ -1,0 +1,301 @@
+@charset "utf-8";
+/* 도깨비 PJ 공통 디자인 CSS - common.css */
+/* 상.하단 영역 반복 디자인 */
+
+/* 공사중표시 */
+body * {
+    /* outline: 2px dashed gray; */
+}
+/* 바디 아래 전체 라는 의미 (*)이 표시는 모든 요소 선택의 의미*/
+/* outline: 외곽선 - 박스요소의 외곽선만 표현
+   박스 바깥쪽에 생겨
+   (자신 또는 다른 요소에 영향력없음)
+   사용법이 border와 유사
+   outline: 두께 종류 색상; */
+
+
+/* 속박스에 높이값을 설정한 이유는 겉박스는 속박스 크기만큼 자동으로 늘어나게 하여 편리한 셋팅을 유도함 */
+
+/* ***********************상단영역*********************** */
+
+/* 겉박스 */
+#top {
+    background-color: #fff;
+    /* 하단 구분선 */
+    border-bottom: 1px solid rgb(182, 182, 182);
+}
+
+/* 속박스 */
+.top {
+    /* height: 125px; */ /* 220707자 영상 확인 왜 height를 없애는지... */
+    /* position: relative; */ /* 부모자격, 탑메뉴 앱솔루트를 주기위해,, */
+
+    /* 103번째 줄 내용.. 부모자격 없앰.. 이유는 서브메뉴 배경 li 가상요소가 끝까지 가야하기 때문.. */
+}
+/* 1-1. main logo */
+.logo {
+    padding: 20px;
+    text-align: center;
+}
+.logo img {
+    width: 100px;
+}
+
+/* 1-2. top menu */
+.tmenu {
+    position: relative;
+    /* position: absolute; */ /* 부모는 .top */
+    
+    /* top: 30px;
+    right: 0px; */
+    /* 위의3가지 지우고 ()103번째 줄 내용 연결,, ul에 주면 되겠네~~ */
+
+    /* 부모자격!!
+    상태는 로고 박스와 GNB박스 사이에 있고, 자식 ul이 앱솔루트라서 높이값이 0..
+    가로는 자동으로 .inbox의 크기인 1200px을 채움!!! */
+}
+/* 탑메뉴 ul */
+.tmenu>ul {
+    position: absolute;
+    top:-50px;
+    right: 0;
+}
+
+/* 탑메뉴 상위 li */
+.tmenu>ul>li {
+    padding: 0 5px;
+}
+/* top menu 상위 a 요소 */
+.tmenu>ul>li>a {
+    /* font size 15px */
+    font-size: 1.5rem;
+    
+}
+
+/* 1-3.gnb menu */
+/* .gnb {
+    width: 574px;
+    margin: 0 auto;
+} */
+
+
+/* gnb upper li */
+.gnb>ul>li {
+    /* height: 44px; 63-64번째줄 처럼 쓰던거 이렇게 쓰던가/// 안돼 이상하다,, */
+    padding: 0 15px;
+}
+/* gnb upper a */
+.gnb>ul>li>a{
+    /* font size 17px */
+    font-size: 1.7rem;
+    /* line height (44px) */
+    line-height: 4.4rem;
+    display: inline-block; /* 이걸 주면, a선택했을 때 상위 요소를 같이 먹어..
+    a가 높이 20에서 inline-block 주니까 40으로 상위 애들의 높이와 같아짐 */
+    
+    border-bottom: 3px solid transparent; /* 아래 97번줄 보더때문에 크기변화로 인해 뚝뚝 위치 변경이 일어나지 않게 애초에 자리차지 하게 만들어준거임~~~ */
+}
+
+/* 상위 메뉴 마우스 오버시 상위 a에 하단 보더 */
+.gnb>ul>li:hover>a {
+    /* 오버시엔 보더 색만 변경함!! 94번 줄과 이어지는 내용임!*/
+    border-bottom-color: red;
+}
+
+
+/*submenu */
+.smenu {
+    position: absolute;
+    /* background-color: #fff; */
+    /* hiding submenu */
+    height: 0;
+    overflow: hidden;
+
+    z-index: 1; /* 하위 메뉴 위로 올라오게.. */
+    transition: height .4s ease-out;
+}
+/* upper menu li hover-showing submenu  + upper menu li hover - submenu 가상요소 배경 보이기 */
+.gnb>ul>li:nth-child(1):hover .smenu,
+.gnb>ul>li:nth-child(1):hover::after {
+    height: 120px;
+}
+.gnb>ul>li:nth-child(3):hover .smenu,
+.gnb>ul>li:nth-child(3):hover::after {
+    height: 150px;
+}
+.gnb>ul>li:nth-child(4):hover .smenu,
+.gnb>ul>li:nth-child(4):hover::after {
+    height: 90px;
+}
+
+
+/* submenu  a  */
+.smenu a {
+    display: block; /* padding 넣어주려고.. */
+    font-size: 1.4rem;
+    padding: 10px 0;
+}
+/* 서브메뉴 끝까지 차는 배경박스 가상요소로 만들기!! -> .sm인 li에만@*/
+.gnb>ul>li.sm::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%; /* 가로크기를 %로 주면 부모자격에 기준을 준다
+    화면을 채워야 하므로 싸고 있는 요소중에는 부모가 없어야한다!! 그래야 화면이 부모가 됨.. top에 relative 해놨음... 그거 없애!!!!*/
+    height: 200px;
+    left: 0; /* left를 줬으므로 보이는 화면 기준.. top은 안 줘서 젠틀함.. a요소 아래에.. 위치.. */
+    height: 0; /* 200px 오버시 각 수치로.. */
+    background-color: white;
+    
+    /* #top 박스 */
+    margin-top: 1px;
+
+    /* transition: 속시이지 */
+    transition: height .4s ease-out;
+}
+/* upper menu li hover - submenu 가상요소 배경 보이기 */
+/* .gnb>ul>li:hover::after {
+    height:200px;
+} */
+
+/* gentle absolute할거라서 after야,, 뭐 a요소에 넣어야하고... 잘 이해안가ㅜㅠㅜ */
+
+/* sns */
+.sns {
+    margin-top: -5px;
+}
+
+/* sns a 요소 확장 */
+.sns a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* 이거 해줘서 손가락 마우스 포인터로 됨!!! */
+}
+
+/* sns 메뉴 li */
+.sns li {
+    width: 30px;
+    height: 30px;
+    /* 배경 이미지로 아이콘 넣기 */
+    background: url(../images/icons.png) no-repeat;
+}
+/* twitter */
+.sns li:nth-child(1){
+    background-position: 0 0;
+}
+/* hover */
+.sns li:nth-child(1):hover{
+    background-position: 0 -30px;
+}
+
+/* instagram */
+.sns li:nth-child(2){
+    background-position: -30px 0;
+}
+/* hover */
+.sns li:nth-child(2):hover{
+    background-position: -30px -30px;
+}
+
+/* facebook */
+.sns li:nth-child(3){
+    background-position: -60px 0;
+}
+/* hover */
+.sns li:nth-child(3):hover{
+    background-position: -60px -30px;
+}
+
+/* 상위 li에 오버시 가상요소 하단 보더 공통생성*/
+.gnb>ul>li:hover::after {
+    border-bottom: 2px solid red;
+}
+
+/* ***********************메인영역*********************** */
+.cont {
+    min-height: 800px; /* 최소 높이 800px유지 - 내용 넘치면 늘어남!! */
+    /* 형제끼리는 margin,, 부모랑은 padding인가,,? */
+}
+
+/* ***********************하단영역*********************** */
+#info {
+    background-color: rgba(255,255,255,0.6);
+}
+/* 속박스 */
+.info {
+    /* height: 240px; */
+    min-height: 240px;
+    /* 최소높이 - 내용이 늘면 auto로 전환해줘 */
+    position: relative;/* 부모자격 - 브랜드 바로가기...해주기 위해 */
+    /* outline: 2px dashed green; */
+}
+
+
+/* <!-- 3-1. 하단링크 --> */
+.blink{
+    padding-top: 5px;
+}
+.blink ul {
+    /* outline: 1px dashed blue; */
+    max-width: 804px;
+    margin: 0 auto;
+    /* widht가 있는 블록 요소에 적용 가능@@
+    마영오를 ul에서? 줄 때 width를 주면 가능하고, 안 주면 못해 */
+}
+.blink li {
+    padding: 0 15px;
+}
+
+.blink a {
+    /* 글자셋팅 */
+    color: #222;
+    font-weight: bold;
+    font-size: 1.4rem;
+    line-height: 2.8;
+}
+.blink a:hover {
+    color: darkred;
+    text-decoration: underline;
+}
+
+/* <!-- 3-2. 회사정보 --> */
+.addr {
+    padding: 1rem;
+}
+
+.addr address {
+    /* 글자 셋팅 */
+    font-size: 1.4rem;
+    font-style: normal;
+    text-align: center;
+    line-height: 2;
+    max-width: 804px;
+    margin: 0 auto;
+    border: 4px double #222;
+    padding: 1rem;
+
+    /* 보더 패딩 포함 크기유지 bxb */
+    box-sizing: border-box;
+}
+
+/* <!-- 3-3. 하단로고 --> */
+.blogo {
+    text-align: center;
+}
+
+/* <!-- 3-4. 바로가기 --> */
+.brand {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    /* 부모는? info */
+}
+
+.brand select {
+    color: #222;
+    font-weight: bold;
+    font-size: 1.4rem;
+    line-height: 2.8;
+    padding: 0.5rem;
+}
