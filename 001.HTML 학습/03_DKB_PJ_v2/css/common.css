@@ -236,13 +236,13 @@ body * {
 .blink{
     padding-top: 5px;
 }
-.blink ul {
+/* .blink ul {
     /* outline: 1px dashed blue; */
-    max-width: 804px;
-    margin: 0 auto;
+    /* max-width: 804px;
+    margin: 0 auto; */
     /* widht가 있는 블록 요소에 적용 가능@@
-    마영오를 ul에서? 줄 때 width를 주면 가능하고, 안 주면 못해 */
-}
+    마영오를 ul에서? 줄 때 width를 주면 가능하고, 안 주면 못해
+    플렉스 주려고 주석 */
 .blink li {
     padding: 0 15px;
 }
