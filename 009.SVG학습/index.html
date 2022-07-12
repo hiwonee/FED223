@@ -34,7 +34,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            height: 50%;
+            /* height: 50%; */
             transform: translate(-50%, -50%); 
             /* 앱솔루트 정중앙!! 오십퍼오십퍼마오마오(50%,50%,-50%,-50%) */
             width: 300px;
@@ -83,7 +83,7 @@
 
             */
             
-            transition: stoke-dashoffset .4s ease-in-out
+            transition: stroke-dashoffset .4s ease-in-out;
         }
 
         /* 컨텐츠 박스에 마우스 오버시 */
@@ -97,7 +97,7 @@
             stroke: darkblue;/* 선 색 */
             stroke-linecap: square;/* 선 끝처리 */
             stroke-width: 10;/* 선 두께 */
-            stroke-dasharray: 400%;
+            stroke-dasharray: 400%; /* dash line : 50% * 8 = 400% */
         }
 
 
