@@ -17,63 +17,14 @@
 
         /* 비율유지박스 */
         .rbx {
-            width: 60%;
-            /* height: 50%; */
-            /* padding-top: 200px; */
-            /* padding-top: 50%; */
-            background: url(images/mobum.jpg) no-repeat center/cover;
-            margin: 0 auto;
+            
         }
-
-        /* 자식요소 블록박스에 패딩탑을 %로 주면??? */
-        /* .jasik {
-            padding-top: 100%;
-        } */
-        /* after처럼 못 건들게!! 만들어줄 수 있대..
-        부모 박스 가로크기에 대한 정확한 비율로 패딩이 생긴다
-        100%는 1:1 비율생성.. 부모의 가로크기와 동일함!!!
-        직접 블록 요소를 넣으면 변경위험이 있으므로 가상요소 ::before를 사용하여 블록요소를 대신한다 */
-
 
         /* 비율유지 가상요소 */
-        .rbx::before {
-            content: '';
-            display: block;
-            /* padding-top: 100%; */
-            /* 가로:세로 = 16 : 9 = 100 : x 
-            x = 9 * 100 / 16 = 56.25*/
-            /* 
-                [ 내가 원하는 비율 계산하기 ]
-                패딩탑 100%가 부모박스 가로크기의 1:1비율이므로
-                이미지비를 식으로쓰면...
-                가로 : 세로 = 100% : x
-                1170 : 614 = 100 : x
-                내항의 곱은 외항의 곱과 같다! 비례식!!!
-                614*100 = 1170*x
-                x = 614*100/1170
-                  = 52.47
-                이 x값이 패딩탑 %값이다!!!
-            */
-            padding-top: 56.25%;
-        }
-
-        /* 4:3 비율변경 class */
-        /* .rbx2::before {
-            padding-top: 75%;
-        } */
-        /* 4:3 = 100:x
-         */
+        
 
         /* 비율유지 속박스 */
-        /* 여기서 비율유지 속박스의 부모는 반드시 .rbx */
-        /* 비율유지 부모박스 내부에 공간확보 */
-        .rbxIn {
-            position: relative;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-        }
+        
 
         /* 내용셋팅 */
         .cat{
@@ -140,20 +91,18 @@
 <body>
     <!-- 비율유지박스 -->
     <div class="rbx">
-        <div class="rbxIn">
-            <dl class="cat">
-                <dt>출연진</dt>
-                <dd>이제훈(김도기역)</dd>
-                <dd>이솜(강하나역)</dd>
-                <dd>김의성(장성철역)</dd>
-            </dl>
-        </div>
-        <!-- <div class="jasik"></div> -->
+        
     </div>
     
     
     
     
+    <!-- <dl class="cat">
+        <dt>출연진</dt>
+        <dd>이제훈(김도기역)</dd>
+        <dd>이솜(강하나역)</dd>
+        <dd>김의성(장성철역)</dd>
+    </dl> -->
 
 </body>
 
