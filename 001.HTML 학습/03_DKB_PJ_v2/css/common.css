@@ -20,6 +20,7 @@ body * {
 
 /* 겉박스 */
 #top {
+    position: relative;
     background-color: #fff;
     /* 하단 구분선 */
     border-bottom: 1px solid rgb(182, 182, 182);
@@ -90,9 +91,7 @@ body * {
     font-size: 1.7rem;
     /* line height (44px) */
     line-height: 4.4rem;
-    display: inline-block; /* 이걸 주면, a선택했을 때 상위 요소를 같이 먹어..
-    a가 높이 20에서 inline-block 주니까 40으로 상위 애들의 높이와 같아짐 */
-    
+    display: block; 
     border-bottom: 3px solid transparent; /* 아래 97번줄 보더때문에 크기변화로 인해 뚝뚝 위치 변경이 일어나지 않게 애초에 자리차지 하게 만들어준거임~~~ */
 }
 
@@ -212,6 +211,31 @@ body * {
     border-bottom: 2px solid red;
 }
 
+/* 햄버거 버튼 */
+.ham {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scaleX(1.2);
+    right: 3vw;
+    border: none;
+    background-color: transparent;
+    font-size: 10vw;
+    padding: 0;
+    margin: 0;
+    z-index: 99;
+}
+/* 햄버거 가상요소 */
+.ham::before {
+    content: '≡';
+}
+/* GNB메뉴 보이는 상태일 때 햄버거 버튼 */
+.top.on .ham {
+    transform: translateY(-50%) scaleX(1);
+    color: #fff;
+}
+.top.on .ham::before {
+    content: '⨉';
+}
 /* ***********************메인영역*********************** */
 .cont {
     min-height: 800px; /* 최소 높이 800px유지 - 내용 넘치면 늘어남!! */
