@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>유형4. 세로네비 서브별 드롭다운 세로형</title>
+    <style>
+      /* 초기화 */
+      html,
+      body,
+      ul,
+      ol {
+        margin: 0;
+        padding: 0;
+      }
+      /* ul,ol초기화 */
+      ul,
+      ol {
+        /* 리스트박스 기본3無
+            - 마진0, 패딩0, 리스트스타일없음 */
+        list-style: none;
+      }
+      
+      h1{
+        text-align: center;
+      }
+
+      /* GNB메뉴박스 */
+      .gnb {
+        position: relative;/* z-index 주려고..  */
+        /* 왼쪽부터 시작하도록 크기지정!! */
+        width: 200px;
+        height: 800px;
+        background-color: lightblue;
+        z-index: 99;
+        padding-top: 25px;
+      }
+      /* ul 초기화 */
+      .gnb ul {
+        display: flex;
+        flex-direction: column; 
+        /* 수직방향 진행@@@ */
+        /* width: 800px; */
+        /* margin: 0 auto; */
+      }
+      /* 가상요소로 clear설정하기 */
+      /* .gnb ul::after  {
+        content: '';
+        display: block;
+        clear: both;
+      } */
+     
+      /* li 리스트요소 */
+      .gnb>ul>li {
+        text-align: center;
+        width: 200px;
+        /* float: left; */
+        /* outline: 1px dotted blue */
+
+      }
+      /* li 사이에 구분선 넣기 */
+      .gnb>ul>li+li::before {
+        content: '';
+        display: block;
+        position: absolute;
+        /* gentle absolute: 부모박스안에 그대로 있음!! */
+        margin-top: 10px;
+        
+        width: 1px;
+        height: 20px;
+        background-color: #fff;
+        /* border-left: 1px solid #000; */
+      }
+      /* li 상위메뉴 요소 */
+      .gnb>ul>li>a {
+        /* a요소 확장 */
+        display: block;
+        color: black;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        font-size: 17px;
+        line-height: 40px;
+        transition: .3s;
+      }
+      /* 부모li에 마우스 오버시 상위메뉴 a요소 변경 */
+      /* .gnb>ul>li:hover {
+        background-color: rgba(255,255,255,0.4);
+      } */
+      .gnb>ul>li:hover>a { /* 호버를 a에 두면 a에서 벗어나면 바로 색이 바뀌거든
+        그래서 li에 넣었더니 그 색감 그대로 있네!!! */
+        color: darkslategrey;
+        background-color: rgba(255, 255, 255, 0.479);
+        
+      }
+      /* li 하위 a요소 */
+
+      /* 상단 메뉴 글자에 밑줄 애내ㅣ */
+      .gnb>ul>li>a>span {
+        position: relative;
+        /* 부모자격 */
+      }
+      .gnb>ul>li>a>span::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -4px; 
+        left: 0;
+        width:0%; /* hover시 100% */
+        height: 1px;
+        background-color: rgba(54, 70, 124, 0.753);
+        /* transition: width .2s ease-out .4s; 0.2초, 이즈아웃, .1초 지연 */
+        transition: width .2s ease-out;
+
+      }
+      /* 상위메뉴 hover시 가상요소 밑줄애니 */
+      .gnb>ul>li:hover>a>span::after {
+        width:100%;
+        /* transition: width .2s ease-out .4s;  */
+        transition-delay: .4s; /* 호버시 지연시간 */
+      }
+
+
+/* 부모요소로부터 상속되는 속성은 무엇??
+글자체, 글자크기, 글자색, 글자정렬 등 글자관련 속성들 */
+
+
+      /* 서브메뉴 */
+      .smenu {
+        /* 여기에 패딩 넣으면 안 접어진다,, */
+        /* position: absolute; */
+        /* 앱솔루트가 아니면 자리 차지함... 서브메뉴가 밀고 나가도록 주석처리 */
+        width: 200px;
+        /* 서브메뉴 숨기기 */
+        height: 0; /* 1 */
+        overflow: hidden; /* 2 */
+        /* 서브메뉴 숨기기 */
+
+        /* 높이값 0으로 숨기는 박스는 위아래 패딩,보더는
+        숨겨지지 않는다 그러므로 쓰지 않는다..
+        양옆은 가능하대
+        디자인은 하위요소에서 할 것!!!!!! */
+
+        background-color: lightblue;
+        border-radius: 0 0 5px 5px;
+        transition: .4s;
+      }
+      /* 상위 메뉴 li 오버시 서브메뉴 보이기(2) */
+      .gnb>ul>li:nth-child(2):hover .smenu {
+        height: 170px;
+      }
+      /* 상위 메뉴 li 오버시 서브메뉴 보이기 (3) */
+      .gnb>ul>li:nth-child(3):hover .smenu {
+        height: 100px;
+      }
+      
+
+      /* sub ol */
+      .smenu ol {
+        /* outline: 1px dashed green; */
+        padding: 15px;
+
+      }
+      /* sub li */
+      /* .smenu li {
+        
+      } */
+      .smenu a {
+        /* extension */
+        display: block;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        color: rgb(37, 65, 107);
+        text-decoration: none;
+        line-height: 35px;
+        /* transition */
+        transition: .2s;
+        border-radius: 5px;
+      }
+      /* submenu hover */
+      .smenu a:hover {
+        background-color: rgb(37, 65, 107);
+        color: #fff;
+      }
+
+      .wrap {
+        /* flex box */
+        display: flex;
+      }
+
+      /* 본문내용 */
+      .cont {
+        position: relative; /* 이러면 메뉴가 또 안나오잖아,, 그래서 z-index를 줘야햄.. ctrl+g 28번째 줄.. */
+        /* 하위 박스가 포지션이 있으면 나중에 그린 박스가 윗박스보다 위에 올라온다(동급,,) 따라서 메뉴박스가 위에 오도록 z-index를
+        상위박스에서 높여줘야 하위메뉴가 밑에 깔리지 않는다!@!!! */
+        width: calc(100% - 200px); /* 가로크기 반영할 때 전체% - 몇 픽셀 이런식으로 할 때 많이 사용
+         *//* 가로크기를 채울때 특정px을 뺀 나머지 %만들기는 calc() 함수로 계산한다! 
+         여기서 200px은 옆에 메뉴 width 길이..*/
+        background-color: #fdfccf;
+        text-align: center;
+        line-height: 50;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>유형4. 세로네비 서브별 드롭다운 세로형</h1>
+    <div class="wrap">
+      <!-- GNB 네비게이션 -->
+      <nav class="gnb">
+        <ul>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#"><span>웹개발</span></a>
+            <!-- 서브메뉴 -->
+            <div class="smenu">
+              <ol>
+                <li>
+                  <a href="#">웹디자인</a>
+                </li>
+                <li>
+                  <a href="#">HTML5+CSS3</a>
+                </li>
+                <li>
+                  <a href="#">jQuery</a>
+                </li>
+                <li>
+                  <a href="#">웹+모바일</a>
+                </li>
+              </ol>
+            </div>
+          </li>
+          <li>
+            <a href="#"><span>게시판</span></a>
+            <!-- 서브메뉴 -->
+            <div class="smenu">
+              <ol>
+                <li>
+                  <a href="#">Q&amp;A
+                  </a>
+                </li>
+                <li>
+                  <a href="#">방명록</a>
+                </li>
+              </ol>
+            </div>
+          </li>
+          <li>
+            <a href="#"><span>프로필</span></a>
+          </li>
+        </ul>
+      </nav>
+      <!-- 내용박스 -->
+      <div class="cont">본문내용</div>
+    </div>
+
+  </body>
+</html>
