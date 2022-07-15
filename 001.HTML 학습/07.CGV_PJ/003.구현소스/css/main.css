@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* CGV PJ 메인페이지 CSS - main.css */
+
+/* merging.. 외부 CSS 합치기 */
+@import url(reset.css);
+@import url(core.css);
+
+body {
+    background-color: black;
+}
+
+/* 공사 중 표시 */
+body * {
+    outline: 1px dotted lime; 
+    /* 바디 아래 모든 요소 */
+}
+
+/* 공통 클래스 */
+.ibx {
+    max-width: 1200px;/* 이거보다 작아지면 auto */
+    margin: 0 auto;
+}
+
+/****************************** 1. 상단영역 ******************************/
+/* 속박스 */
+.top {
+    position: relative; /* 가만히 있으면서 부모자격을 할 수 있는 gnb의 부모자격 */
+    height: 80px;
+    background: url(../images/curtain.jpg) repeat-x;
+}
+
+/* 1-1. LOGO */
+.tit {
+    font-family: 'Jua', sans-serif;
+    color: aquamarine;
+    font-size: 40px;
+    text-align: center;
+    line-height: 80px;
+    /* 그림자를 이용한 GLOW 효과 */
+    text-shadow: 0 0 4px aquamarine;
+    /* 애니메이션 : 이시이지반방마 */
+    animation: titAni .7s ease-in infinite alternate;
+}
+
+/* 타이틀 글로우 효과 애니메이션 키프레임 */
+@keyframes titAni {
+    to { 
+        text-shadow: 0 0 12px aquamarine;
+    }
+}/* 키프레임 */
+
+/* 1-2. GNB */
+.gnb { /* 얘는 위치이동만 해줄거임 */
+    position: absolute; /* 부모는? .top */
+    bottom: 5px;
+    right: 15px;
+}
+/* gnb의 ul */
+.glist {
+    display: flex;
+}
+/* gnb li 리스트 */
+.glist>li { /* > 쓴 이유는 하위 li를 더 쓸거라서 상위 li 지칭해주기 위해 */
+    font-family: 'Jua', sans-serif;
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+/****************************** 2. 메인영역 ******************************/
+/* 속박스 */
+.cont {
+    position: relative; /* 부모자격 일단 여러 애들의 부모자격이 될듯함 */
+    /* height: 788px; */
+    background: url(../images/bg.jpg) no-repeat top/100%; /* 100% 안주면 화면 작아질 때 안 작아질걸,, 확인해봥
+    0이랑 top 또 다르지 */
+}
+
+/* 비율유지 가상요소 */
+.cont::before {
+    content: '';
+    display: block;
+    padding-top: 65.66%; 
+    /* 블록 자식 요소의 패딩탑을 %로 주면 부모박스 가로크기에 대한 비가 성립한다!!
+    100%는 1:1 비율
+    [비율계산하기!]
+    이미지 비율로 박스 비율을 적용함!!
+    1200px : 788px = 100 : x
+    x = 788px * 100% / 1200px
+      = 65.66% */
+}
+
+
+
+/* 2-1. 스크린 박스 */
+#screen {
+    position: absolute; /* 부모는? cont! */
+    top: 17.3%;
+    left: 21.4%;
+    width: 58.4%;
+    height: 50.3%; 
+    /* 비율유지 박스를 위해서는 높이 값! height가 없어야 해@!!!!! */
+    background-color: #000;
+}
+
+/* 유튜브 아이프레임 */
+#screen iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 2-2. 예고편 선택 메뉴 */
+.mlist {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* left 50과 같이 중앙에 맞추기 위해 주는 것ㅇㅇ*/
+}
+/* 예고편 ul  */
+.mlist ul {
+    display: flex;
+}
+
+/* 예고편 li */
+.mlist>ul>li {
+    /* float: left; display: flex 풀고 확인해보면 괜찮은 것 같은데 화면 좁아지면 이상해져 왜냐면 스테이지가 작아졌다 이거지.. flex가 나은 이유 중 하나기도 한듯 */
+    width: 99px;
+    height: 140px;
+}
+/* 2번째 li부터 끝에만 줘서 가운데 정렬이 되게 하기 위해 +!!! 이럴 때 형제요소 쓰는거!!! */
+.mlist>ul>li+li {
+    margin-left: 10px;
+}
+
+/* 포스터 이미지 */
+.mlist img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지를 비율 유지하여 박스에 채움!!!! */
+    
+}
+
+/****************************** 3. 하단영역 ******************************/
+/* 속박스 */
+.info {
+    height: 100px;
+}
