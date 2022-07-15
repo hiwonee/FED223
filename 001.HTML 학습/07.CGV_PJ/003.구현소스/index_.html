@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGV에 오신 것을 환영합니다!</title>
+    <link rel="stylesheet" href="css/main_.css">
+    <!-- JS코딩구역 -->
+    <script>
+        /* ***********************************************************
+        함수명 : 멍멍
+        기능 : 포스터 메뉴 클릭시 유튜브 iframe src 속성값 변경하여 영화바꾸기!!
+        *********************************************************** */
+       function 멍멍(먹이){// 함수값은 소괄호로 불른다?? 먹이 - 전달값을 담는 변수
+        // 1. 호출 및 전달값 확인!!!! 먹이는 그릇
+        console.log("먹이줘",먹이); //이 안에서 멍멍을 부르면 뭐가 뜨나 확인 먹이라는 그릇에 닥스, 등등이 뜨겠지!!!!
+        // 먹이 변수에 영화 고유코드를 담는다!!
+
+        // 2. 변경 대상 : 아이프레임 -> #screen iframe
+        var 아이 = document.querySelector('#screen iframe');
+
+        // 3. 변경내용 : 아이프레임의 src 속성값 변경하기!
+        아이.src = "https://www.youtube.com/embed/"+먹이+"?autoplay=1"; /* 3번째 수업 다시 듣기!@@! */
+        // 이퀄(=)을 만나는 순간 이퀄 오른쪽의 값을 만든 후 왼쪽의 변수나 속성에 값을 넣는다!!!!!!!!
+
+        /* 아이.style.border = 100px solid lime"; */
+
+        // 전달 변수 먹이 에 담긴 값을 다른 문자 값과 합쳐서 하나의 문자로 만들어 준다!!!
+        // +는 문자를 합치는 연산자!!!!
+    
+
+       }///////////////멍멍 함수 /////////////////////////////////////////////
+       //////////////////////////////////////////////////////////////////////
+    </script>
+</head>
+<body>
+    <!-- 1. 상단영역 -->
+    <div id="top">
+        <header class="top ibx">
+            <!-- 1-1. LOGO -->
+            <h1 class="tit">
+                CGV 예고편 상영관
+            </h1>
+            <!-- 1-2. GNB -->
+            <nav class="gnb">
+                <ul class="glist"><!-- 불릴 일이 많대 그래서 이름 줌 -->
+                    <li>
+                        <a href="#">영화</a>
+                    </li>
+                    <li>
+                        <a href="#">예매</a>
+                    </li>
+                    <li>
+                        <a href="#">극장</a>
+                    </li>
+                    <li>
+                        <a href="#">이벤트&amp;컬쳐</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <!-- 2. 메인영역 -->
+    <div id="cont">
+        <main class="cont ibx">
+            <!-- 2-1. 스크린 박스 -->
+            <div id="screen">
+                <!-- 유튜브 아이프레임 -->
+                <iframe src="https://www.youtube.com/embed/rHTTv3m-zb0?autoplay=1&mute=1&loop=1&playlist=rHTTv3m-zb0" allow="autoplay"></iframe>
+                <!-- <iframe src="https://www.youtube.com/embed/rHTTv3m-zb0?키=값" allow="autoplay"></iframe> -->
+            </div>
+            <!-- 2-2. 예고편 선택 메뉴 -->
+            <nav class="mlist">
+                <ul>
+                    <li>
+                        <a href="#" onclick="멍멍('yDJIcYE32NU')"><!-- 밖을 쌍따옴표로 해서 안은 홑따.. 같으면 안돼! -->
+                            <img src="./images/m7.jpg" alt="노트북">
+                        <!-- 영화정보 -->
+                            <ol class="movtxt">
+                                <li>노트북</li>
+                                <li>라이언 고슬링</li>
+                                <li>레이첼 맥아담스</li>
+                            </ol>
+                        </a> <!-- 언제 a에 넣으라 하셨는지 놓침.. 오후 클래스 3번째 까지 들어봐 -->
+                        
+                    </li>
+                    <li>
+                        <a href="#" onclick="멍멍('6eP5iCRb4mc')">
+                            <img src="./images/m8.jpg" alt="이터널 선샤인">
+                            <!-- 영화정보 -->
+                            <ol class="movtxt">
+                                <li>이터널 선샤인</li>
+                                <li>짐 캐리</li>
+                                <li>케이트 윈슬렛</li>
+                            </ol>
+                        </a>
+                        
+                    </li>
+                    <li>
+                        <a href="#" onclick="멍멍('TjJCLEwW474')">
+                            <img src="./images/m9.jpg" alt="배트맨: 다크 나이트">
+                            <!-- 영화정보 -->
+                            <ol class="movtxt">
+                                <li>배트맨: 다크 나이트</li>
+                                <li>크리스찬 베일</li>
+                                <li>히스 레저</li>
+                            </ol>
+                        </a>
+                        
+                    </li>
+                    <li>
+                        <a href="#" onclick="멍멍('iCVpJ8x1Tnc')">
+                            <img src="./images/m10.jpg" alt="맘마미아">
+                            <!-- 영화정보 -->
+                            <ol class="movtxt">
+                                <li>맘마미아</li>
+                                <li>메릴 스트립</li>
+                                <li>아만다 사이프리드</li>
+                            </ol>
+                        </a>
+                        
+                    </li>
+                    <li>
+                        <a href="#" onclick="멍멍('62ICommwYe0')">
+                            <img src="./images/m11.jpg" alt="네고시에이터">
+                            <!-- 영화정보 -->
+                            <ol class="movtxt">
+                                <li>네고시에이터</li>
+                                <li>사무엘 L. 잭슨</li>
+                                <li>케빈 스페이시</li>
+                            </ol>
+                        </a>
+                        
+                    </li>
+                    <li>
+                        <a href="#" onclick="멍멍('2AKsAxrhqgM')">
+                            <img src="./images/m12.jpg" alt="드래곤 길들이기">
+                            <!-- 영화정보 -->
+                            <ol class="movtxt">
+                                <li>드래곤 길들이기</li>
+                                <li>투슬리스</li>
+                                <li>히컵</li>
+                            </ol>
+                        </a>
+                        
+                    </li>
+                </ul>
+            </nav>
+        </main>
+    </div>
+
+    <!-- 3. 하단영역 -->
+    <div id="info">
+        <footer class="info ibx">
+            <!-- 3-1. 회사정보 -->
+            <address>
+                <img src="./images/blogo.png" alt="하단 로고">
+                <span>
+                    (04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동) <br>
+                    대표이사 : 최병환사업자등록번호 : 104-81-45690통신판매업신고번호 : 2017-서울용산-0662 <br>
+                    개인정보보호 책임자 : 정종민대표이메일 : cjcgvmaster@cj.netCGV고객센터 : 1544-1122
+                </span>
+            </address>
+            <!-- sns메뉴 -->
+            <ol class="sns fbx">
+                <li>
+                    <a href="#" title="페이스북 바로가기">
+                        <span class="ir">
+                            페이스북 바로가기
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="트위터 바로가기">
+                        <span class="ir">
+                            트위터 바로가기
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="인스타그램 바로가기">
+                        <span class="ir">
+                            인스타그램 바로가기
+                        </span>
+                    </a>
+                </li>
+            </ol>
+        </footer>
+    </div>
+</body>
+</html>
