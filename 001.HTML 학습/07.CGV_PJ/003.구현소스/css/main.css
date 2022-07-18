@@ -52,18 +52,181 @@ body * {
 /* 1-2. GNB */
 .gnb { /* 얘는 위치이동만 해줄거임 */
     position: absolute; /* 부모는? .top */
-    bottom: 5px;
+    bottom: 5px; /* 상위메뉴 li에 패딩 바텀 5px 줄거라 5px만 있어도 될듯 */
     right: 15px;
+    z-index: 99; /* main영역보다 위! */
 }
 /* gnb의 ul */
 .glist {
     display: flex;
+    position: relative;/* 빔줬을 때 이벤트 컬쳐가 안 눌려,, z-index 줘야해서.. relative 줘야함.. 영사기 위에 와야하기 때문에 누를 수 있으려면...*/
+    z-index: 1;
 }
 /* gnb li 리스트 */
 .glist>li { /* > 쓴 이유는 하위 li를 더 쓸거라서 상위 li 지칭해주기 위해 */
+    position: relative;
+    /* 부모자격 smenu의! */
     font-family: 'Jua', sans-serif;
     font-size: 20px;
     padding: 0 10px;
+    padding-bottom: 5px; /* sub메뉴와 이어지게 하기 위해~~ 하단 공간 확장~~ */
+}
+
+/* gnb 서브 메뉴 */
+.smenu {
+    position: absolute;
+    left: 50%;
+    /* 이러면 영화~~이벤트 컬쳐를 부모로 봄 그래서 li에 부모를 또 줘야겠지@@@!!
+    부모는 glist li! */
+    transform: translate(-50%, 5px); /* 가로방향 중앙이동, 세로 5px 이동 */
+    width: 140px;
+    background: url(../images/bg_smenu.png) no-repeat center/cover;
+    padding: 3px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #fff;
+    /* 처음에 안보임 */
+    display: none;
+
+    /* 
+    overflow: hidden; height:0; time,,? 이렇게 하는건 애니메이션 줄 때 부드럽게 나타나게 하기 위해서....
+    */
+}
+
+/* 상위메뉴 오버시 서브메뉴 보임 */
+.glist>li:hover .smenu {
+    display: block;
+}
+
+/* 가상요소로 서브메뉴 삼각형 만들기 */
+.smenu::before {
+    content: '';
+    display: block; /* div처럼 쓰겠다~~ 물론 앱솔루트를 주면 블록이 돼...? */
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* 삼각형 만들기 */
+    width: 0;
+    height: 0;
+    /* width, height가 없으면 보더는 튀어나간대 */
+
+    border-bottom: 10px solid #353535;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    /* 양쪽을 투명하게 하면 삼각형이 나옴,, 역삼각형은 보더 탑!!! */
+
+}
+
+/* 서브메뉴 ol */
+.smenu ol {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+/* 서브메뉴 li */
+.smenu li {
+    font-size: 16px;
+    line-height: 2;
+    /* 50프로 오른쪽으로 밀고, 자기크기만큼 - 50% X 트랜스폼.. ? 왼쪽으로 오면!! 중간에 올 수 있겠지!! */
+}
+
+/* 서브메뉴 a 요소 */
+.smenu a {
+    display: block; /* li 요소를 ol박스? smenu 박스 영역 끝까지 차지하게 해주려고!! 이거 안 줬을 때는 글자크기 까지만 영역이었음 */
+}
+
+/* 서브메뉴 li에 마우스 오버시 글자색 빨강 */
+.smenu a:hover {
+    color: black;
+    text-shadow: 1px 0 1px #fff, 0 1px 1px #fff, -1px 0 1px #fff, 0 -1px 1px #fff;
+}
+/* 서브메뉴 a에 오버시 가상요소로 이모지 보이기 */
+/* 이모지 단축키 = 윈도우키 + 세미콜론 혹은 온점 */
+/* 영화 하위 메뉴 이모지 */
+.glist > li:nth-child(1) .smenu li a:hover::after {
+content: '🎬';
+float: right; /* inline 요소.. */
+}
+/* 예매 하위 메뉴 이모지 */
+.glist > li:nth-child(2) .smenu li a:hover::after {
+    content: '💸';
+    float: right; /* inline 요소.. */
+    }
+/* 극장 하위 메뉴 이모지 */
+.glist > li:nth-child(3) .smenu li a:hover::after {
+    content: '🍿';
+    float: right; /* inline 요소.. */
+    }
+/* 이벤트 하위 메뉴 이모지 */
+.glist > li:nth-child(4) .smenu li a:hover::after {
+    content: '🎁';
+    float: right; /* inline 요소.. */
+    } 
+
+/* 서브메뉴 중 li 보더탑 구분선 class */
+.bdt {
+    border-top: 1px solid #ccc;
+}
+
+/* 영사기 박스 */
+#cam {
+    position: absolute;
+    bottom: -9px;
+    right: -61px;
+    /* z 겹칠 수 있는 포지션... static만 아니면 돼 */
+}
+
+/* 영사기 이미지 */
+#cam img {
+    position: relative;
+    z-index: 1;/* 빔박스 보다 위.. 포지션이 static이 아니여야 적용됨~ */
+    width: 50px;
+
+    /* 영사기 회전 */
+    transform: rotate(25deg);
+    /* 트랜지션 속시이지 돌아올 때 .3초 지연 */
+    transition: .5s ease-out .3s;
+}
+/* gnb에 마우스 오버시 영사기 회전하기 */
+.gnb:hover #cam img {
+    transform: rotate(0);
+    /* 오버시엔 트랜지션 지연시간 없음.. */
+    transition-delay: 0s;
+}
+
+
+/* 빔박스 */
+.beam {
+    position: absolute;
+    top:-16px;
+    right: 9px;
+    width: 0; /* 오버시 200px */
+    height: 70px;
+    /* outline: 1px dotted yellow; */
+    background: url(../images/bim.png) no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+
+    /* transition */
+    transition: width .3s linear;
+}
+/* gnb에 마우스 오버시 */
+.gnb:hover .beam {
+    width: 200px;
+    /* 트랜지션 지연시간 셋팅 */
+    transition-delay: .5s; /* 마우스 아웃했을 때 느리게 회수 될 필요없잖아
+    그래서 호버시에 지연시간 주고 돌아갈 때는 지연시간 없게!~!! */
+    animation: beamAni .04s linear infinite alternate ;
+}
+
+/* 빔 지직지직 효과 애니메이션 키프레임 */
+@keyframes beamAni {
+    from {
+        opacity: .9;
+    }
+    to {
+        opacity: .5;
+    }
 }
 
 /****************************** 2. 메인영역 ******************************/
@@ -194,6 +357,32 @@ outline: 1px solid aqua; /* 오후2교시거 확인 설명 확인~!~~~~!~! */
     color: aqua;
     font-size: min(1.5vw,17px);/* 글자 최대 17px, 화면 가로의 1.5% */
     letter-spacing: -1px;
+}
+
+/* 영화보러 가는 길 */
+.goMV {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 144px;
+    height: 80px;
+    outline: 1px dashed yellow;
+    
+}
+/* 글자 커버 */
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../images/curtain.jpg) no-repeat;
+    /* 글자설정 */
+    font-family: 'Cute Font', sans-serif;
+    color: #fff;
+    font-size: 20px;
+    line-height: 80px;
+    text-align: center;
 }
 
 /****************************** 3. 하단영역 ******************************/
