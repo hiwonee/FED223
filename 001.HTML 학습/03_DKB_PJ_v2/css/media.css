@@ -93,9 +93,9 @@
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 9;
+            z-index: 999;
             width: 100vw;
-            height: 100vh;
+            height: 150vh;
             background-color: #000000b3;
             /* 처음엔 안보임!!! */
             display: none;
@@ -131,10 +131,29 @@
         }
 
         /* 11. GNB메뉴 보이기 */
-        .top.on .gnb {
+        body.on .top .gnb {
             display: block;
         }
         
+        /* 12. 캐릭터 박스 GNB 메뉴 보일 때 아래로 내리기.. - 트랜스폼 애니메이션으로 위치 위로 올라옴.. 트랜스폼 줄 때 그럴 때가 있음.. */
+        body.on .cat {
+            z-index: -1;
+        }
+
+        /* 13. GNB메뉴 보일 때 스크롤 없앰!! */
+        body.on {
+            overflow: hidden;
+        }
+
+        /* 14. 도깨비 문구 없앰! */
+        .dtxt {
+            display: none;
+        }
+
+        /* 15. 배경이미지 타이틀 없애기 */
+        body {
+            background: url(../images/bg_mainvisual.jpg) no-repeat fixed center/cover;
+        }
     }
 
 /* ***************************870px 이하 끝*************************** */

@@ -16,8 +16,33 @@ body {
     url(../images/bg_mainvisual.jpg) no-repeat fixed center/cover;
 }
 
+/* body의 가상요소로 인트로 애니동안 화면 가리기 */
+body::after {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    /* background-color: #fff; */
+    animation: delCover .1s 6s forwards;
+}
+
+/* 가림막 사라지기 애니 키프레임 */
+@keyframes delCover {
+    to {
+        height: 0;
+    }
+} /* 키프레임 */
+
 /* 메인영역 */
 .cont {
+    /* position: relative;
+    overflow: hidden; */ /* 오버플로우 히든을 주기 위해 relative 자격을 줌!!
+    안돼안돼안돼!!! 애니메이션이 이상해져 */
+
         /* 상단 패딩: 첫번째 요소 위치밀기의 기본!!
     첫번째 요소의 margin-top으로 위치를 이동할 경우 부모요소 바깥으로 마진이 나감..
     원래 디자인된 속성임,, 마진을 포함하려면 overflow: hidden;을 주면 포함되지만,
@@ -44,6 +69,39 @@ body {
     clear: both;
 } 이걸 만약 안하면 cbx의 높이가 0이야 0!!  */
 
+/* 드라마 문구 이미지 박스 */
+.dtxt {
+    position: absolute;
+    top:  20vh;
+    right: 0;
+    /* 부모는? 보이는 화면 */
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+
+    /* outline: 2px dotted fuchsia; */
+}   
+
+/* 드라마 문구 이미지 */
+#dtxt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    opacity: 0;
+    
+    animation: dtxtAni 3s ease-in-out forwards;
+}
+
+/* 드라마 텍스트 키프레임 */
+@keyframes dtxtAni {
+    to {
+        top: 0;
+        left: 0;
+        opacity: 1;
+    }
+} /* 키프레임 */
+
 /* 캐릭터 개별 박스 공통 */
 .cat {
     position: relative;
@@ -54,6 +112,27 @@ body {
     /* 블록 요소 옆으로 흐르게! */
     /* float: left; *//* 나는 왼쪽! 너는 오른쪽에 와~~ */
     padding-bottom: 10px;
+
+    /* 처음에 위로 올라가서 안 보임 */
+    transform: translateY(-600%);
+    /* 애니메이션: 이시이지반방마 */
+    animation: catAni 2s ease-out 1s forwards;
+}
+/* 캐릭터 박스 별 애니메이션 지연시간 차이 주기 */
+.cat:nth-child(2) {
+    animation-delay: 1.5s;
+}
+.cat:nth-child(3) {
+    animation-delay: 2s;
+}
+.cat:nth-child(4) {
+    animation-delay: 2.5s;
+}
+/* 캐릭터 박스 키프레임 */
+@keyframes catAni {
+    to {
+        transform: translateY(0);
+    }
 }
 
 /* 하위 캐릭터 이미지 */

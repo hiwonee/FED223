@@ -24,6 +24,18 @@ body * {
     background-color: #fff;
     /* 하단 구분선 */
     border-bottom: 1px solid rgb(182, 182, 182);
+    /* 처음에 위로 올라가서 안 보임 */
+    /* 자신의 높이 값만큼 위쪽 방향으로 이동! */
+    transform: translateY(-100%);
+    /* 애니메이션 : 이시이지반방마 - 캐릭터 애니 시간 이후 등장하기 2s지속시간 + 마지막 애니 2.5s */
+    animation: topAni 1s ease-out 4.5s forwards;
+}
+/* 상단 영역 키프레임 */
+@keyframes topAni {
+    to {
+        transform: translateY(0%);
+    }
+    
 }
 
 /* 속박스 */
@@ -230,11 +242,12 @@ body * {
     content: '≡';
 }
 /* GNB메뉴 보이는 상태일 때 햄버거 버튼 */
-.top.on .ham {
-    transform: translateY(-50%) scaleX(1);
+body.on .top .ham {
+    transform: translateY(-50%) scaleX(1.2);
     color: #fff;
+    z-index: 999;
 }
-.top.on .ham::before {
+body.on .top .ham::before {
     content: '⨉';
 }
 /* ***********************메인영역*********************** */

@@ -127,12 +127,16 @@
             </nav>
 
             <!-- 햄버거버튼 -->
-            <button class="ham" onclick="document.querySelector('.top').classList.toggle('on')"></button><!-- on은 클래스 줬던거 그 on임!!!!!!! -->
+            <button class="ham" onclick="document.body.classList.toggle('on')"></button><!-- on은 클래스 줬던거 그 on임!!!!!!! -->
         </header>
     </div>
     <!-- 2. 메인영역 -->
     <div id="cont">
         <main class="cont">
+            <!-- 드라마 문구 이미지 -->
+            <div class="dtxt">
+                <img src="images/dkb_main.png" id="dtxt" alt="도깨비문구" >
+            </div>
             <!-- ibx 클래스도 줬지만, 필요없음 그래서 뺌 -->
             <!-- 캐릭터박스 -->
             <div class="cbx fbx fxw"><!-- fxw 중요.. wrap 박스.. -->
