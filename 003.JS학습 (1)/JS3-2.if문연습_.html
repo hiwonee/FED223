@@ -80,7 +80,7 @@
             btns[i].onclick = function(){
              // 버튼 데이터 (텍스트) 가져오기
              //  this 키워드는 이벤트 걸린 요소자신!!!
-             let btxt = this.innerText;
+             let btxt = this.innerText; /* this 대신 btns[i] 써도 가능! */
              console.log(btxt);
 
              // 이미지 경로
@@ -93,6 +93,16 @@
              else if(btxt==="장면3") isrc="./images/ala3.jpg";
 
              console.log("경로:",isrc);
+
+             // 3. 이미지 변경하기
+             // 대상: #scene -> scene 변수
+                scene.setAttribute("src",isrc);
+                // setAttribute(속성명, 속성값)
+                // -> 속성을 변경하는 JS내장함수
+                // 참고) 속성값을 가져오는 것은 getAttribute(속성명)
+
+             // 속성명으로 직접 변경하는 방법  
+             //  scene.src = isrc;
 
             };////////click/////////
            }////////for///////////////////
