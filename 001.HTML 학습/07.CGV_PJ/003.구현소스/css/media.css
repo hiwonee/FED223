@@ -3,16 +3,16 @@
 /* CGV PJ 미디어 쿼리 */
 
 /************* 미디어 쿼리 1310px 이하 시작 *************/
-@media screen and (max-width: 1310px) {
+@media screen and (max-width: 1325px) {
     .gnb {
-        right: 70px;
+        right: 100px;
     }
 }/************* 미디어 쿼리 1310px 이하 끝 *************/
 
 
 /************* 미디어 쿼리 1050px 이하 시작 *************/
-@media screen and (max-width: 1050px) {
-
+@media screen and (max-width: 1070px) {
+    
     /* GNB 메뉴리스트 */
     .glist {
         position: absolute;

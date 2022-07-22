@@ -64,10 +64,10 @@ body {
 
 /* GNB ul */
 .glist {
+    display: flex;
     position: relative;
     z-index: 1;
     /* 영사기 보다 위! */
-    display: flex;
 }
 
 /* GNB li 리스트 */
