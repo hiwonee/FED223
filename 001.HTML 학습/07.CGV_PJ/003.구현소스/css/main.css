@@ -10,10 +10,9 @@ body {
 }
 
 /* 공사 중 표시 */
-body * {
+/* body * {
     /* outline: 1px dotted lime;  */
-    /* 바디 아래 모든 요소 */
-}
+    /* 바디 아래 모든 요소 }*/
 
 /* 공통 클래스 */
 .ibx {
@@ -39,7 +38,7 @@ body * {
     /* 그림자를 이용한 GLOW 효과 */
     text-shadow: 0 0 4px aquamarine;
     /* 애니메이션 : 이시이지반방마 */
-    animation: titAni .7s ease-in infinite alternate;
+    animation: titAni .5s ease-in infinite alternate;
 }
 
 /* 타이틀 글로우 효과 애니메이션 키프레임 */
@@ -54,7 +53,7 @@ body * {
     position: absolute; /* 부모는? .top */
     bottom: 5px; /* 상위메뉴 li에 패딩 바텀 5px 줄거라 5px만 있어도 될듯 */
     right: 15px;
-    z-index: 99; /* main영역보다 위! */
+    z-index: 999; /* main영역보다 위! */
 }
 /* gnb의 ul */
 .glist {
@@ -189,7 +188,7 @@ float: right; /* inline 요소.. */
 }
 /* gnb에 마우스 오버시 영사기 회전하기 */
 .gnb:hover #cam img {
-    transform: rotate(0);
+    transform: rotate(0deg);
     /* 오버시엔 트랜지션 지연시간 없음.. */
     transition-delay: 0s;
 }
@@ -395,6 +394,8 @@ float: right; /* inline 요소.. */
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
+    /* 애니보다 위! */
     background: url(../images/curtain.jpg) no-repeat;
     /* 글자설정 */
     font-family: 'Cute Font', sans-serif;
@@ -420,8 +421,6 @@ float: right; /* inline 요소.. */
     box-sizing: border-box; 
     /* 움찔 튀기지 않게?? 뭘까,, */
 
-    z-index: 1;
-    /* 애니보다 위! */
 }
 
 /* 오버시 x축 회전하기 + 클래스 on 일때 x축회전하기*/
@@ -603,10 +602,10 @@ float: right; /* inline 요소.. */
     height: 450px;
     border: 20px solid rgb(74, 102, 75);
     border-radius: 10px;
-    z-index: 999;
+    z-index: 99999;
 
     /* 트랜지션 */
-    transition: top .6s ease-out;
+    transition: top .8s cubic-bezier(0, 0, 0.36, 1.5);
 }
 
 /* 클래스 on 위치 이동*/
@@ -636,7 +635,9 @@ float: right; /* inline 요소.. */
     color: #c3c3c3;
     font-style: normal; /* address 기본 italic 해제 */
     font-family: 'Cute Font', cursive;
+    font-size: 18px;
     line-height: 20px;
+    /* 안쪽 여백 */
     padding-top: 20px;
     padding-left: 20px;
 }
@@ -675,13 +676,13 @@ float: right; /* inline 요소.. */
 
 /* 페이스북 */
 .sns li:first-child {
-    background-position: -509px -429px;
+    background-position: -509px -428px;
 }
 /* 트위터 */
 .sns li:nth-child(2) {
-    background-position: -551px -429px;
+    background-position: -551px -428px;
 }
 /* 인스타 */
 .sns li:nth-child(3) {
-    background-position: -593px -429px;
+    background-position: -593px -428px;
 }

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> 태그 선택자 </title>
+  <!-- 가장 먼저!!!!!!!!!! 제이쿼리 라이브러리를 불러온다!! 그 아래에서 제이쿼리
+    코딩한다!!! 순서 아주 중요~~!~!~!~! -->
+  <script src="jquery-3.6.0.min.js"></script>
+
+  <script>
+    // 제이쿼리 로드 구역 만들기
+    // jQuery(document).ready(function(){코드})
+    
+    //오리지널 코드
+    // $(document).ready(function(){코드})
+    
+    // 축약코드
+    // $(function(){코드})
+    
+    // 완전축약
+    // $(()=>{코드})
+    
+    $(()=>{ ////////////////// jQB ///////////////////////////////////
+      // $('h2') 
+      /* querySelector해주는 것임 querySelectorAll로 가져가 집합으로 알아서 for of문 돌리는것임*/
+      /* $('h2'). *//* .이 모야 속성,,, 객체에서 점이 속성,,?? */
+      $('#container').click(()=>{
+
+        $('h2').css({
+          /* fontSize */ /* 변수형 */
+          fontSize: "50px",
+          transition: "2s",
+          color: "blue",
+          transform: "rotateY(720deg)"
+        }) /* 아이디가 container인 태그를 클릭하면! h2의 css를 ~~게 해주세요. */
+        /* .each((ele,idx)=>{
+          ele.css({
+            transitionDelay:100*idx+"s"
+          })
+        }) */
+      }); ////////// 클릭 구역 ///////////////////
+    }); ///////////////////////////// jQB ///////////////////////////
+  </script>
+
+
+
+
+</head>
+
+<body>
+
+  <h1>나의 첫번째 제이쿼리!!!</h1>
+  <div id="container">
+    <header>
+      <h2> 여기를 클릭!!! </h2>
+      <h2> 여기를 클릭!!! </h2>
+      <h2> 여기를 클릭!!! </h2>
+      <h2> 여기를 클릭!!! </h2>
+      <h2> 여기를 클릭!!! </h2>
+    </header>
+
+    <nav>
+      <ul class="list">
+        <li id="first">One</li>
+        <li id="second">Two</li>
+        <li id="third">Three</li>
+      </ul>
+    </nav>
+
+  </div>
+
+</body>
+
+</html>

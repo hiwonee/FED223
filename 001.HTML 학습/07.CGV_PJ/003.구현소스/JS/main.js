@@ -6,6 +6,63 @@ window.addEventListener("DOMContentLoaded",()=>{
 
     //1. 실행 확인 호출확인
     console.log("로딩완료!");
+
+    //////////////////////////////////////////////////////
+    //// 포스터 메뉴 클릭시 예고편 변경 및 클래스 on 주기 /////
+    ////////////////////////////////////////////////////////
+
+    // 영화정보 셋팅하기
+    const minfo = [
+        //닥터스트레인지
+        "mI9oyFMUlfg",
+        // 쥬라기 월드 : 도미니언
+        "sotCKQl2iQY",
+        // 브로커
+        "DpVAb7Bi5UQ",
+        // 범죄도시2
+        "aw9j_23nORs",
+        // 몬스터싱어
+        "wXWiVmTEzkA",
+        // 스파이더맨:노웨이홈
+        "W7edvITC9g4"
+    ]; /////// minfo 배열 ///////
+
+    // 대상선정 : .mlist a (포스터 메뉴 a링크)
+    const mlist = document.querySelectorAll(".mlist a");
+    // console.log(mlist);
+    // console.log(mlist);
+    // node라고 한대 가지를...?? 프로토타입,,,개수를,,???
+
+    // 대상 선정 (포스터 메뉴 최상위 li만):      * 잘 선택해야함.. 왜냐면 ol 밑 li도 있거든
+    // 
+    const mli = document.querySelectorAll(".mlist > ul > li");
+
+    // 대상 컬렉션의 개수만큼 돌면서 예고편 변경함수 (멍멍함수) 호출
+    mlist.forEach((ele,idx)=>{
+        //ele 요소, idx 순번
+        //  각 요소에 click 이벤트 설정!!!
+        ele.onclick = ()=>{
+            // console.log(minfo[idx]);
+            // 멍멍함수 호출! -> 예고편 변경
+            멍멍(minfo[idx]);
+
+            // 모든 li 요소의 클래스 지우기 (( 아래 parent어쩌구 주니까 누르면 일어나
+            // 있는데, 다 누르면 다 일어나 있어서 지워야해!!))
+            // 일괄제거!!!!
+            mli.forEach((eli)=>eli.classList.remove("on"));
+            // eli는 최상위 li
+            // 값 하나 쓰니까 나, 나, 나, 나, 이렇게 forEach가 돌아준다고...
+
+            // 클릭된 요소 부모(li)에 클래스 on넣기
+            ele.parentElement.classList.add("on");
+
+            // ele.parentElement -> a 자신의 부모요소로 이동!
+            // console.log(ele.parentElement);
+
+
+        }; ///// click ////// /* 할당 */
+    });
+
     
     ///////////////////////////////////////////
     //클릭시 극장가는 길 클릭시 구글맵 보이기///
