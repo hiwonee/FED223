@@ -5,33 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGV에 오신 것을 환영합니다!</title>
     <link rel="stylesheet" href="css/main.css">
-    <!-- JS코딩구역 -->
-    <script>
-        /* ***********************************************************
-        함수명 : 멍멍
-        기능 : 포스터 메뉴 클릭시 유튜브 iframe src 속성값 변경하여 영화바꾸기!!
-        *********************************************************** */
-       function 멍멍(먹이){// 함수값은 소괄호로 불른다?? 먹이 - 전달값을 담는 변수
-        // 1. 호출 및 전달값 확인!!!! 먹이는 그릇
-        console.log("먹이줘",먹이); //이 안에서 멍멍을 부르면 뭐가 뜨나 확인 먹이라는 그릇에 닥스, 등등이 뜨겠지!!!!
-        // 먹이 변수에 영화 고유코드를 담는다!!
-
-        // 2. 변경 대상 : 아이프레임 -> #screen iframe
-        var 아이 = document.querySelector('#screen iframe');
-
-        // 3. 변경내용 : 아이프레임의 src 속성값 변경하기!
-        아이.src = "https://www.youtube.com/embed/"+먹이+"?autoplay=1"; /* 3번째 수업 다시 듣기!@@! */
-        // 이퀄(=)을 만나는 순간 이퀄 오른쪽의 값을 만든 후 왼쪽의 변수나 속성에 값을 넣는다!!!!!!!!
-
-        /* 아이.style.border = 100px solid lime"; */
-
-        // 전달 변수 먹이 에 담긴 값을 다른 문자 값과 합쳐서 하나의 문자로 만들어 준다!!!
-        // +는 문자를 합치는 연산자!!!!
-    
-
-       }///////////////멍멍 함수 /////////////////////////////////////////////
-       //////////////////////////////////////////////////////////////////////
-    </script>
+    <script src="../003.구현소스/JS/main.js"></script>
 </head>
 <body>
     <!-- 1. 상단영역 -->
@@ -124,7 +98,28 @@
             </nav>
             <!-- 극장 가는 길 애니 박스 셀 애니 -->
             <div class="goMV">
+                <!-- 커버 -->
                 <div class="cover">극장가는 길</div>
+                <!-- 애니박스 - 배경이 움직일것 -->
+                <div class="anibx">
+                    <!-- 걷는 애니 걷는 소년 -->
+                    <div class="ani">
+                        <span class="ir">걷는소년</span>
+                    </div>
+                    <!-- 몬스터 애니 -->
+                    <div class="ani2">
+                        <span class="ir">몬스터</span>
+                    </div>
+                    <!-- 마리오 애니 -->
+                    <div class="ani3">
+                        <span class="ir">마리오</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 구글맵박스 -->
+            <div class="gmap">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50625.98590500533!2d127.02928808107761!3d37.528571347795776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca158f52f0673%3A0x7e2247a87da80045!2zQ0dWIOqwleuCqA!5e0!3m2!1sko!2skr!4v1658455786276!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="#" class="cbtn">×</a>
             </div>
         </header>
     </div>
