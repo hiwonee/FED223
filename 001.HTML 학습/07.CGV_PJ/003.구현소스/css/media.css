@@ -61,6 +61,15 @@
         position: static; /* 이걸 줘서 아래로 했나,, */
         justify-content: center; /* flex를 줬기 때문에!! */
     }
+    /* 영화정보 박스 */
+    .movtxt {
+        font-size: 4.5vw;
+        line-height: 1.5;
+    }
+    /* 첫번째 li 영화제목 */
+    .movtxt li:first-child {
+        font-size: 4.5vw;
+    }
 
 }/************* 미디어 쿼리 780px 이하 끝 *************/
 
