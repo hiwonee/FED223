@@ -5,6 +5,10 @@
 <title> ID 선택자  </title>
 <!-- jQuery library -->
 <script src="jquery-3.6.0.min.js"></script>
+<!-- 제이쿼리 UI - 추가 개발한 ,, 추가기능 플러그인 색상애니메이션, 이징(가속도) , 드래그 기능등
+https://jqueryui.com/-->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
 <script>
 
       
@@ -14,23 +18,65 @@
             // 이어서 메서드를 계속 사용할 수 있다!
             // 이것을 메서드 체인이라고함!
             // 주어가 하나임! 나는 밥을 먹고 공부를 했다!
+
+
+            //애니메이션 전용 메서드 ->>>>> animate()
+            // animate({CSS설정}, 시간, 이징, 함수)
+            // CSS설정 - CSS요소변경
+            //여기서 함수는 끝나고 나서 콜백함수, 시간은 기본적으로 400(.4s)있음 안써도 괜츈
+            //시간 - 1/1000초 (단위 안씀)
+            //이징 - 제이쿼리전용 이징 (https://easings.net/ko)
+                  //  이징은 반드시 제이쿼리 UI가 필요함!!
+            // 함수 - 콜백함수 (애니메이션 끝난 후 실행함수)
+            // animate에서는 트랜지션 안 줌!!!!
             
             // 미션: h2태그를 클릭하면
-           
-                  
-            // 아이디가 #sub 는 글자를 "이승기"로 바꾸고
-            // 배경노란색, 글자색파랑,보더1px solid green,
-            // 글자크기 42px, 트랜지션 0.8초
-            
-            
+           $("h2").click(()=>{
+             // 아이디가 #sub 는 글자를 "이승기"로 바꾸고
+             // 배경노란색, 글자색파랑,보더1px solid green,
+             // 글자크기 42px, 트랜지션 0.8초
+            $("#sub").text("이승기")
+            .css({border: "0px solid transparent"})
+            .animate({
+              backgroundColor: "yellow",
+              color: "blue",
+              fontSize: "42px",
+              borderWidth: "1px",
+              borderColor: "green"
+            },800);
+
             // 아이디가 #main 는 글자를 "공유"로 바꾸고
             // 배경파랑, 글자색흰색,보더3px solid yellow,
             // 글자크기 52px, 트랜지션 0.8초 -> 1초후
-          
+            $("#main").text("공유")
+            .css({border: "0px double transparent"})
+            .delay(1000)
+            .animate({
+              backgroundColor: "blue",
+              color: "white",
+              fontSize: "52px",
+              borderWidth: "4px",
+              borderColor: "#9ec0db"
+              
+            },800);
 
             // 아이디가 #total 는 글자를 "싸랑해요~!"로 바꾸고
             // 배경검정, 글자색빨강,보더2px solid purple,
             // 글자크기 152px, 트랜지션 0.8초 -> 2초후
+            $("#total").text("사랑해요♥")
+            .delay(2000)
+            .animate({
+              backgroundColor: "black",
+              color: "#ff9622",
+              fontSize: "152px"
+            },800);
+
+           }); ////////////// CLICK /////////////
+                  
+            
+            
+          
+
             
 
 
