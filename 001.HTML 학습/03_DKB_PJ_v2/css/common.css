@@ -21,6 +21,9 @@ body * {
 /* 겉박스 */
 #top {
     position: relative;
+    z-index: 9999;
+    /* 모바일 모드에서 회원가입이나 로그인할 때 위로 올라오는 하단 박스보다 위에 오게 하느라구
+    이해 안가면 해지후 봐봐 모바일 GNB메뉴 때문!!!! */
     background-color: #fff;
     /* 하단 구분선 */
     border-bottom: 1px solid rgb(182, 182, 182);
