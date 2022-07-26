@@ -75,6 +75,7 @@ body * {
     position: absolute;
     top:-50px;
     right: 0;
+    /* 부모는? .tmenu */
 }
 
 /* 탑메뉴 상위 li */
