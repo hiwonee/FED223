@@ -1,248 +1,228 @@
 // 쇼핑몰 배너 JS - 02.세로방향 배너 슬라이드 //
 
-// HTML태그 로딩후 loadFn함수 호출! ///
-window.addEventListener("DOMContentLoaded", loadFn);
+    ////////// 제이쿼리 블록 ///////////////////////////
+    $(()=>{
 
-/***************************************************** 
-    [ 슬라이드 이동 기능정의 ]
-    1. 이벤트 종류: click
-    2. 이벤트 대상: 이동버튼(.abtn)
-    3. 변경 대상: 슬라이드 박스(#slide)
-    4. 기능 설계:
+        // 0. 호출확인
+        console.log("로딩완!");
 
-        (1) 오른쪽 버튼 클릭시 다음 슬라이드가
-            나타나도록 슬라이드 박스의 top값을
-            -100%로 변경시킨다.
-            -> 슬라이드 이동후!!! 
-            바깥에 나가있는 첫번째 슬라이드
-            li를 잘라서 맨뒤로 보낸다!
-            동시에 top값을 0으로 변경한다!
+        /*************************************************************** 
+        [세로방향 배너 요구사항] .. flex 줘서 fdcolumn 줘서 아래로 내려갔거든.. 오른쪽 사진이
 
-        (2) 왼쪽버튼 클릭시 이전 슬라이드가
-            나타나도록 하기위해 우선 맨뒤 li를
-            맨앞으로 이동하고 동시에 top값을
-            -100%로 변경한다.
-            그 후 top값을 0으로 애니메이션하여
-            슬라이드가 왼쪽에서 들어온다.
+        1. 아랫쪽 버튼을 클릭시 배너는 아랫쪽에서 윗쪽으로 이동하여 다음 슬라이드가 보임!!
+        2. 윗쪽 버튼 클릭시 배너는 윗쪽에서 아랫쪽 방향으로 이동하여 이전 슬라이드가 보임.
+        3. 모든 배너는 무한 이동을 원칙으로 함.
+        4. 배너 이동시 배너의 순번을 블릿으로 표시한다.
+           1) 슬라이드 이미지 태그에 특정 값을 넣어서 그 값을 읽게 하기 - !!! data-!!!!
+           2) 영상보기,, 영상있나,,,
+        5. 자동 넘김이 세팅되어 있으며 사용자가 조작시 자동넘김이 멈춰지고 일정시간 놔두면 다시 자동넘김이 작동함.
 
-        (3) 공통기능: 슬라이드 위치표시 블릿
-            - 블릿 대상: .indic li
-            - 변경 내용: 슬라이드 순번과 같은 순번의
-            li에 클래스 "on"주기(나머진 빼기->초기화!)
+        ***************************************************************/
 
-*****************************************************/
+        // 1. 무조건 클릭시 이동되게 해보기
+        // 이벤트 대상: .abtn
+        // 이벤트 : click() 메서드 사용
+        // 양쪽 버튼 구분 : .ab1(왼쪽) / .ab2(오른쪽버튼)
+        // 변경대상: #slide
+        // 변경내용: slide의 left값을 이동하여 애니메이션 함
+        let slide = $("#slide");
 
-/****************************************** 
-    함수명: loadFn
-    기능: 로딩 후 버튼 이벤트 및 기능구현
-******************************************/
-function loadFn() {
+        // 변경에 사용할 제이쿼리 메서드 : animate({CSS 속성},시간,이징,함수)
+        
 
-    // 1. 호출확인
-    // console.log("로딩완료!");
+        // 변경 대상: 블릿!! 블릿 - .indic li
+            let indic = $(".indic li");
 
-    // 2. 변경 대상: 
-    // (1) 슬라이드 박스(#slide)
-    const slide = document.querySelector("#slide");
-    // console.log("슬라이드:",slide);
+        // 광클 금지 상태 변수
+        let prot = 0; // 1-불허용, 0- 허용 0이 false, 1이 true잖아
 
-    // (2) 블릿박스 li(.indic li)
-    const indic = document.querySelectorAll(".indic li");
-    // console.log("블릿:",indic);
+        // 애니메이션 시간 변수
+        const aniT = 600;
 
-    // 2.5. 변경 대상 li에 순번 속성넣기!
-    // -> 넣는 이유: li가 이동하여 순서가 바뀌므로
-    // 블릿버튼 순번을 표시할때 고유한 순서번호가 필요함!
-    // 내가 만드는 속성은 반드시 "data-"로 시작하도록 W3C에서 정함!
-    // 순번속성명은 "data-seq"로 정하기로함!
-    let setSeq = slide.querySelectorAll("li");
-    // for(시;한;증){코드}
-    for (let i = 0; i < setSeq.length; i++) {
-        setSeq[i].setAttribute("data-seq", i);
-        // 각 li마다 새로운 속성인 "data-seq"에
-        // 순서대로 0부터 값을 넣어준다!
-    } /////////// for //////////////////
+        // 애니메이션 이징 변수
+        const aniE = "easeOutQuint";
 
-    // 3. 이동버튼에 클릭이벤트 설정
-    // 이동버튼요소
-    const abtn = document.querySelectorAll(".abtn");
-    // console.log("이동버튼:",abtn);
-
-    // 광클금지용 변수
-    let prot = 0; // 0-허용, 1-금지
-
-    // 버튼개수만큼 for of로 클릭이벤트설정
-    for (let x of abtn) { // x는 a요소자신
-
-        x.onclick = () => {
-
-            // console.log("광클막기:",prot);
-
-            ///////// 광클금지 /////////
-            if(prot) return false; //돌아가! 
+        $(".abtn").click(function(){
+            // console.log("진입",prot);
+            
+            // 광클금지
+            if(prot) return; /* prot가 true냐?? */
             prot = 1; //잠금!
-            setTimeout(()=>prot=0,410);
-            // 타임아웃으로 슬라이드이동 후
-            // 잠금설정을 prot=0으로 해제
-            ////////////////////////////
+            setTimeout(()=>prot=0,aniT) /* 한번만,,, 0.6초후 prot=0으로 잠금해제..*/
 
-            /// 인터발 지우기 함수 호출!
+            // console.log("통과",prot);
+
+            // 자동 넘김 지우기 함수 호출!
             clearAuto();
 
-            // 1. 오른쪽버튼 여부
-            let isR = x.classList.contains("ab2");
-            // console.log(".ab2인가?",isR);
-            // classList.contains(클래스명)
-            // -> 지정클래스가 있으면 true리턴
+            // 1. 아랫쪽 여부
+            // is(클래스/아이디명)-> 선택요소의 해당여부 리턴
+            let isR = $(this).is(".ab2");
+            // 호출확인(방향확인)
+            // console.log("오른쪽 버튼인가?", isR );
+            // console.log("오른쪽 버튼인가?", $(this).is(".ab2"));
+                // is메서드 x .is y x가 y인가 
+            
+            // 2. 버튼별 분기하여 기능구현
 
-            // 2. 오른쪽/왼쪽버튼 분기하기
-            if (isR) { // 오른쪽버튼 ///
+            if(isR){// 아랫쪽 버튼
+                slide.animate({top:"-100%"},//css 설정
+                aniT,//시간
+                aniE,//이징
+                function(){ /* 이동 후 실행 함수 refunction,,재실행,, */
+                    // append(요소) 
+                    // -> 요소를 자식요소로 맨 뒤에 추가 또는 이동  <-> 앞에 추가는 prepend
+                    // $(this).append("<span>hahaha</span>");
+                    $(this).append($("li",this).first()) 
+                    /* li 옷 입히고 나자신의 밑에있는 li들,, 중 첫번째를 선택해서 append 뒤로 보내
+                    첫번째 li요소 선택  -> 맨뒤로 이동 */
+                    // $(this) - slide 
+                    // $(요소, this) -> 나 자신 하위요소
+                    // first() 첫번째 요소  여기서는 li중에 첫번ㅉ ㅐ요소
+                    .css({top:"0"}); /* 처음상태 */
+                    //동시에 left값을 0으로 변경!!
+
+                }); //////////////////animate /////////////////
+
+            }/////////////////////// if ////////////////////
+
+            else {///// 윗쪽 버튼
+
+        //  맨뒤 요소를 맨 앞에 이동 동시에 left값 -100% // 그 후 left값 0으로 애니메이션
+                // 앞에 추가는 prepend()  // .find() 자손을 찾아라
+                // prepend(요소) 자식 요소로 앞에 추가(이동)
+                // find(요소) 자손 요소 찾기
+                // last() 마지막요소
+                slide.prepend(slide.find("li").last())
+                // 동시에 top값 -100%
+                .css({top:"-100%"})
+                // 그 후 top값 0으로 애니메이션
+                .animate({top:"0"},
+                aniT,//시간
+                aniE //이징
+                ); ////// animate ////////
                 
-                // 오른쪽(실제아래쪽)함수호출!
-                goRight();
+            }///////////////////// else ///////////////////////
 
-            } //////////// if //////////
-            else { // 왼쪽버튼 ///////
+            // 블릿 순번 표시 변경하기
+            // 3. 등장 슬라이드와 같은 순번의 블릿변경하기
+            // 변경 내용: 블릿 li에 class="on"을 주고 나머지 li에는 class="on"을 지움.
+            // 같은 순번 슬라이드는 
+            // 오른쪽일 때 2번째 슬라이드(순번1)
+            // 왼쪽일 때는 1번째 슬라이드(순번 0)
+            
 
-                // 1. 맨뒤 li 맨앞으로 이동
-                // li들
-                let lis = slide.querySelectorAll("li");
-                // insertBefore(넣을놈,넣을놈전놈)
-                // insertBefore(맨뒤li,맨앞li)
-                slide.insertBefore(
-                    lis[lis.length - 1], lis[0]);
-                // lis[lis.length-1] 맨뒤li -> lis[개수-1]
-                // lis[0] 맨앞li
+            // eq(순번)는 순번 선택 메서드,,, -> 몇번째 요소 0부터 셈
+            let sseq = slide.find("li").eq(isR?1:0).attr("data-seq");
+            // slide의 li의 두번째 data-seq를 읽어오겠지
+            // 오른쪽이면 1이지 isR?1:0 삼항연산자
+            // isR이 트루이면(1이면) 1을 출력, 아니면 0출력
+            console.log("슬순:",sseq);
 
-                // 2. 동시에 top:-100% + 트랜지션없앰
-                slide.style.top = "-100%";
-                slide.style.transition = "none";
+            /// 등장슬라이드 순번과 동일한 블릿 순번에 클래스 "on"주기
+            // 제이쿼리 클래스주기 메서드는? addClass(클래스명)
+            // 제이쿼리 클래스 컨트롤 메서드
+            // 1. addClass() 2. removeClass() 3. toggleClass()
 
-                // 위의 이동소스와 약간의 시차필요!
-                // setTimeout(함수,시간) -> 0.01초 시차
-                setTimeout(() => {
-                    // 3. top:0 + 트랜지션
-                    slide.style.top = "0";
-                    slide.style.transition =
-                        "top .4s ease-out";
-                }, 10); ///// 타임아웃 ////
+            // 변경대상: .indic li -> indic변수
+            indic.eq(sseq).addClass("on")
+            // 다른 형제 요소들 -> siblings()은 클래스 지워!! 
+            // siblings(형제요소중 클래스가 어떤 것, 혹은 속성이 어떤것 이런 것도 넣을 수 있어)
+            .siblings().removeClass("on");
 
-                // 3. 블릿표시변경함수 호출
-                goIndic(0); // 왼쪽(실제윗쪽)은 0
+        }); /////////// click ///////////////////////////
 
-            } //////////// else /////////
+        // 블릿 순번을 결정하기 위한 슬라이드 고유번호
+        // 새로운 속성 만들기!!!
+        // 새로운 속성은 "data-"라는 이름으로 시작하면 만들 수 있다!!
+        // 이게 바로 w3c 공식문법
+        // 우리는 각 슬라이드에 each를 사용하여 data-seq 라는 이름의 순번(sequency..?)저장용 속성을 만들고자 한다!!!!!!
+        // each()메서드   -   for문을 안 써도 됨~~~~~
+        // each((idx,ele)=>{})
+        // idx -> 첫번째 전달변수 : 순번
+        // ele -> 두번째 전달변수 : 요소 자신
+        
+        // 속성넣기 제이쿼리 메서드는?? 
+        // attr(속성명,값)
+        // attr(속성명) -> 속성값 읽기
+        // attr(속성명, 값) -> 속성값 세팅
 
-            // a요소 기본이동막기
-            return false;
+        //자바스크립트의 속성 세팅은?  setAttribute(속성명, 값)
+        //자바스크립트의 속성 읽기는?  getAttribute(속성명)
 
-        }; /////// click ///////
+        // 대상 : 슬라이드의 li
+        slide.find("li").each((idx,ele)=>{
+            // 'data-seq'라는 새로운 속성에 순번을 넣음!
+            // ele.attr("data-seq",idx);
+            // console.log(idx);
+            // console.log(ele,idx);
+            $(ele).attr("data-seq",idx);
+            // console.log(ele,idx);
+            
+        }); /////// each ///////////////////
 
-    } /////////// for of //////////////
 
-    /***************************************** 
-        함수명: goIndic
-        기능: 블릿 표시자 작동하기
-    *****************************************/
-        const goIndic = isR => { // isR : 오른쪽 1, 왼쪽 0
+        // 배너 자동 호출 넘기기 세팅 //////
+        // 인터발 함수 : setInterval(함수, 시간)
+        // 인터발 지우기 함수 : clearInterval(변수)
+        // 타임아웃함수 : setTimeout(함수,시간)
+        // 타임아웃 지우기 함수 : clearTimeout(변수)
+        // 타이밍 함수는 변수에 할당해야 지울 수 있다~~~
 
-            // [ 공통기능 : 블릿변경하기 ]
-    
-            // 블릿 class="on" 지우기 초기화
-            for (let x of indic)
-                x.classList.remove("on");
-    
-            // 첫번째 슬라이드 "data-seq"값을
-            // 읽어와서 블릿순번에 적용하기!
-            // 주의: 오른쪽버튼은 [1], 왼쪽버튼은 [0]
-            // 즉, 오른쪽은 두번째li, 왼쪽은 첫번째li
-            // 오른쪽 버튼이면 isR 변수값이 true
-            // isR?1:0 -> 비?집:놀이동산 (조건연산자===삼항연산자)
-            // isR값이 true이면 1, 아니면 0
-            let fseq = slide
-                .querySelectorAll("li")[isR ? 1 : 0]
-                .getAttribute("data-seq");
-            // getAttribute(속성명) -> 속성값을 읽어옴!
-    
-            // console.log("오른쪽/왼쪽다름:",isR?1:0);
-    
-            // console.log("fseq값:",fseq);
-            // console.log("fseq값의 형:",typeof fseq);
-    
-            indic[fseq].classList.add("on");
-            // 원래는 fseq는 숫자값인데 숫자형이어야함
-            // 그래서 Number(fseq)로 형변환 해야했었음...
-            // 그런데 요즘 브라우저에서는 이런부분을 
-            // 형변환하지 않아도 숫자이면 숫자형으로 변환해줌~!
-    
-        }; /////////// goIndic 함수 ////////////////
-        ////////////////////////////////////////////
-    
-        /***************************************** 
-            함수명: goRight
-            기능: 오른쪽 슬라이드 이동기능(실제 아래쪽)
-        *****************************************/
-        const goRight = () => {
-    
-            // 1. 슬라이드 top:-100% + 트랜지션
-            slide.style.top = "-100%";
-            slide.style.transition =
-                "top .4s ease-out";
-    
-            // 이동후 실행 -> 이동시간은 0.4초
-            // setTimeout(함수,시간) -> 일정시간후 한번실행!
-            setTimeout(() => {
-    
-                // 2. 첫번째 li를 맨뒤로 이동
-                // 첫번째 li
-                let fli = slide
-                    .querySelectorAll("li")[0];
-                // 맨뒤로 이동
-                slide.appendChild(fli);
-    
-                // 3. 동시에 top값 0
-                slide.style.top = "0";
-                // 이때 트랜지션 해제!
-                slide.style.transition = "none";
-    
-            }, 400); //// 타임아웃 ///////
-    
-            // 3. 블릿작동함수 호출!
-            goIndic(1); // 오른쪽(실제아래쪽)은 전달값 1
-    
-        }; //////////// goRight 함수 ///////////////
-        ////////////////////////////////////////////
-    
-        // 인터발용변수
+        // 인터발용 변수
         let autoI;
-    
-        // 인터발 셋팅 함수 //////////////
-        const autoCall = () =>
-            autoI = setInterval(goRight, 2000);
-    
-        // 인터발 셋팅 함수 최초호출!
-        autoCall();
-    
-        // 타임아웃용 변수
+
+        // 타임 아웃용 변수
         let autoT;
-    
-        // 인터발 지우기 함수 /////////////
-        const clearAuto = () => {
-            console.log("인터발지움!");
-    
-            // 인터발지우기
+
+        // 인터발 최초호출!
+        autoSlide();
+
+        // 인터발 호출 함수
+        function autoSlide(){
+            autoI = setInterval(()=>{
+                // slide 넘기기
+                slide.animate(
+                   {top:"-100%"},aniT,aniE,
+                        function(){ 
+                            $(this).append($("li",this).first()) 
+                            .css({top:"0"}); 
+        
+                        }); //////////////////animate /////////////////
+                        //블릿변경하기
+                        let sseq = slide.find("li").eq(1).attr("data-seq");
+                        indic.eq(sseq).addClass("on")
+                        .siblings().removeClass("on");
+            },3000);
+        } /////////////////// autoSlide함수 ////////////////////////
+
+        /// 인터발 지우기 함수 ////////////////////////////////
+        function clearAuto(){
+            // 인터발 지우기
             clearInterval(autoI);
-    
+
+            // 일정 시간후 다시 인터발 호출 (다시 넘어가게 해줘야할거아냐)
+            /* setTimeout(autoSlide, 4000); */ /* 이러면 4초 있다가 또 3초 뒤에 움직이겠지 */
+            // 이러고 클릭 광클 해봐 setTimeout쓰나미 옴 우르르 넘어갘ㅋㅋㅋㅋㅋㅋ
+
             // 타임아웃지우기(실행쓰나미방지!)
             clearTimeout(autoT);
-    
-            // 일정시간후 인터발셋팅(4초후)
-            autoT = setTimeout(autoCall, 4000);
-            // 매번 타임아웃을 변수에 담고 먼저 지우기 때문에
-            // 최종적으로 남는 타임아웃은 하나뿐이다!
-            // 따라서 타임아웃 실행 쓰나미가 발생하지 않는다!
-    
-        }; ///////// clearAuto 함수 ///////
-    
 
-} //////////////// loadFn 함수 ///////////////
-/////////////////////////////////////////////
+            // 일정시간후 다시 인터발호출!
+            autoT = setTimeout(autoSlide,4000);
+
+
+        }//////////// clearAuto함수 ////////////////////////////////
+
+
+
+
+        // 근본적 해결 소스 아님....!!!!!!
+        /* setInterval(() => {
+            $(".ab2").trigger("click");
+        }, 3000); */
+        // 제이쿼리 trigger(이벤트명) 메서드 -> 선택 요소에 강제 이벤트 발생 이벤트..
+
+
+    }); ////////////////////////// jQB ///////////////////////////
+    //////////////////////////////////////////////////////////////////

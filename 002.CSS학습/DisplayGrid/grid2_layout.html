@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Display 2 - Layout</title>
+    <style>
+
+        /********************************************************* 
+            [CSS에서 변수 사용하기]  
+            CSS 속성을 미리 정의해 놓고 필요할 때, 참조하여 사용할 수 있는 변수
+
+            1. 변수 세팅법
+               :root {
+                --변수명1: 값1;
+                --변수명2: 값2;
+                --변수명3: 값3;
+               }
+
+               여기서 루트는,, html이라고 할 수 있지만 확언은 안되나봐
+               
+            2. 변수 호출 사용법
+               var(--변수명)
+
+               ->>>> 변수는 언제 사용하나??
+               - 같은 값이 여러부분에서 사용될 때 미디어쿼리 등에서 변경이 필요한 경우
+                 변수값만 변경하면 복잡한 값 변경이 대체됨~~!!!
+
+        *********************************************************/
+
+        /* 
+            변 수 세 팅 - 은 주로 위에 해줌
+        */
+        :root {
+            /* 영역별 높이값 */
+            --ht1: 200px;
+            --ht2: 400px;
+            --ht3: 300px;
+            /* 영역별 색깔 */
+            --bg1: lightpink;
+            --bg2: lightcyan;
+            --bg3: lightgoldenrodyellow;
+        }
+
+
+        /* 제목 */
+        .tit {
+            text-align: center;
+            font-size: 3vw;
+        }
+
+        /* 그리드 박스 */
+        .grid {
+            display: grid;
+
+            /* 가로방향 12그리드 */
+
+            grid-template-columns: repeat(12, 1fr); /* 12개를 똑같이 fraction을 줘라,, */
+
+            /* 세로방향 높이값 세팅 */
+            grid-template-rows: var(--ht1) var(--ht2) var(--ht3);
+            /* grid-template-rows: 200px 400px 300px;  */
+            /* 1번째 2번째 3번째줄
+            무한정 할 거 아니니깜 repeat 안쓰지@@ */
+
+            /* 상하 갭 */
+            grid-row-gap: 7px;
+            /* 좌우 갭 */
+            grid-column-gap: 7px;
+
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 200px;
+        }
+
+        /* 컨텐츠 영역 박스 공통 */
+        .grid>div {
+            /* 직계를 꼭 쓸게용 직계애들만 적용되게~ */
+            border: 2px solid #ccc;
+            font-size: 30px;
+            text-align: center;
+            color: #888;
+        }
+
+        /* 첫째줄 */
+        .rw1 {
+            /* line-height: 200px; */ /* 글자 중간에 오게 하려고 line height 똑같이 줌
+            근데 이걸 하나씩 주는걸 안하려고 css 변수를 사용할거임*/
+            line-height: var(--ht1);
+            background-color: var(--bg1);
+            white-space: nowrap;
+        }
+
+        /* 둘째줄 */
+        .rw2 {
+            line-height: var(--ht2);
+            background-color: var(--bg2);
+            white-space: nowrap;
+        }
+        /* 셋째줄 */
+        .rw3 {
+            line-height: var(--ht3);
+            background-color: var(--bg3);
+            white-space: nowrap;
+        }
+
+        /* 각 컨텐츠 박스의 그리드 위치영역 설정하기 */
+        /* 각 그리드 영역 표시는 grid-column 속성을 사용하여 표시함 */
+        /* 값 -> 시작라인번호 / 끝라인번호 */
+        /* 12개로 지정해줬잖아 만약 첫번째거를 4개 두번째거 7개 하면 그 다음거는 알아서 한개 남기고 다음칸으로 넘어가 */
+        /* 선으로 따지면 13줄이라 13까지 숫자를 쓰는것임 */
+
+        /* 1. 로고 */
+        /* 처음부터 두개 영역 */
+        .logo {
+            grid-column: 1 / 3; /* 1~3 */
+        }
+
+        /* 2. GNB */
+        /* 3번부터 7개 영역 */
+        .gnb {
+            grid-column: 3 / 10;
+        }
+
+        /* 3. 상단 사이드 */
+        /* 10에서 3개 영역 */
+        .side {
+            grid-column: 10/13;
+        }
+
+        /* 4. 배너 */
+        /* 1부터 10개 차지 - 11번까지 */
+        .ban {
+            grid-column: 1 / 11;
+        }
+
+        /* 5. 배너 사이드 */
+        /* 11부터 13 */
+        .bnside {
+            grid-column: 11 / 13;
+        }
+
+        /* 6. 하단 좌측 */
+        /* 3개 영역 1~4 */
+        .bleft {
+            grid-column: 1 / 4;
+        }
+
+        /* 7. 하단 정보 */
+        /* 6개 4~10 */
+        .binfo {
+            grid-column: 4 / 10;
+        }
+
+        /* 8. 하단 우측 */
+        /* 3개 10~13 */
+        .bright {
+            grid-column: 10 / 13;
+        }
+
+
+        /*********************************************************** 
+            [GRID 위치 영역 속성]
+
+            1. 가로방향 위치속성
+            grid-column : 시작 위치 번호 / 끝 위치 번호;
+
+            2. 세로방향 위치속성
+            grid-raw : 시작 위치 번호 / 끝 위치 번호;
+
+            ->>>> 각 위치값은 그리드 기준선 번호를 참고함~~ (브라우저에서 가능가능)
+                  브라우저에서 그리드 소스 버튼을 클릭하여 볼 수 있음~~~
+
+            ->>>> 세팅시 유의사항 <<<<-
+            - grid-column을 설정할 때 만약 그리드범위에 넘치면 자동으로 아랫줄로 떨어진다~~
+              그러므로 grid-raw를 따로 잡아줄 필요가 없다!
+
+              단, 별도의 위치를 세로 방향으로 변경해야할 경우 grid-row를 설정해야 한다~~!
+        ***********************************************************/
+
+
+        /* 미디어 쿼리 1024px이하 시작 */
+        @media screen and (max-width: 1024px) {
+            :root {
+                /* 영역별 높이값 */
+                --ht1: 100px;
+                --ht2: 300px;
+                --ht3: 200px;
+                /* 영역별 색깔 */
+                --bg1: lightsalmon;
+                --bg2: lightskyblue;
+                --bg3: lightgreen;
+            }
+
+            /* 없어질 요소 : .side .bnside .bleft */
+            .side, .bnside, .bleft {
+                display: none;
+            }
+
+            .logo {
+                grid-column: 1 / 5;
+            }
+            .gnb {
+                grid-column: 5 / 13;
+            }
+            .ban {
+                grid-column: 1 / 13;
+            }
+            .binfo {
+                grid-column: 1 / 9;
+            }
+            .bright {
+                grid-column: 9 / 13;
+            }
+        }
+        /* 미디어 쿼리 1024px이하 끝 */
+
+        /* 미디어 쿼리 700px이하 시작 */
+        @media screen and (max-width: 700px) {
+
+            /* 모든 그리드 컬럼 영역 한줄에 하나씩 */
+            .grid>div:nth-child(2)~div {
+                grid-column: 1 / 13;
+                line-height: 400px;
+            }
+            .grid {
+                /* 기존 세로방향 템플릿로우 그리드 세팅 해제~! */
+                grid-template-rows: auto;
+            }
+            
+        }
+        /* 미디어 쿼리 700px이하 끝 */
+    </style>
+</head>
+<body>
+    <h1 class="tit">GRID 2 - 사이트 레이아웃1</h1>
+
+    <!-- 그리드 적용박스 -->
+    <div class="grid">
+        <!-- 상단 부분 -->
+        <div class="logo rw1">LOGO</div>
+        <div class="gnb rw1">GNB</div>
+        <div class="side rw1">SIDE</div>
+
+        <!-- 중앙 부분 -->
+        <div class="ban rw2">BANNER</div>
+        <div class="bnside rw2">BANNER SIDE</div>
+
+        <!-- 하단 부분 -->
+        <div class="bleft rw3">BOTTOM LEFT</div>
+        <div class="binfo rw3">BOTTOM INFO</div>
+        <div class="bright rw3">BOTTOM RIGHT</div>
+    </div>
+</body>
+</html>
