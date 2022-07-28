@@ -10,8 +10,147 @@
 
 /************************** 1-1. 상단메뉴 **************************/
 .tmenu {
+    /* 티메뉴가 플랙스 박스면 되지 */
+    display: flex; /* 플렉스 주니 높이값이 뙇 */
+    max-width: 970px;
     min-height: 45px;
+    margin: 0 auto;
 }
+
+/* flex box 직계 div */
+.tmenu>div {
+    flex: 1; /* 등분할 자동 높이 채움!!!!!! flex:shrink, grow, d~~ 결합된 것 fx1 */
+}
+
+/* 1-1-1. sns박스 */
+.sns a {
+    width: 16px;
+    height: 16px; /* 원래 a태그 크기 안먹는데 fi 확인해보면 인라인블록으로 되어있어서 크기 먹음 */
+    /* .fi에 이미 inline-block되어있음! */
+    font-size: 16px;
+    text-align: center;
+    vertical-align: top; /* 박스 다 위에 맞춤 */
+    line-height: 16px;/* 중간정렬 대박,, 이거였음 유튜브 왤케 이상해 했더니,, 얘주니까 가운데온다세로.. */
+    cursor: pointer;
+    /* cursor: url(../images/mouse.webp), move; */
+    /* [커서 이미지 표시하기] */
+    /* cursor: url(),대체커서;
+       -> 이미지가 표시 안될 경우 콤마 뒤의 대체 커서가 표시됨.
+       -> 이미지는 대체로 jpg,png등 사용하는데 적합치 않을 경우 안나올 수 있다
+    */
+
+    /* 위치조정 */
+    margin-top: 14px;
+    margin-right: 17px;
+    /* 포지션 없는 상태에서 위치 조정 원초적 조정ㅋㅋ */
+    
+    /* 트랜지션: 속시이지 */
+    transition: opacity 0.2s;
+
+}
+
+/* a 요소 오버시 */
+.sns a:hover {
+    opacity: 0.8;
+}
+
+/* 트위터 아이콘 조정 */
+.sns a.fi-twitter {
+    font-size: 13px;
+}
+
+/* 유튜브 아이콘 조정 */
+.sns a.fi-youtube-play {
+    font-size: 11px;
+}
+
+/* 유튜브 아이콘 조정 */
+.sns a.fi-youtube-play:before {
+    transform: scaleY(1.2);
+    display: inline-block; /* inline은 transform이 적용이 안돼.. 그래서 dib줌 */
+}
+
+/* 카카오 스토리 배경이미지 넣기 */
+.sns a:last-child {
+    background: url(../images/sns_kakao.png) no-repeat center/auto 100%; /* 가로 auto, 세로 100% */
+}
+
+/* 1-1-2. 사이드메뉴 */
+.smbx {
+    /* 플렉스박스 */
+    display: flex;
+    /* 수평방향 끝정렬 */
+    justify-content: flex-end;
+    font-family: 'Roboto', nbg;
+    font-size: 12px;
+}
+
+/* 사이드 메뉴 상위 a 요소 */
+.smbx>li>a {
+    display: block;/* 박스 안에 차게 */
+    padding: 0 13px;
+    line-height: 44px;
+    color: #747474;
+}
+
+/* 사이드 메뉴 상위 첫번째 a 요소 */
+.smbx>li:first-child>a {
+    cursor: text; /* 커서 값 : text는 글자 입력 모양 커서 I 자 같은거 */
+}
+
+
+/* 사이드 메뉴 서브 박스 */
+.smsub {
+    /* display: none; */
+    position: absolute;
+    margin-left: -1px;
+    /* absolute일 때 그 자리에서 위치 이동을 원할 때는 무얼 쓰라고?? margin.. */
+    /* 미세 위치 조정은 마진으로~~~~~ 부모찾아 삼만리 안하려고,,ㅎ */
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+
+    /* 처음에 투명함! */
+    opacity: 0;
+    /* 처음에 높이값 0
+    89px */
+
+    height: 0;
+    /* 여기에 transition을 주면 height에도 먹잖아 */
+    /* 오파시티만 부드럽게 주고 헤이트는 팍!팍! */
+    overflow: hidden;
+    /* 이렇게 안 하면 그 자리에 숨겨진거라 스윽 걸려 안걸리게 해야지 */
+}
+
+/* 상위 메뉴 마우스 오버시 나타남 */
+.smbx>li:first-child:hover .smsub {
+    opacity: 1;
+    /* 높이값 복원 */
+    height: 87px;
+    /* 오버시에만 트랜지션 opacity만 적용. */
+    transition: opacity .4s ease-in-out;
+}
+
+/* 사이드 메뉴 사이 구분선 */
+.smbx>li:first-child {
+    border-right: 1px solid #e5e5e5;
+ }
+ 
+/* 서브메뉴 a 요소 */
+.smsub a {
+    display: block;
+    padding: 7px 10px; /* 양쪽 7 위아래 10 */
+    padding-right: 19px; /* 패딩 덮어쓰기 오른쪽만 */
+    color: #747474;
+
+    transition: 0.2s ease-in-out;
+}
+
+/* 서브메뉴 마우스 오버시 */
+.smsub a:hover{
+    background-color: #fafafa;
+    color: #333;
+}
+
 /************************** 1-2. 로고박스 **************************/
 .logo { 
     text-align: center;
@@ -19,7 +158,48 @@
 }
 /************************** 1-3. GNB박스 **************************/
 .gnb {
+    /* 글자설정 */
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    line-height: 40px;
+
     min-height: 45px;
+}
+
+/* GNB ul */
+.gnb ul {
+    /* 플렉스 박스 */
+    display: flex;
+
+    /* 자동줄바꿈 - 화면 width바뀔때말야 툭툭툭 떨어지게*/
+    flex-wrap: wrap;
+
+
+    /* 수평방향 중앙 */
+    justify-content: center;
+}
+.gnb li {
+    padding-right: 45px;
+}
+/* 마지막 패딩없음 */
+.gnb li:last-child {
+    padding-right: 0;
+}
+
+/* 마지막 li의 a 돋보기 */
+.gnb li:last-child a {
+    font-weight: bold;
+    padding-top: 12px;
+}
+
+/* GNB a링크 트랜지션 */
+.gnb a {
+    transition: color .2s linear;
+}
+
+/* 오버시 a요소 */
+.gnb a:hover {
+    color: red;
 }
 
 /* 2. 하단영역 */
