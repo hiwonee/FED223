@@ -15,11 +15,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css">
     <link rel="stylesheet" href="./css/main.css">
 
+    <!-- 외부 JS 삽입 -->
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/common.js"></script>
+
 </head>
 
 <body>
     <!-- 1. 상단영역 -->
-    <div>
+    <div id="top">
         <!-- 영역 구분 및 블로킹 auto로 끝까지 갈꺼야 -->
         <header class="ibx top">
             <!-- 특정 크기로 영역 유지 맥스위드쓰, 민하이트, 가로 스크롤 생기지 않게 -->
@@ -103,7 +108,7 @@
 
 
     <!-- 2. 메인영역 -->
-    <div>
+    <div class="bgc">
         <main class="ibx cont">
             <!-- 유형1 컨텐츠 박스
             <section class="pt1 rbx">rbx 비율이 필요할 것 같아 넣음
@@ -128,7 +133,7 @@
             </section> -->
 
             <!-- 유형1 컨텐츠 박스 01 -->
-            <section class="pt1 rbx">
+            <section class="pt1 rbx scAct">
                 <!-- rbx 비율이 필요할 것 같아 넣음 -->
                 <div class="rbxIn">
                     <!-- 비율유지 속박스 공간확보 목표-->
@@ -139,7 +144,7 @@
                 </div>
             </section>
             <!-- 유형2 컨텐츠 박스 02 -->
-            <section class="pt2 rbx">
+            <section class="pt2 rbx scAct">
                 <!-- rbx 비율이 필요할 것 같아 넣음 -->
                 <div class="rbxIn fbx">
                     <!-- 비율유지 속박스 -->
@@ -155,7 +160,7 @@
                 </div>
             </section>
             <!-- 유형1 컨텐츠 박스 03 -->
-            <section class="pt1 rbx">
+            <section class="pt1 rbx scAct">
                 <!-- rbx 비율이 필요할 것 같아 넣음 -->
                 <div class="rbxIn">
                     <!-- 비율유지 속박스 공간확보 목표-->
@@ -167,7 +172,7 @@
                 </div>
             </section>
             <!-- 유형2 컨텐츠 박스 04 -->
-            <section class="pt2 rbx">
+            <section class="pt2 rbx scAct">
                 <!-- rbx 비율이 필요할 것 같아 넣음 -->
                 <div class="rbxIn fbx">
                     <!-- 비율유지 속박스 -->
@@ -183,7 +188,7 @@
                 </div>
             </section>
             <!-- 유형1 컨텐츠 박스 05 -->
-            <section class="pt1 rbx">
+            <section class="pt1 rbx scAct">
                 <!-- rbx 비율이 필요할 것 같아 넣음 -->
                 <div class="rbxIn">
                     <!-- 비율유지 속박스 공간확보 목표-->
@@ -194,7 +199,7 @@
                 </div>
             </section>
             <!-- 유형2 컨텐츠 박스 06 -->
-            <section class="pt2 rbx">
+            <section class="pt2 rbx scAct">
                 <!-- rbx 비율이 필요할 것 같아 넣음 -->
                 <div class="rbxIn fbx">
                     <!-- 비율유지 속박스 -->
@@ -210,7 +215,7 @@
                 </div>
             </section>
             <!-- 유형2 컨텐츠 박스 07 -->
-            <section class="pt2 rbx">
+            <section class="pt2 rbx scAct">
                 <!-- rbx 비율이 필요할 것 같아 넣음 -->
                 <div class="rbxIn fbx">
                     <!-- 비율유지 속박스 -->
@@ -229,9 +234,32 @@
     </div>
 
     <!-- 3. 하단영역 -->
-    <div>
+    <div class="bgc">
         <footer class="ibx info">
-
+            <!-- 3-1. 하단 로고 -->
+            <div class="blogo">
+                <img src="images/footer_logo.png" alt="하단로고">
+            </div>
+            <!-- 3-2. 회사 주소 -->
+            <address class="addr">
+                WWW.VOGUE.COM Ⓒ CONDÉNAST ASIA PACIFIC. INC. ALL RIGHTS RESERVED. VOGUE.COM KOREA IS OPERATED BY DOOSAN MAGAZINE.
+            </address>
+            <!-- 3-3. 하단 링크 -->
+            <ul class="blink">
+                <li>
+                    <a href="#">정기구독</a>
+                </li>
+                <li>
+                    <a href="#">회사소개</a>
+                </li>
+                <li>
+                    <a href="#">광고 및 제휴</a>
+                </li>
+                <li>
+                    <a href="#">개인정보 처리방침</a>
+                </li>
+                
+            </ul>
         </footer>
     </div>
 
