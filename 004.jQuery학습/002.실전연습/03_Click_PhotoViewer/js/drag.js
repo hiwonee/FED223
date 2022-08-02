@@ -276,14 +276,16 @@ $(() => {
             // 블릿 전체수 -1
             // console.log("최대차이수:",indic.length-1);
 
-            if(absd===indic.length-1){
+            if (absd === indic.length - 1) {
 
                 // 미리 하나 옮기므로 absd값을 1뺀다
-                absd= absd-1;
+                absd = absd - 1;
 
                 // 맨뒤로 첫번째 슬라이드 미리 이동
                 slide.append(slide.find("li").first())
-                .css({left:"100%"});
+                    .css({
+                        left: "100%"
+                    });
                 // 첫번째 요소를 이동했으므로 튀지 않게 left 밀기
             }
 
@@ -323,36 +325,40 @@ $(() => {
             // 블릿 전체수 -1
             // console.log("최대차이수:",indic.length-1);
 
-            if(absd===indic.length-1){
 
-                // 미리 하나 옮기므로 absd값을 1뺀다
-                absd= absd-1;
+            if (absd === indic.length - 1) {
 
-                // 맨뒤로 첫번째 슬라이드 미리 이동
-                slide.prepend(slide.find("li").first())
-                .css({left:"100%"});
-                // 첫번째 요소를 이동했으므로 튀지 않게 left 밀기
+                // 튀지 않게 하나 전까지만 이동함
+                absd = absd - 1;
             }
 
+            /////////////////////////////////////////////////////
+            else {
+                /// 예외 아닌 일반적인 경우 //////////////
 
-            // 왼쪽 버튼 클릭시와 기본 기능 동일~~
-            let temp = 0; // left에 적용할 증가값
-            for (let i = 0; i < absd; i++) {
-                temp++; // 1씩 증가
-                slide.prepend(slide.find("li").last())
-                    // 동시에 left값 -100%
-                    .css({
-                        left: (-100 * temp) + "%"
-                    })
-            }
+                // 왼쪽 버튼 클릭시와 기본 기능 동일~~
+                let temp = 0; // left에 적용할 증가값
+                for (let i = 0; i < absd; i++) {
+                    temp++; // 1씩 증가
+                    slide.prepend(slide.find("li").last())
+                        // 동시에 left값 -100%
+                        .css({
+                            left: (-100 * temp) + "%"
+                        })
+                }//////for 
 
-            // 그 후 left값 0으로 애니메이션
-            slide.animate({
-                left: "0"
-            }, aniT, aniE /* t 시간 e 이징 */ ); ////// animate ////////
+                // 그 후 left값 0으로 애니메이션
+                slide.animate({
+                    left: "0"
+                }, aniT, aniE /* t 시간 e 이징 */ ); ////// animate ////////
 
 
-        }; //////// else if ///////////////////////
+            }; //////// else if ///////////////////////
+
+
+        } ///////////////////////////////////////////////////
+
+
 
         // 공통 블릿 변경하기!!
         // $(this)는 클릭된 블릿li
