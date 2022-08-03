@@ -1,0 +1,227 @@
+@charset "utf-8";
+/* 보그 PJ 메인페이지 CSS - main.css */
+
+/* 외부파일 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+/* 등장액션 해제 */
+.scAct {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+/*  2-1-1. 서브 타이틀  */
+.stit {
+    font-family: pist;
+    font-weight: normal;
+    font-size: 50px;
+    text-align: center;
+    padding: 40px 0 20px;
+}
+
+/*  2-1-2. 서브 메뉴(LNB)  */
+.lnb {
+    padding: 5px 0 50px;
+}
+
+.lnb ul {
+    /* 플렉스박스 */
+    display: flex; /* 글자 옆으로 흘러가게 */
+    justify-content: center;
+}
+
+.lnb li {
+    margin: 0 10px;
+}
+
+.lnb a {
+    font-family: nbg;
+    font-size: 18px;
+    color: #333;
+    /* 트랜지션 글자 호버시  */
+    transition: color .5s;
+}
+/* 첫번째 메뉴 + 오버시 빨강 */
+
+/* 버튼 누르고 보이고 싶어? div 다숨겨 siblings 중 class가 뭐인것만 다 보여,, 뭐 이런식 */
+/* 클래스로 구분해놔라!! */
+
+.lnb li:first-child a, .lnb a:hover {
+    /* 첫번째 전체, 호버시 같이 정해주는것,,, */
+    color: red;
+}
+
+/* FASHION */
+/* 이거랑 같은 세팅법! 이미지 이름들이 다 같어 그러니까 fashion부분만 바꿔줄 수 있게 할 수 있지 */
+.fashion .bg1-1{
+    background-image: url(../images/fashion/cont1-1a.jpg);
+}
+.fashion .bg1-2{
+    background-image: url(../images/fashion/cont1-2a.jpg);
+}
+.fashion .bg1-3{
+    background-image: url(../images/fashion/cont1-3a.jpg);
+}
+.fashion .bg2-1{
+    background-image: url(../images/fashion/cont2-1a.jpg);
+}
+.fashion .bg2-2{
+    background-image: url(../images/fashion/cont2-2a.jpg);
+}
+.fashion .bg2-3{
+    background-image: url(../images/fashion/cont2-3a.jpg);
+}
+
+/* BEAUTY */
+/* 이거랑 같은 세팅법! 이미지 이름들이 다 같어 그러니까 beauty부분만 바꿔줄 수 있게 할 수 있지 */
+.beauty .bg1-1{
+    background-image: url(../images/beauty/cont1-1a.jpg);
+}
+.beauty .bg1-2{
+    background-image: url(../images/beauty/cont1-2a.jpg);
+}
+.beauty .bg1-3{
+    background-image: url(../images/beauty/cont1-3a.jpg);
+}
+.beauty .bg2-1{
+    background-image: url(../images/beauty/cont2-1a.jpg);
+}
+.beauty .bg2-2{
+    background-image: url(../images/beauty/cont2-2a.jpg);
+}
+.beauty .bg2-3{
+    background-image: url(../images/beauty/cont2-3a.jpg);
+}
+
+/* LIVING */
+/* 이거랑 같은 세팅법! 이미지 이름들이 다 같어 그러니까 living부분만 바꿔줄 수 있게 할 수 있지 */
+.living .bg1-1{
+    background-image: url(../images/living/cont1-1a.jpg);
+}
+.living .bg1-2{
+    background-image: url(../images/living/cont1-2a.jpg);
+}
+.living .bg1-3{
+    background-image: url(../images/living/cont1-3a.jpg);
+}
+.living .bg2-1{
+    background-image: url(../images/living/cont2-1a.jpg);
+}
+.living .bg2-2{
+    background-image: url(../images/living/cont2-2a.jpg);
+}
+.living .bg2-3{
+    background-image: url(../images/living/cont2-3a.jpg);
+}
+
+/* PEOPLE */
+/* 이거랑 같은 세팅법! 이미지 이름들이 다 같어 그러니까 people부분만 바꿔줄 수 있게 할 수 있지 */
+.people .bg1-1{
+    background-image: url(../images/people/cont1-1a.jpg);
+}
+.people .bg1-2{
+    background-image: url(../images/people/cont1-2a.jpg);
+}
+.people .bg1-3{
+    background-image: url(../images/people/cont1-3a.jpg);
+}
+.people .bg2-1{
+    background-image: url(../images/people/cont2-1a.jpg);
+}
+.people .bg2-2{
+    background-image: url(../images/people/cont2-2a.jpg);
+}
+.people .bg2-3{
+    background-image: url(../images/people/cont2-3a.jpg);
+}
+
+/* VIDEO */
+/* 이거랑 같은 세팅법! 이미지 이름들이 다 같어 그러니까 video부분만 바꿔줄 수 있게 할 수 있지 */
+.video .bg1-1{
+    background-image: url(../images/video/cont1-1a.jpg);
+}
+.video .bg1-2{
+    background-image: url(../images/video/cont1-2a.jpg);
+}
+.video .bg1-3{
+    background-image: url(../images/video/cont1-3a.jpg);
+}
+.video .bg2-1{
+    background-image: url(../images/video/cont2-1a.jpg);
+}
+.video .bg2-2{
+    background-image: url(../images/video/cont2-2a.jpg);
+}
+.video .bg2-3{
+    background-image: url(../images/video/cont2-3a.jpg);
+}
+
+/* runway */
+/* 이거랑 같은 세팅법! 이미지 이름들이 다 같어 그러니까 runway부분만 바꿔줄 수 있게 할 수 있지 */
+.runway .bg1-1{
+    background-image: url(../images/runway/cont1-1a.jpg);
+}
+.runway .bg1-2{
+    background-image: url(../images/runway/cont1-2a.jpg);
+}
+.runway .bg1-3{
+    background-image: url(../images/runway/cont1-3a.jpg);
+}
+.runway .bg2-1{
+    background-image: url(../images/runway/cont2-1a.jpg);
+}
+.runway .bg2-2{
+    background-image: url(../images/runway/cont2-2a.jpg);
+}
+.runway .bg2-3{
+    background-image: url(../images/runway/cont2-3a.jpg);
+}
+
+/* shopping */
+/* 이거랑 같은 세팅법! 이미지 이름들이 다 같어 그러니까 shopping부분만 바꿔줄 수 있게 할 수 있지 */
+.shopping .bg1-1{
+    background-image: url(../images/shopping/cont1-1a.jpg);
+}
+.shopping .bg1-2{
+    background-image: url(../images/shopping/cont1-2a.jpg);
+}
+.shopping .bg1-3{
+    background-image: url(../images/shopping/cont1-3a.jpg);
+}
+.shopping .bg2-1{
+    background-image: url(../images/shopping/cont2-1a.jpg);
+}
+.shopping .bg2-2{
+    background-image: url(../images/shopping/cont2-2a.jpg);
+}
+.shopping .bg2-3{
+    background-image: url(../images/shopping/cont2-3a.jpg);
+}
+
+/* time&gem */
+
+/* time & gem인데 폴더 이름에 & 이게 좀 그래서  */
+/* 이거랑 같은 세팅법! 이미지 이름들이 다 같어 그러니까 time-gem부분만 바꿔줄 수 있게 할 수 있지 */
+.time-gem .bg1-1{
+    background-image: url(../images/time-gem/cont1-1a.jpg);
+}
+.time-gem .bg1-2{
+    background-image: url(../images/time-gem/cont1-2a.jpg);
+}
+.time-gem .bg1-3{
+    background-image: url(../images/time-gem/cont1-3a.jpg);
+}
+.time-gem .bg2-1{
+    background-image: url(../images/time-gem/cont2-1a.jpg);
+}
+.time-gem .bg2-2{
+    background-image: url(../images/time-gem/cont2-2a.jpg);
+}
+.time-gem .bg2-3{
+    background-image: url(../images/time-gem/cont2-3a.jpg);
+}
+
+/* 셋업 맞춰놓고,,, */
